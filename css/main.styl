@@ -2,37 +2,37 @@ marron = #7d6350
 
 @font-face {
 	font-family: 'Heldustry';
-	src:url('../fonts/HeldustryFT_Regular.ttf') format('truetype');
-	font-weight: normal;
 	font-style: normal;
+	font-weight: normal;
+	src:url('../fonts/HeldustryFT_Regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'mangal';
-	src:url('../fonts/mangal.ttf') format('truetype');
-	font-weight: normal;
 	font-style: normal;
+	font-weight: normal;
+	src:url('../fonts/mangal.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'mangalb';
-	src:url('../fonts/mangalb.ttf') format('truetype');
-	font-weight: normal;
 	font-style: normal;
+	font-weight: normal;
+	src:url('../fonts/mangalb.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Pacifico';
-	src:url('../fonts/Pacifico.ttf') format('truetype');
-	font-weight: normal;
 	font-style: normal;
+	font-weight: normal;
+	src:url('../fonts/Pacifico.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Remachine';
-	src:url('../fonts/RemachineScript.ttf') format('truetype');
-	font-weight: normal;
 	font-style: normal;
+	font-weight: normal;
+	src:url('../fonts/RemachineScript.ttf') format('truetype');
 }
 
 
@@ -58,21 +58,21 @@ header
 			width 190px
 	.spacer		
 		background marron
-		height 1.5px
-		width 90%
-		margin 1em auto auto auto
 		display block
+		height 1.5px
+		margin 1em auto auto auto
+		width 90%
 
 .content
 	.about
+		color rgba(black,0.4)
+		font-family "mangal"
 		margin-left 1em
 		margin-right 1em
 		text-align center
-		font-family "mangal"
-		color rgba(black,0.4)
 		h3
-			font-family "Pacifico"
 			color marron
+			font-family "Pacifico"
 	.banner
 		margin-top 1em
 		position relative
@@ -81,16 +81,16 @@ header
 			width 100%
 		.text
 			font-family "Remachine"
-			overflow hidden
-			top 15%		
-			left 10%
-			position absolute
-			width 80%
-			margin auto
 			font-size 3em
+			left 10%
+			margin auto
+			overflow hidden
+			position absolute
+			top 15%		
+			width 80%
 			p
-				text-align center					
 				color white
+				text-align center					
 				text-shadow 2px 2px 10px rgba(black,0.8)
 					
 
@@ -99,6 +99,12 @@ nav
 	visibility hidden
 	.menu
 		position absolute
+
+.simple-menu
+	visibility hidden
+	position absolute
+	margin-left 2 em
+		
 
 @media screen and (max-width:320px )
 	.content
@@ -112,44 +118,48 @@ nav
 		.banner
 			.text
 				top 20
-				font-size 1.5em		
+				font-size 1.5em
+
+@media screen and (max-width:720px )
+	.simple-menu
+		visibility visible		
 	
 
 @media screen and (min-width: 768px)
 
 	nav
-		visibility visible		
 		position relative
+		visibility visible		
 		.menu
 			display block
 			position absolute
 			width 100%
 			.menuIzquierda
 			.menuDerecha		
-				position absolute
-				padding 0
 				display inline-block
+				padding 0
+				position absolute
 				width 40em				
 				li				
 					display inline-block
 					a
-						text-decoration none
 						color marron
 						font-size 1.2em
+						text-decoration none
 			.menuIzquierda
+				font-family "Heldustry"
+				margin-left 0
+				margin-right 4em
 				right 0
 				text-align right
-				font-family "Heldustry"
-				margin-right 4em
-				margin-left 0
 				li					
 					&:nth-child(even)
 						margin-left 2em
 			.menuDerecha
-				text-align left
 				font-family "Heldustry"
 				margin-left 4em
 				margin-right 0
+				text-align left
 				li					
 					&:nth-child(odd)
 						margin-right 2em
@@ -159,15 +169,15 @@ nav
 		position relative
 		
 		.about
-			padding-bottom 0
 			background white
-			overflow hidden
-			left 10%
 			bottom -30px
+			font-size 0.8em
+			left 10%
+			margin auto
+			overflow hidden
+			padding-bottom 0
 			position absolute
 			width 80%
-			margin auto
-			font-size 0.8em
 
 	footer
 		margin-top 2em
