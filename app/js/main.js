@@ -1,5 +1,5 @@
 var VarsApp = {
-    baseUrl : '/delibouquet-git/delibouquet/app',
+    baseUrl : '/delibouquet/app',
     autor : "Antonio P. Ramos Rafael"
 };
 
