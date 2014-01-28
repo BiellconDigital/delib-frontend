@@ -53,8 +53,11 @@ define(['services/routeResolver'], function () {
             var route = routeResolverProvider.route;
 
             $routeProvider
+                .when('/main', route.resolve('Main'))
                 .when('/contacto', route.resolve('Contacto'))
-                .when('/delibouquet', route.resolve('Delibouquet'));
+                .when('/delibouquet', route.resolve('Delibouquet'))
+                .otherwise({redirectTo : '/main'});
+                
 //                {templateUrl: 'partials/proyectos.html', controller: 'proyectosController',resolve: resolveController('/app/controllers/proyectosController.js')}
 //                )
 //                .when('/proyecto/:id', 
