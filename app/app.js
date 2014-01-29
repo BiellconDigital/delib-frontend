@@ -1,35 +1,5 @@
 'use strict';
 
-/*
-// Declare app level module which depends on filters, and services
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives'
-  //,'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-        
-    $routeProvider.when('/proyectos', 
-        {templateUrl: 'partials/proyectos.html', controller: 'proyectosController',resolve: resolveController('/app/controllers/proyectosController.js')}
-    );
-    $routeProvider.when('/proyecto/:id', 
-        {templateUrl: 'partials/proyecto.html', controller: 'proyectoController',resolve: resolveController('/app/controllers/proyectoController.js')}
-    );
-  
-//    $routeProvider.when('/productos', 
-//        {templateUrl: 'partials/productos.html', controller: 'productosController',resolve: resolveController('/app/controllers/customersController.js')}
-//    );
-//    $routeProvider.when('/producto/:id', 
-//        {templateUrl: 'partials/producto.html', controller: 'productoController',resolve: resolveController('/app/controllers/customersController.js')}
-//    );
-  
-    $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
-
-*/
-
 define(['services/routeResolver'], function () {
 
     var app = angular.module('myApp', ['ngRoute', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
@@ -55,6 +25,7 @@ define(['services/routeResolver'], function () {
             $routeProvider
                 .when('/main', route.resolve('Main'))
                 .when('/contacto', route.resolve('Contacto'))
+                .when('/arreglos', route.resolve('Productos'))
                 .when('/delibouquet', route.resolve('Delibouquet'))
                 .otherwise({redirectTo : '/main'});
                 
