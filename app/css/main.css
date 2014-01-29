@@ -3,6 +3,7 @@
 @font-face{font-family:'mangalb';font-style:normal;font-weight:normal;src:url("../fonts/mangalb.ttf") format('truetype')}
 @font-face{font-family:'Pacifico';font-style:normal;font-weight:normal;src:url("../fonts/Pacifico.ttf") format('truetype')}
 @font-face{font-family:'Remachine';font-style:normal;font-weight:normal;src:url("../fonts/RemachineScript.ttf") format('truetype')}
+body{position:absolute;top:0;bottom:0;right:0;left:0}
 footer{background:#7d6350;color:#fff;padding:.2em 0;text-align:center;width:100%;}
 footer h3{font-size:14px;font-weight:normal;}
 footer h3 strong{display:block}
