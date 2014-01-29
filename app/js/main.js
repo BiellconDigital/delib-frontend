@@ -1,6 +1,6 @@
 var VarsApp = {
-    baseUrl : '/delibouquet/app',
-    autor : "Antonio P. Ramos Rafael"
+    baseUrl : '/delibouquet-git/delibouquet/app',
+    autor : "Biellcon Digital"
 };
 
 require.config({
@@ -10,20 +10,9 @@ require.config({
 
 require(
     [
-//        'animations/listAnimations',
         'app',
-//        'directives/wcUnique',
-//        'directives/wcOverlay',
-        'services/routeResolver'
-//        'services/config',
-//        'services/customersBreezeService',
-//        'services/customersService',
-//        'services/dataService',
-//        'services/modalService',
-//        'filters/nameCityStateFilter',
-//        'filters/nameProductFilter',
-//        'controllers/navbarController',
-//        'controllers/orders/orderChildController'
+        'services/routeResolver',
+        'controllers/InitController'
     ],
     function () {
         angular.bootstrap(document, ['myApp']);
