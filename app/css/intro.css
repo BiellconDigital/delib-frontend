@@ -1,0 +1,33 @@
+@font-face{font-family:'Heldustry';font-style:normal;font-weight:normal;src:url("../fonts/HeldustryFT_Regular.ttf") format('truetype')}
+@font-face{font-family:'mangal';font-style:normal;font-weight:normal;src:url("../fonts/mangal.ttf") format('truetype')}
+@font-face{font-family:'mangalb';font-style:normal;font-weight:normal;src:url("../fonts/mangalb.ttf") format('truetype')}
+@font-face{font-family:'Pacifico';font-style:normal;font-weight:normal;src:url("../fonts/Pacifico.ttf") format('truetype')}
+@font-face{font-family:'Remachine';font-style:normal;font-weight:normal;src:url("../fonts/RemachineScript.ttf") format('truetype')}
+body{position:absolute;top:0;bottom:0;right:0;left:0}
+.layerOpacity{color:#fff;font-family:'Heldustry';height:100%;position:fixed;width:100%;z-index:990;font-size:1.2em;vertical-align:center;text-decoration:none;zoom:1;}
+.layerOpacity .info{position:relative;width:50%;left:25%;top:20%;}
+.layerOpacity .info .buttons{text-align:center;margin-top:1em;margin-bottom:1em;text-decoration:none;color:#fff;}
+.layerOpacity .info .buttons .registro,.layerOpacity .info .buttons .saltar{margin-right:2em;display:inline-block;border:solid #fff .1em;padding:.4em;width:20%;text-align:center;font-size:.8em;}
+.layerOpacity .info .buttons .registro a:link,.layerOpacity .info .buttons .saltar a:link,.layerOpacity .info .buttons .registro a:hover,.layerOpacity .info .buttons .saltar a:hover,.layerOpacity .info .buttons .registro a:visited,.layerOpacity .info .buttons .saltar a:visited,.layerOpacity .info .buttons .registro a:active,.layerOpacity .info .buttons .saltar a:active{color:#fff;text-decoration:none}
+.layerOpacity .info .logo{margin-left:20%;margin-bottom:2em}
+.layerOpacity .info .text,.layerOpacity .info .footer{text-align:center}
+.layerOpacity .info .footer{font-family:'Pacifico'}
+.image{width:100%;height:100%;}
+.image img{width:100%;height:100%}
+@media screen and (max-width:320px ){.layerOpacity{font-size:14px;}
+.layerOpacity .info{left:0;}
+.layerOpacity .info .buttons .registro,.layerOpacity .info .buttons .saltar{font-size:10px;border:none}
+.layerOpacity .info .logo{block:inline-block;text-align:center;margin-left:0;}
+.layerOpacity .info .logo img{width:159px}
+}@media screen and (max-width:420px ) and (min-width:320px ){.layerOpacity{font-size:15px;}
+.layerOpacity .info{left:10%;}
+.layerOpacity .info .buttons .registro,.layerOpacity .info .buttons .saltar{font-size:10px}
+.layerOpacity .info .logo{text-align:center;margin-left:0;}
+.layerOpacity .info .logo img{width:180px}
+}@media screen and (max-width:639px ){.layerOpacity .info{left:15%;}
+.layerOpacity .info .buttons .registro,.layerOpacity .info .buttons .saltar{font-size:10px}
+.layerOpacity .info .logo{text-align:center;margin-left:0;}
+.layerOpacity .info .logo img{width:200px}
+}@media screen and (max-width:767px ){.layerOpacity .info{left:20%}
+}@media screen and (min-width: 768px){.layerOpacity .info{left:25%}
+}

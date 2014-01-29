@@ -133,18 +133,68 @@ header
 			background marron
 			display inline-block
 			height 200px
+
+.layerOpacity
+	background rgba(0,0,0,0.89)
+	background transparent\9
+	color white
+	display none
+	font-size 'Heldustry'
+	height 100%
+	position fixed
+	width 100%
+	z-index 990
+	font-size 1.2em
+	vertical-align center	
+	text-decoration none
+	zoom 1
+	.lista
+		position relative
+		width 70%
+		left 15%
+		top 5%
+		li
+			padding 0.7em
+			list-style-type none
+			margin-top 1em
+			border-bottom solid 0.1em
+			border-color white
 			
+			input
+				-moz-border-radius 15px
+				border-radius 15px
+				background-image url(../img/lupa-busqueda.png)
+				background-repeat no-repeat
+				background-position right
+				text-indent 10em
+				&:active
+				&:focus 
+					background-image none
+
 
 nav
+	margin-top 2em
 	position relative
 	visibility hidden
 	.menu
 		position absolute
+	.logo-fb
+		position absolute
+		margin-left 1em
 
 .simple-menu
 	visibility hidden
 	position absolute
-	margin-left 2 em
+	margin-top 1em
+	margin-left 2em
+
+.overlay-menu
+	visibility hidden
+	position absolute
+	right 0
+	margin-top 1em
+	margin-right 2em	
+
 .nav-mobile
 	display none
 		
@@ -172,7 +222,9 @@ nav
 
 @media screen and (max-width:767px )
 	.simple-menu
-		visibility visible	
+		visibility visible
+	.overlay-menu
+		visibility visible		
 	.nav-mobile
 		visibility visible	
 	.content

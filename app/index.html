@@ -6,27 +6,42 @@
     <title>Delibouquet</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/jquery.sidr.dark.css">
+    <link rel="stylesheet" href="css/menu-nav.css">
     <script src="lib/jquery-2.0.3.min.js"></script>
     <script src="lib/jquery.sidr.min.js"></script>
   
 </head>
 <body ng-controller="InitController">
+	<div class="layerOpacity">
+		<div class="lista">
+			<li class="first">Bienvenido</li>
+		    <li>Cerrar Sesión</li>
+		    <li><input/> </li>
+		    <li><img src="img/carro-de-compra1.png"> 0 Producto(s)</li>
+		    <li><img src="img/facebook1.png"></li>
+	    </div>	
+	</div>
+
 	<a id="simple-menu" href="#sidr" class="simple-menu" onclick="clickEvent();">
+		<img src="img/icon-menu.png">
+	</a>
+
+	<a class="overlay-menu" onclick="manageOverlay();">
 		<img src="img/icon-menu.png">
 	</a>
  
 	<div id="sidr" class="nav-mobile" >	  
 	  <ul>
 	    <li><a href="#/">Inicio</a></li>
-	    <li class="active"><a href="#/delibouquet">Delibouquet</a></li>
-	    <li><a href="#/arreglos">Arreglos</a></li>
+	    <li class="important"><a href="#/delibouquet">Delibouquet</a></li>
+	    <li class="util"><a href="#/arreglos">Arreglos</a></li>
 	    <li><a href="#">Pedidos</a></li>
 	    <li><a href="#/contacto">Contacto</a></li>
 	  </ul>
 	</div>
 
 	<nav>
+		<img src="img/facebook1.png" class="logo-fb">
 		<div class="menu">
 			<ul class="menuIzquierda">
 				<li><a href="#/delibouquet">Delibouquet</a></li>
@@ -59,20 +74,40 @@
 
 	<script>
 		var menuOpened=false;
+		var overlayActive=false;
 		$(document).ready(function() {
 		  $('#simple-menu').sidr();		 
 		});
 
 		$( window ).resize(function() {		  
 		  if(menuOpened){
-		  	$.sidr('close', 'sidr');
+		  	toggleMenu();
 		  	menuOpened=false;	
 		  }
+		  if(overlayActive){
+			  if($( window ).width()>767){
+			  	$('.layerOpacity').hide();
+			  	overlayActive=false;
+			  }
+		  }	
 		});
+
+		function toggleMenu(){
+			$.sidr('close', 'sidr');	
+		}
 
 		function clickEvent(){
 			menuOpened=!menuOpened;
 		}
+
+		function manageOverlay(){
+			if(!overlayActive)
+				$('.layerOpacity').show();
+			else
+				$('.layerOpacity').hide();
+			overlayActive=!overlayActive;
+		}		
+		
 	</script>
 
   <!-- In production use:
