@@ -11,7 +11,7 @@
     <script src="lib/jquery.sidr.min.js"></script>
   
 </head>
-<body>
+<body ng-controller="InitController">
 	<a id="simple-menu" href="#sidr" class="simple-menu" onclick="clickEvent();">
 		<img src="img/icon-menu.png">
 	</a>
@@ -20,7 +20,7 @@
 	  <ul>
 	    <li><a href="#/">Inicio</a></li>
 	    <li class="active"><a href="#/delibouquet">Delibouquet</a></li>
-	    <li><a href="#">Arreglos</a></li>
+	    <li><a href="#/arreglos">Arreglos</a></li>
 	    <li><a href="#">Pedidos</a></li>
 	    <li><a href="#/contacto">Contacto</a></li>
 	  </ul>
@@ -30,7 +30,7 @@
 		<div class="menu">
 			<ul class="menuIzquierda">
 				<li><a href="#/delibouquet">Delibouquet</a></li>
-				<li><a href="#">Arreglo</a></li>
+				<li><a href="#/arreglos">Arreglos</a></li>
 			</ul>
 			<ul class="menuDerecha">
 				<li><a href="#">Pedidos</a></li>
