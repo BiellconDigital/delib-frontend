@@ -40,10 +40,15 @@ body
 	top 0
 	bottom 0 
 	right 0 
-	left 0
+	left 0	
 
 footer
+	margin-top 150px
+	position fixed
+	right 0
+	bottom 0
 	background marron
+	height 40px
 	color white
 	padding 0.2em 0
 	text-align center
@@ -70,6 +75,7 @@ header
 		width 90%
 
 .content
+	padding-bottom 20px
 	.about
 		color rgba(black,0.4)
 		font-family "mangal"
@@ -78,12 +84,18 @@ header
 		text-align center
 		h3
 			color marron
+			font-size 1.5em
 			font-family "Pacifico"
+		margin-bottom 50px
+		p
+			margin 0
+			padding 0
 	.banner
 		margin-top 1em
 		position relative
 		
-		img
+		img			
+			height 400px
 			width 100%
 		.text
 			font-family "Remachine"
@@ -207,22 +219,35 @@ nav
 	.content
 		.banner
 			.text
-				top 5%
-				font-size 1.5em	
+				top 35%
+				font-size 1.5em
+			img 
+				height 260px
+				width 200%	
 
 @media screen and (max-width:420px ) and (min-width:320px ) 
 	.content
 		.banner
 			.text
-				top 20
+				top 30%
 				font-size 1.5em
+			img 
+				height 260px
+				width 200%	
 
 @media screen and (max-width:639px )
 	.content
 		.contact
 			.izq
 				border-right solid 2px marron
-				padding-right 2em				
+				padding-right 2em
+		.main-banner
+			margin-top 1em
+			overflow hidden
+		.banner
+			img
+				height 260px
+				width 200%		
 
 @media screen and (max-width:767px )
 	.simple-menu
@@ -235,7 +260,9 @@ nav
 		.main-banner
 			margin-top 1em
 			overflow hidden
+		.banner
 			img
+				height 260px
 				width 200%	
 	
 
@@ -283,15 +310,18 @@ nav
 		position relative
 		
 		.about
+			padding-top 1em 
+			padding-right 1em
+			padding-left 1em
 			background white
 			bottom -30px
 			font-size 0.8em
-			left 10%
+			left 13%
 			margin auto
 			overflow hidden
 			padding-bottom 0
 			position absolute
-			width 80%
+			width 75%
 
 	footer
 		margin-top 2em
