@@ -18,25 +18,26 @@
 		    <li>Cerrar Sesión</li>
 		    <li><input/> </li>
 		    <li><img src="img/carro-de-compra1.png"> 0 Producto(s)</li>
-		    <li><img src="img/facebook1.png"></li>
-	    </div>	
+		    <li><img src="img/facebook3.png"></li>
+	    </div>
+	    <a onclick="manageOverlay();"><img class="minus" src="img/cabecera-menos-mobil.png" ></a>
 	</div>
 
 	<a id="simple-menu" href="#sidr" class="simple-menu" onclick="clickEvent();">
-		<img src="img/icon-menu.png">
+		<img src="img/barras_mobil.png">
 	</a>
 
 	<a class="overlay-menu" onclick="manageOverlay();">
-		<img src="img/icon-menu.png">
+		<img src="img/cabecera-mas-mobil.png">
 	</a>
  
 	<div id="sidr" class="nav-mobile" >	  
 	  <ul>
-	    <li><a href="#/">Inicio</a></li>
-	    <li class="important"><a href="#/delibouquet">Delibouquet</a></li>
-	    <li class="util"><a href="#/arreglos">Arreglos</a></li>
-	    <li><a href="#">Pedidos</a></li>
-	    <li><a href="#/contacto">Contacto</a></li>
+	    <li><a href="#/" onclick="toggleMenu();">Inicio</a></li>
+	    <li class="important"><a href="#/delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
+	    <li class="util"><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
+	    <li><a href="#" onclick="toggleMenu();">Pedidos</a></li>
+	    <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
 	  </ul>
 	</div>
 
