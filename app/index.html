@@ -4,22 +4,30 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	    <title>Delibouquet</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+
+        <link rel="stylesheet" href="css/intro.css">
 	    <link rel="stylesheet" href="css/main.css">
 	    <link rel="stylesheet" href="css/normalize.css">
 	    <link rel="stylesheet" href="css/menu-nav.css">
 	    <link rel="stylesheet" href="css/sticky.css">
+        <link rel="stylesheet" href="css/carousel.css">
 	    <script src="lib/jquery-2.0.3.min.js"></script>
-	    <script src="lib/jquery.sidr.min.js"></script>
+        <script src="lib/jquery.sidr.min.js"></script>
+        <script src="lib/bootstrap.min.js"></script>
 
     </head>
     <body>
         <div class="layerOpacity">
             <div class="lista">
-                <li class="first">Bienvenido</li>
-                <li>Cerrar Sesión</li>
-                <li><input/> </li>
-                <li><img src="img/carro-de-compra1.png"> 0 Producto(s)</li>
-                <li><img src="img/facebook3.png"></li>
+                <ul>
+                    <li class="first">Bienvenido</li>
+                    <li>Cerrar Sesión</li>
+                    <li><input/> </li>
+                    <li><img src="img/carro-de-compra1.png"> 0 Producto(s)</li>
+                    <li><img src="img/facebook3.png"></li>
+                </ul>
             </div>
             <a onclick="manageOverlay();"><img class="minus" src="img/cabecera-menos-mobil.png" ></a>
         </div>
@@ -30,9 +38,12 @@
             <li ><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
             <li><a href="#" onclick="toggleMenu();">Pedidos</a></li>
             <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
+            <li><a href="#/politicas" onclick="toggleMenu();">Políticas</a></li>
+            <li><a href="#/delivery" onclick="toggleMenu();">Delivery</a></li>
+            <li><a href="#/formas-de-pago" onclick="toggleMenu();">Formas de pago</a></li>
           </ul>
         </div>
-        <div class="container">
+        <div class="container-body">
             <div class="wrapper">
                 <a id="simple-menu" href="#sidr" class="simple-menu" onclick="clickEvent();">
                     <img src="img/barras_mobil.png">
@@ -53,7 +64,16 @@
                 </div>
 
                 <nav>
-                    <img src="img/facebook1.png" class="logo-fb">
+                    <div class="info-head">
+                        <img src="img/facebook1.png" class="logo-fb">
+                        <div class="text-delivery">
+                            Delívery
+                        </div>
+                        <img src="img/icono-delivery.png" class="logo-delivery">
+                        <div class="nro-delivery">
+                            (511) 628-0792
+                        </div>
+                    </div>
                     <div class="menu">
                         <ul class="menuDerecha">
                             <li><a href="#/delibouquet">Delibouquet</a></li>
@@ -64,11 +84,25 @@
                             <li><a href="#/contacto">Contacto</a></li>          
                         </ul>   
                     </div>          
+                    <div class="carrito-header">
+                        <div class="carrito-header-cont">
+                            <div class="text-login">
+                                Bienvenido! &nbsp;&nbsp;<span class="name-user">Raúl&nbsp;&nbsp;&nbsp;</span>
+                                <a href="#">cerrar sesión</a>
+                            </div>
+                            <div class="carrito-logo">
+                                0
+                            </div>
+                            <input/>
+                        </div>
+                    </div>
                 </nav>
                 <header>        
+
                     <div class="logo">
-                        
-                        <img src="img/logotipo.png" />      
+                        <a href="#/main">
+                            <img src="img/logotipo.png" />      
+                        </a>
                     </div>
                     <div class="spacer"></div>
                 </header>
@@ -78,10 +112,23 @@
                 </section>
                 <div class="gap"></div>
             </div>
-           <footer>
-                <h3>
-                    Powered by 3.0 Consulting Group
-                </h3>
+           <footer id="footer">
+                        <h3>
+                            Powered by 3.0 Consulting Group
+                        </h3>
+                        <div class="container">
+                            <div class="links linea-separacion">
+                                <a href="#/politicas">Políticas</a>
+                            </div>
+                            <div class="links linea-separacion" >
+                                <a href="#/delivery">Delivery</a>
+                            </div>
+                            <div class="links" >
+                                <a href="#/formas-de-pago">Formas de pago</a>
+                            </div>
+
+                        </div>
+                </div>
             </footer>
         </div>
     </body>
@@ -133,4 +180,7 @@
         
         <!-- Load custom scripts via RequireJS -->
       <script src="lib/require.js" data-main="js/main"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
 </html>

@@ -27,6 +27,10 @@ define(['services/routeResolver'], function () {
                 .when('/contacto', route.resolve('Contacto'))
                 .when('/arreglos', route.resolve('Productos'))
                 .when('/delibouquet', route.resolve('Delibouquet'))
+                .when('/politicas', route.resolve('Politicas'))
+                .when('/delivery', route.resolve('Delivery'))
+                .when('/formas-de-pago', route.resolve('FormasPago'))
+                .when('/login', route.resolve('Login'))
                 .otherwise({redirectTo : '/main'});
                 
 //                {templateUrl: 'partials/proyectos.html', controller: 'proyectosController',resolve: resolveController('/app/controllers/proyectosController.js')}

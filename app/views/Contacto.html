@@ -1,10 +1,11 @@
-<div class="contact">
+<div class="contact" ng-controller="ContactoController">
 	
 	<div class="izq">
-		<h2>Ubicacion</h2>
-		<p>Calle San Martin 2050 Miraflores Lima-Peru<p>
+		<h2>Ubicación</h2>
+		<p class="direccion">Amor Amar Jr. Garcia y Garcia 175<br/>
+			Barranco - Lima, Perú<p>
 		<h2>Informes</h2>	
-		<p>Email: silvia@asbcontratistas.com<p>
+		<p>Email: informes@delibouquet.pe<p>
 	</div>
 	<div class="spacer">
 
@@ -12,14 +13,95 @@
 	</div>
 	<div class="der">
 		<h2>Pedidos</h2>
-		<p>(511)241-8724 / 241 8142<p>
+		<p>(511)241-8724 / 241 8142
+			<br/>&nbsp;<p>
 		<h2>Horarios</h2>
-		<p>lunes a domingo de 10am a 8pm<p>
+		<p>lunes a domingo de 10:00am a 8:00pm<p>
 	</div>
 
 </div>
 
 <div class="contact-map">
-	<iframe width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps?q=-12.125311,-77.030624&amp;num=1&amp;hl=en&amp;ie=UTF8&amp;t=m&amp;ll=-12.124299,-77.030307&amp;spn=0.003671,0.00456&amp;z=17&amp;iwloc=near&amp;output=embed"></iframe>
+	<div id="map_canvas">
+
+	</div>
 </div>
 
+<script>
+  !function ($) {
+    $(function(){
+  		initialize();
+    })
+  }(window.jQuery)
+
+function initialize() {
+	var myLatlng = new google.maps.LatLng(-12.124299,-77.030307);
+	var mapOptions = {
+		zoom: 15,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+	var contentString = '<div id="content">'+
+	    '<div id="siteNotice">'+
+	    '</div>'+
+	   // '<h2 id="firstHeading" class="firstHeading">Maido Mitsuharu</h2>'+
+	    '<div id="bodyContent">'+
+		'<div class="foto_mapa"></div>' +
+	    '<p class="text_map">Amor Amar Jr. Garcia y Garcia 175<br/>' +
+		'	Barranco - Lima, Perú <br/>' +
+		'	Teléfonos: (511)241-8724 / 241 8142 <br/>' +
+		'	Email: <a href="mailto:informes@delibouquet.pe">informes@delibouquet.pe</a> </p>'
+	   '</div>'+
+	    '</div>';
+
+	var infowindow = new google.maps.InfoWindow({
+	    content: contentString
+	});
+
+
+	var image = 'img/amor-amar.png';
+	var myLatLng = new google.maps.LatLng(-12.124299,-77.030307);
+	var beachMarker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		title:"Delibouquet",
+		animation: google.maps.Animation.DROP,
+		icon: image
+	});
+  
+   
+	google.maps.event.addListener(beachMarker, 'click', function() {
+		infowindow.open(map,beachMarker);
+	});
+
+	var styles = [
+	  {
+		featureType: "all",
+	    stylers: [
+	      { hue: "#7d6350" },
+		  {Weight:3.5},
+	      { saturation: 60 }
+	    ]
+	  },{
+	    featureType: "road",
+	    elementType: "geometry",
+	    stylers: [
+	      { lightness: 90 },
+	      { visibility: "simplified" }
+	    ]
+	  },{
+	    featureType: "road",
+	    elementType: "labels",
+	    stylers: [
+	      { visibility: "on" }
+	    ]
+	  }
+	];
+
+	map.setOptions({styles: styles});
+
+
+}
+</script>
