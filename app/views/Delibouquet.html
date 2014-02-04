@@ -1,9 +1,7 @@
 
-<div class="contenido"  ng-controller="DelibouquetController">
-
+<div class="contenido" id="contenido" ng-controller="DelibouquetController">
 	<div class="text">Sé feliz. Come chocolate</div>
-	<div class="banner">
-		<img src="img/banner-about.jpg">			
+	<div class="row banner4" id="banner_deli">
 	</div>
 	<article class="about">
 		<p>El amor es dulce y amargo, como el chocolate. Cada flor es un delicioso relleno que espera por ti. </p>
@@ -11,5 +9,22 @@
 		<p>elijas. Los mejores chocolates del mundo te esperan. Lindt, Baci y Montblanc.</p>
 		<h3> Regala diferente. Sé Original </h3>
 	</article>
-
 </div>
+
+<script>
+      !function ($) {
+        $(function(){
+			$("#banner_deli").backstretch("./img/banner-about.jpg");
+			//$("#contenido").css("height", "300");
+		    var $window = $(window).on('resize', function() {
+				$('#contenido').height(
+					$(window).height() - $('#header').height() - $('#footer').height() - 40
+				);    
+				$("#banner_deli").backstretch("./img/banner-about.jpg");
+			}).trigger('resize'); //on page load      
+        })
+      }(window.jQuery)
+
+</script>
+
+

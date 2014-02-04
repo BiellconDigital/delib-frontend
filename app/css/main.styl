@@ -36,10 +36,20 @@ marron = #7d6350
 }
 
 html
-	overflow hidden
+	height 100%
+	padding 0
+	margin 0
+body
+	height 100%
+	padding 0
+	margin 0
 
 a
 	color marron
+
+.container
+	height 100%
+	width 100%
 
 
 .container-body
@@ -56,15 +66,16 @@ a
 .wrapper	
 	display block
 	height 100%
-	max-height 100%
+	width 100%
 	overflow-x hidden
 	overflow-y auto
-
 	position relative
 	z-index 3
+	min-height 100%
 		 
 .gap 
 	height  40px
+
 
 footer
 	background marron
@@ -124,10 +135,18 @@ header
 		margin 1em auto auto auto
 		width 85%
 
+
 .content
 	padding-bottom 20px
+	height 100%
 	.contenido
-		position relative
+		height 100%
+		.banner4
+			position relative
+			margin-top 1em
+			overflow hidden
+			height 100%
+			z-index 11
 		.about
 			top 100%
 			height 40%
@@ -164,7 +183,6 @@ header
 			div
 				background-color white
 				padding 10px
-
 
 		.banner
 		.banner2
@@ -353,7 +371,7 @@ nav
 		width 85%
 	.info-head
 		position absolute
-		margin-left 1em
+		margin-left 8%
 		margin-top 0.1em
 		width 210px
 		float none
@@ -381,7 +399,7 @@ nav
 			float left
 
 	.carrito-header
-		margin-right 1em
+		margin-right 8%
 		float right
 		margin-top 0.4em
 		.carrito-header-cont
@@ -799,10 +817,11 @@ nav
 			.banner
 			.banner2
 				overflow hidden
-				height 550px
-				width 1900px
+				height auto
+				width 100%
 				img
-					width 1900px
+					max-width 100%
+					height auto
 					margin 0
 			.text
 				top 30%
