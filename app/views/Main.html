@@ -1,33 +1,36 @@
+<div class="contenido" id="contenido" ng-controller="MainController">
+  <div class="row banner" id="banner">
+
+  </div>
+</div>
     <!-- Carousel
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" ng-controller="MainController">
-      <div class="carousel-inner">
-            <div class="item active">
-              <img src="img/banner-portada.jpg">			
-            </div>
-            <div class="item">
-              <img src="img/banner-portada.jpg">			
-            </div>
-            <div class="item">
-              <img src="img/banner-portada.jpg">      
-            </div>
-            <div class="item">
-              <img src="img/banner-portada.jpg">      
-            </div>
-            <div class="item">
-              <img src="img/banner-portada.jpg">      
-            </div>
-            <div class="item">
-              <img src="img/banner-portada.jpg">      
-            </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-  	</div><!-- /.carousel -->
 <script>
       !function ($) {
         $(function(){
-          $('#myCarousel').carousel({interval: 3000})
+          //$('#myCarousel').carousel({interval: 3000})
+           $("#banner").backstretch([
+                "./img/banner-portada.jpg"
+              , "./img/banner-about.jpg"
+            ], {duration: 3000, fade: 750});          
+
+          var $window = $(window).on('resize', function() {
+            $('#contenido').height(
+              $(window).height() - $('#header').height() - $('#footer').height() - 40
+            );    
+            /*
+            $("#banner").backstretch([
+                "./img/banner-portada.jpg"
+              , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+              , "./img/banner-about.jpg"
+            ], {duration: 4000, fade: 750});          
+            */
+            //$('#banner').data('backstretch').pause();
+            $('#banner').data('backstretch').next();
+
+
+          }).trigger('resize'); //on page load      
+
         })
       }(window.jQuery)
 

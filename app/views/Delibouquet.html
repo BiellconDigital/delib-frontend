@@ -1,15 +1,16 @@
 
 <div class="contenido" id="contenido" ng-controller="DelibouquetController">
 	<div class="text">Sé feliz. Come chocolate</div>
-	<div class="row banner4" id="banner_deli">
+	<div class="row banner" id="banner_deli">
 	</div>
-	<article class="about">
-		<p>El amor es dulce y amargo, como el chocolate. Cada flor es un delicioso relleno que espera por ti. </p>
-		<p>Personaliza el bouquet con la cantidad de flores que deseas, en los colores que prefieras y con los chocolates que tú </p>
-		<p>elijas. Los mejores chocolates del mundo te esperan. Lindt, Baci y Montblanc.</p>
-		<h3> Regala diferente. Sé Original </h3>
-	</article>
 </div>
+
+<article class="about">
+	<p>El amor es dulce y amargo, como el chocolate. Cada flor es un delicioso relleno que espera por ti. </p>
+	<p>Personaliza el bouquet con la cantidad de flores que deseas, en los colores que prefieras y con los chocolates que tú </p>
+	<p>elijas. Los mejores chocolates del mundo te esperan. Lindt, Baci y Montblanc.</p>
+	<h3> Regala diferente. Sé Original </h3>
+</article>
 
 <script>
       !function ($) {
@@ -17,9 +18,16 @@
 			$("#banner_deli").backstretch("./img/banner-about.jpg");
 			//$("#contenido").css("height", "300");
 		    var $window = $(window).on('resize', function() {
-				$('#contenido').height(
-					$(window).height() - $('#header').height() - $('#footer').height() - 40
-				);    
+				//alert($(window).width())
+		    	if ($(window).width() <= 767) {
+					$('#contenido').height(
+						($(window).height() - $('#header').height() - $('#footer').height() - 20) / 2
+					);    
+		    	} else {
+					$('#contenido').height(
+						$(window).height() - $('#header').height() - $('#footer').height() - 90
+					);    
+	    		}
 				$("#banner_deli").backstretch("./img/banner-about.jpg");
 			}).trigger('resize'); //on page load      
         })
