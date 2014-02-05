@@ -90,12 +90,12 @@ footer
 	bottom -1px
 	display block
 	z-index 4
-	height 40px
+	height 35px
 	right 0px
-	line-height 40px
+	line-height 35px
 	h3
 		position absolute
-		font-size 14px
+		font-size 0.4em
 		font-weight normal
 		margin auto
 		width 100%
@@ -110,8 +110,8 @@ footer
 			float left
 			margin 6px 0
 			width 12%
-			height 26px
-			line-height 25px
+			height 24px
+			line-height 23px
 			z-index 6
 			font-size 0.4em
 			a
@@ -135,7 +135,7 @@ header
 		display block
 		height 1.5px
 		margin 1em auto auto auto
-		width 85%
+		width 72%
 
 
 .content
@@ -145,9 +145,9 @@ header
 		background-color white
 		color rgba(black,0.4)
 		font-family "mangal"
-		margin-top -10em
-		margin-left 7%
-		margin-right 7%
+		margin-top -8em
+		margin-left 14%
+		margin-right 14%
 		padding 15px
 		position relative
 		text-align center
@@ -163,7 +163,7 @@ header
 	.informacion
 		color marron
 		font-family "mangal"
-		margin-top -35%
+		margin-top -33%
 		margin-left 7%
 		margin-right 7%
 		position relative
@@ -215,7 +215,7 @@ header
 			overflow hidden
 			position absolute
 			padding 12px
-			padding-top 14%
+			padding-top 15%
 			width 100%
 			text-align center					
 			text-shadow 2px 2px 10px rgba(black, 0.8)
@@ -239,6 +239,7 @@ header
 		background-color #EAF9F9
 		.izq 
 		.der
+		.centro
 			display inline-block
 			margin 2em
 			p
@@ -266,10 +267,32 @@ header
 			background marron
 			display inline-block
 			height 200px
+		
+		.centro
+			display inline
+			text-align left
+			padding 7px 15px 9px 22px
+			margin 0
+			h2
+				padding 3px 0 0 0
+				margin 0
+			p
+				padding 1px 0
+				line-height 1.5em
+				margin 0
+			.direccion
+				display inline-block
+				line-height 1.5em
+				padding-right 4em
+				background-image url(../img/amor-amar.png)
+				background-repeat no-repeat
+				background-position right
+
+
 	.contact-map
 		#map_canvas
 			width 100%
-			height 320px
+			height 328px
 	
 	.layerFondo
 		margin-top 10px
@@ -367,13 +390,25 @@ nav
 		width 85%
 	.info-head
 		position absolute
-		margin-left 8%
+		margin-left 14%
 		margin-top 0.1em
 		width 210px
 		float none
 		.logo-fb
 			margin 0 23px 1px 0
 			float left
+			width 31px
+			height 30px
+			.logo-fb-img
+				float none
+				background-image url(../img/facebook.png)
+				width 31px
+				height 31px
+				cursor pointer
+			.logo-fb-img:hover
+				background-position bottom left
+
+
 		.nro-delivery
 			background-image url(../img/fondo-num-telf-deli.png)
 			width 121px
@@ -395,7 +430,7 @@ nav
 			float left
 
 	.carrito-header
-		margin-right 8%
+		margin-right 14%
 		float right
 		margin-top 0.4em
 		.carrito-header-cont
@@ -520,14 +555,6 @@ nav
 					width 86%
 	.content
 		.contenido
-			// .banner
-			// .banner2
-			// 	overflow hidden
-			// 	height 240px
-			// 	width 780px
-			// 	img
-			// 		height 260px
-			// 		margin  10px 0 0 -230px
 			.text
 				left -4%
 				top 23%
@@ -568,18 +595,6 @@ nav
 			margin-top 1.1em
 	.content
 		.contenido
-			// .banner
-			// .banner2
-			// 	overflow hidden
-			// 	height 340px
-			// 	width 980px
-			// 	img
-			// 		height 360px
-			// 		margin  10px 0 0 -260px
-			// .banner2
-			// 	img
-			// 		height 380px
-
 			.text
 				left -4%
 				top 30%
@@ -637,6 +652,8 @@ nav
 
 		.about
 			margin-top 0
+			margin-left 3%
+			margin-right 3%
 		.informacion
 			margin-top 0
 
@@ -664,7 +681,7 @@ nav
 						font-size 1.2em
 						text-decoration none
 			.menuIzquierda
-				margin-right 9%
+				margin-right 10%
 				font-family "Heldustry"
 				margin-left 0
 				right 0
@@ -673,7 +690,7 @@ nav
 					&:nth-child(even)
 						margin-left 1.8em
 			.menuDerecha
-				margin-left 9%
+				margin-left 10%
 				font-family "Heldustry"
 				margin-right 0
 				text-align right
@@ -694,52 +711,41 @@ nav
 	nav
 		.menu			
 			.menuIzquierda
-				margin-right 9%
+				margin-right 11%
 				li					
 					&:nth-child(even)
-						margin-left 4em
+						margin-left 3.8em
 			.menuDerecha
-				margin-left 9%
+				margin-left 11%
 				li					
 					&:nth-child(odd)
-						margin-right 4em
+						margin-right 3.8em
 
 	.content
 		.contenido
-			// .banner
-			// .banner2
-			// 	overflow hidden
-			// 	height 400px
-			// 	width 1700px
-			// 	img
-			// 		height 600px
-			// 		margin -50px 0 0 -340px
-			// .banner2
-			// 	img
-			// 		height 660px
-			// 		margin 0 0 0 -320px
 			.text
 				top 30%
 				font-size 4em
 			.text2
-				padding-top 8%
+				padding-top 9%
 		.informacion
-			margin-top -24%
+			margin-top -35%
 
 @media screen and (min-width: 1280px)
 
 	nav		
 		.menu			
 			.menuIzquierda
-				margin-right 10%
+				margin-right 13%
 				li					
 					&:nth-child(even)
-						margin-left 6em
+						margin-left 5.6em
 			.menuDerecha
-				margin-left 10%
+				margin-left 13%
 				li					
 					&:nth-child(odd)
-						margin-right 6em
+						margin-right 5.6em
+	
 
 	.content
 		.contenido
@@ -760,7 +766,7 @@ nav
 				font-size 4.3em
 
 		.informacion
-			margin-top -24%
+			margin-top -34%
 	footer
 		margin-top 2em
 		.container
@@ -778,15 +784,20 @@ nav
 	nav		
 		.menu			
 			.menuIzquierda
-				margin-right 12%
+				margin-right 14%
 				li					
 					&:nth-child(even)
-						margin-left 8em
+						margin-left 7em
 			.menuDerecha
-				margin-left 12%
+				margin-left 14%
 				li					
 					&:nth-child(odd)
-						margin-right 8em
+						margin-right 7em
+
+		.info-head
+			margin-left 15%
+		.carrito-header
+			margin-right 15%
 
 	.content
 		.contenido
@@ -804,11 +815,13 @@ nav
 				height 100px
 				padding 20px
 				font-size 5em
+			.text2
+				padding-top 7%
 		.informacion
-			margin-top -24%
+			margin-top -34%
 		.contact-map
 			#map_canvas
-				height 550px
+				height 560px
 
 
 @media screen and (min-width: 1900px)
@@ -816,18 +829,18 @@ nav
 	nav		
 		.menu			
 			.menuIzquierda
-				margin-right 12%
+				margin-right 15%
 				li					
 					&:nth-child(even)
 						margin-left 10em
 			.menuDerecha
-				margin-left 12%
+				margin-left 15%
 				li					
 					&:nth-child(odd)
 						margin-right 10em
 	.content
 		.informacion
-			margin-top -23%
+			margin-top -35%
 
 		// .contenido
 		// 	.banner

@@ -1,22 +1,37 @@
 <div class="contact"  ng-controller="ContactoController">
-		<div class="izq">
+
+		<div class="izq hidden-phone">
 			<h2>Ubicación</h2>
 			<p class="direccion">Amor Amar Jr. Garcia y Garcia 175<br/>
-				Barranco - Lima, Perú<p>
+				Barranco - Lima, Perú</p>
 			<h2>Informes</h2>	
-			<p>Email: informes@delibouquet.pe<p>
+			<p>Email: informes@delibouquet.pe</p>
 		</div>
-		<div class="spacer">
+		<div class="spacer hidden-phone">
 
 			<span> </span>
 		</div>
-		<div class="der">
+		<div class="der hidden-phone">
 			<h2>Pedidos</h2>
 			<p>(511)241-8724 / 241 8142
-				<br/>&nbsp;<p>
+				<br/>&nbsp;</p>
 			<h2>Horarios</h2>
-			<p>lunes a domingo de 10:00am a 8:00pm<p>
+			<p>lunes a domingo de 10:00am a 8:00pm</p>
 		</div>
+
+
+ 	<div class="centro visible-phone">		
+		<h2>Ubicación</h2>
+		<div class="direccion">Amor Amar Jr. Garcia y Garcia 175<br/>
+			Barranco - Lima, Perú</div>
+		<h2>Informes</h2>	
+		<p>Email: informes@delibouquet.pe</p>
+
+		<h2>Pedidos</h2>
+		<p>(511)241-8724 / 241 8142</p>
+		<h2>Horarios</h2>
+		<p>lunes a domingo de 10:00am a 8:00pm</p>
+	</div>		
 
 </div>
 
@@ -32,13 +47,17 @@
   !function ($) {
     $(function(){
   		initialize();
+  		//alert($(window).width())
     })
   }(window.jQuery)
 
+//-12° 8.637', -77° 1.084'
+//-12.1439000, -77.0180000
+
 function initialize() {
-	var myLatlng = new google.maps.LatLng(-12.124299,-77.030307);
+	var myLatlng = new google.maps.LatLng(-12.1443000,-77.0180000);
 	var mapOptions = {
-		zoom: 15,
+		zoom: 16,
 		center: myLatlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
@@ -63,7 +82,7 @@ function initialize() {
 
 
 	var image = 'img/amor-amar.png';
-	var myLatLng = new google.maps.LatLng(-12.124299,-77.030307);
+	var myLatLng = new google.maps.LatLng(-12.1443000,-77.0180000);
 	var beachMarker = new google.maps.Marker({
 		position: myLatLng,
 		map: map,
@@ -81,9 +100,9 @@ function initialize() {
 	  {
 		featureType: "all",
 	    stylers: [
-	      { hue: "#7d6350" },
+	      { hue: "#766452" },
 		  {Weight:3.5},
-	      { saturation: 140 }
+	      { saturation: 0 }
 	    ]
 	  },{
 	    featureType: "road",
