@@ -78,6 +78,14 @@ a
 .gap 
 	height 0
 
+.thumbnail
+	border-radius 8px
+
+.padding-thumbs
+	padding 45px 39px
+
+.testing-css
+	border 1px solid green
 
 footer
 	background marron
@@ -166,21 +174,21 @@ header
 	.informacion
 		color marron
 		font-family "mangal"
-		margin-top -33%
-		margin-left 7%
-		margin-right 7%
+		margin-top -25em
+		margin-left 14%
+		margin-right 14%
 		position relative
-		box-shadow inset 0 3.2em 0 0 rgba(grey, 0)
+		box-shadow inset 0 4.8em 0 0 rgba(grey, 0)
 		z-index 20
 		h2
-			padding 0
-			margin 0
+			padding 2px 0
 			color white
 			font-size 1.2em
 			text-indent 24px
+			font-style italic
 		div
 			background-color white
-			padding 10px
+			padding 13px 17px
 	.contenido
 		height 100%
 
@@ -197,7 +205,7 @@ header
 			// 	margin -50px 0 0 -380px
 		.text
 			font-family "Remachine"
-			font-size 4em
+			font-size 5em
 			height 250px
 			margin auto
 			top 18%
@@ -212,7 +220,7 @@ header
 		.text2
 			color white
 			font-family "Remachine"
-			font-size 4em
+			font-size 5em
 			height 250px
 			margin auto
 			top 13%
@@ -324,20 +332,15 @@ header
 			height 1px
 			background-color grey
 			text-shadow inset 1px 1px rgba(grey, 0.5)
-		.container-fluid
+		.container
 			.info
+				color marron
 				position absolute
 				margin auto
-				color marron
-				top 25%
 				left 0
 				right 0
+				top 25%
 				width 80%
-				.info-seccion
-					background-color white
-					border-radius 9px
-					padding 25px
-					margin-bottom 6px
 
 
 
@@ -522,7 +525,7 @@ nav
 				font-size 2.2em
 			.text2
 				top 15%
-				font-size 3em
+				font-size 3.1em
 
 		.about
 			margin-left 3%
@@ -530,7 +533,6 @@ nav
 			h3
 				font-size 1em
 		.informacion
-			margin-top 0
 			margin-left 3%
 			margin-right 3%
 			h2
@@ -565,7 +567,7 @@ nav
 				font-size 2.6em
 			.text2
 				top 15%
-				font-size 3.3em
+				font-size 3.5em
 		.about
 			margin-left 3%
 			margin-right 3%
@@ -573,7 +575,6 @@ nav
 				font-size 1.2em
 				padding-bottom 25px
 		.informacion
-			margin-top 0
 			margin-left 3%
 			margin-right 3%
 			h2
@@ -602,17 +603,16 @@ nav
 			.text
 				left -4%
 				top 20%
-				font-size 3.2em
+				font-size 3.7em
 			.text2
 				top 15%
-				font-size 3.6em
+				font-size 3.9em
 		.about
 			margin-left 3%
 			margin-right 3%
 			h3
 				font-size 1.7em
 		.informacion
-			margin-top 8px
 			margin-left 3%
 			margin-right 3%
 			h2
@@ -642,6 +642,9 @@ nav
 		display block		
 	.nav-mobile
 		display block
+	.padding-thumbs
+		padding 23px 18px
+
 	nav
 		display none !important
 	footer
@@ -659,7 +662,25 @@ nav
 			margin-right 3%
 		.informacion
 			margin-top 0
-
+			margin-left 3%
+			margin-right 3%
+		.layerFondo
+			h3
+				text-align center
+				font-size 1.3em
+				line-height 1.3em
+				padding 1px 0 6px 0
+			hr
+				margin 0
+			.container
+				width 100%
+				.info
+					top 4em
+					width 100%
+	.thumbnail
+		border-radius 0
+		width 100%
+		margin 0
 	
 
 @media screen and (min-width: 768px)
@@ -705,7 +726,7 @@ nav
 	.content
 		.contenido
 			.text2
-				font-size 4em
+				font-size 4.4em
 		.about
 			word-spacing 0.3em
 			line-height 2em
@@ -729,11 +750,10 @@ nav
 		.contenido
 			.text
 				top 22%
-				font-size 4em
+				font-size 5em
 			.text2
 				top 15%
-		.informacion
-			margin-top -27%
+				font-size 5em
 
 @media screen and (min-width: 1280px)
 
@@ -767,12 +787,12 @@ nav
 			// 		margin -20px 0 0 -220px
 			.text
 				top 25%
-				font-size 4.3em
+				font-size 5.3em
 
 		.about
 			margin-top -4.6em
 		.informacion
-			margin-top -28%
+			margin-top -19em
 	footer
 		margin-top 2em
 		.container
@@ -820,9 +840,7 @@ nav
 				top 25%
 				height 100px
 				padding 20px
-				font-size 5em
-		.informacion
-			margin-top -29%
+				font-size 5.4em
 		.contact-map
 			#map_canvas
 				height 560px

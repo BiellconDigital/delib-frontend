@@ -1,17 +1,17 @@
-<div class="contact"  ng-controller="ContactoController">
+<div class="contact" id="contact" ng-controller="ContactoController">
 
-		<div class="izq hidden-phone">
+		<div class="izq hidden-xs">
 			<h2>Ubicación</h2>
 			<p class="direccion">Amor Amar Jr. Garcia y Garcia 175<br/>
 				Barranco - Lima, Perú</p>
 			<h2>Informes</h2>	
 			<p>Email: informes@delibouquet.pe</p>
 		</div>
-		<div class="spacer hidden-phone">
+		<div class="spacer hidden-xs">
 
 			<span> </span>
 		</div>
-		<div class="der hidden-phone">
+		<div class="der hidden-xs">
 			<h2>Pedidos</h2>
 			<p>(511)241-8724 / 241 8142
 				<br/>&nbsp;</p>
@@ -20,7 +20,7 @@
 		</div>
 
 
- 	<div class="centro visible-phone">		
+ 	<div class="centro visible-xs">		
 		<h2>Ubicación</h2>
 		<div class="direccion">Amor Amar Jr. Garcia y Garcia 175<br/>
 			Barranco - Lima, Perú</div>
@@ -46,13 +46,17 @@
 <script>
   !function ($) {
     $(function(){
+	    var $window = $(window).on('resize', function() {
+			//alert($("#contact").height())
+			$('#map_canvas').height(
+				$(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() - 35
+			);
+			//google.maps.event.trigger(map, 'resize');
+		}).trigger('resize'); //on page load      
   		initialize();
-  		//alert($(window).width())
     })
   }(window.jQuery)
 
-//-12° 8.637', -77° 1.084'
-//-12.1439000, -77.0180000
 
 function initialize() {
 	var myLatlng = new google.maps.LatLng(-12.1443000,-77.0180000);
@@ -96,6 +100,8 @@ function initialize() {
 		infowindow.open(map,beachMarker);
 	});
 
+	//google.maps.event.trigger(map, 'resize');
+
 	var styles = [
 	  {
 		featureType: "all",
@@ -124,4 +130,7 @@ function initialize() {
 
 
 }
+//google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'resize', initialize);
+
 </script>
