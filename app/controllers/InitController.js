@@ -13,7 +13,7 @@ define(['app'], function (app) {
             return $location.url();
         };
         
-        $rootScope.appUrl = "http://localhost/delibouquet-git/delibouquet-backend/web/api";
+        $rootScope.appUrl = "/web/api";
     };
 
     app.controller('InitController', ['$scope', '$rootScope', '$http', '$location', initController]);

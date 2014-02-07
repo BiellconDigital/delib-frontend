@@ -25,7 +25,7 @@ define(['services/routeResolver'], function () {
             $routeProvider
                 .when('/main', route.resolve('Main'))
                 .when('/contacto', route.resolve('Contacto'))
-                .when('/arreglos', route.resolve('Productos'))
+                .when('/arreglos/:cateId?', route.resolve('Productos'))
                 .when('/delibouquet', route.resolve('Delibouquet'))
                 .when('/politicas', route.resolve('Politicas'))
                 .when('/delivery', route.resolve('Delivery'))

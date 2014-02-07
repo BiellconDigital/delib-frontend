@@ -1,33 +1,24 @@
-<div class="container productos">
+<div class="container productos" ng-controller="ProductosController">
 
   <div class="row">
 
     <div class="col-sm-6 col-md-3">
 
       <ul class="nav nav-pills nav-stacked hidden-xs categoria-lista">
-        <li class="">
-          <a href="#">
-            Agredecimiento
-          </a>
-        </li>
-        <li class="">
-          <a href="#">
-            Amor
-          </a>
-        </li>
-        <li class="active">
-          <a href="#">
-            <span class="badge pull-right"> > </span>
-            Aniversario
+        <li ng-repeat="cate in categorias_producto"
+            ng-class="{'active' : isActiveCate(cate)}">
+          <a href="javascript:void(0)" ng-click="loadProductos(cate)">
+            {{cate.descripcion}}
           </a>
         </li>
       </ul>
 
       <div class="visible-xs">
         <select class="form-control">
-            <option value="one">Agredecimiento</option>
-            <option value="two">Amor</option>
-            <option value="three" selected>Aniversario</option>
+            <option value="{{cate2.idcontcate}}" ng-repeat="cate2 in categorias_producto"
+                    ng-click="loadProductos(cate2);isActiveCate(cate2)">
+              {{cate2.descripcion}}
+            </option>
         </select>
         <br/>
       </div>
@@ -38,19 +29,19 @@
       <div class="row">
 
           <div class="col-sm-12 col-md-12 text-center titulo-bar">
-            Aniversario
+            {{categoriaSelec.descripcion}}
           </div>
 
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-4" ng-repeat="p in productos">
             <div class="thumbnail">
-              <img src="img/usuario.png" alt="img1" class="img-circle img-responsive">
+              <img ng-src="/web/m_cart/files/producto/{{p.imagen}}" alt="img1" class="img-circle img-responsive">
               <div class="caption">
-                <h4 class="text-center">nombre producto</h4>
-                <p class="precio">S/ 50.00</p>
+                <h4 class="text-center">{{p.nombre_producto}}</h4>
+                <p class="precio">S/ {{p.precio}}</p>
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
                     <td>
-                      <a href="#" role="button"><small>Ver detalle</small></a> 
+                      <a href="#/producto/:{{p.id}}" role="button"><small>Ver detalle</small></a> 
                     </td>
                     <td class="text-right">
                       <a href="#" class="btn btn-xs" role="button"><small>+ Agregar a carro</small></a>
@@ -61,83 +52,6 @@
             </div>
           </div>
           
-          <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-              <img src="img/usuario.png" alt="img1" class="img-circle img-responsive">
-              <div class="caption">
-                <h4 class="text-center">nombre producto</h4>
-                <p class="precio">S/ 50.00</p>
-                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                  <tr>
-                    <td>
-                      <a href="#" role="button"><small>Ver detalle</small></a> 
-                    </td>
-                    <td class="text-right">
-                      <a href="#" class="btn btn-xs" role="button"><small>+ Agregar a carro</small></a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-              <img src="img/usuario.png" alt="img1" class="img-circle img-responsive">
-              <div class="caption">
-                <h4 class="text-center">nombre producto</h4>
-                <p class="precio">S/ 50.00</p>
-                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                  <tr>
-                    <td>
-                      <a href="#" role="button"><small>Ver detalle</small></a> 
-                    </td>
-                    <td class="text-right">
-                      <a href="#" class="btn btn-xs" role="button"><small>+ Agregar a carro</small></a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-              <img src="img/usuario.png" alt="img1" class="img-circle img-responsive">
-              <div class="caption">
-                <h4 class="text-center">nombre producto</h4>
-                <p class="precio">S/ 50.00</p>
-                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                  <tr>
-                    <td>
-                      <a href="#" role="button"><small>Ver detalle</small></a> 
-                    </td>
-                    <td class="text-right">
-                      <a href="#" class="btn btn-xs" role="button"><small>+ Agregar a carro</small></a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <div class="thumbnail">
-              <img src="img/usuario.png" alt="img1" class="img-circle img-responsive">
-              <div class="caption">
-                <h4 class="text-center">nombre producto</h4>
-                <p class="precio">S/ 50.00</p>
-                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                  <tr>
-                    <td>
-                      <a href="#" role="button"><small>Ver detalle</small></a> 
-                    </td>
-                    <td class="text-right">
-                      <a href="#" class="btn btn-xs" role="button"><small>+ Agregar a carro</small></a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-
         
       </div>
 
