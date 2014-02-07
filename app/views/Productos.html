@@ -14,12 +14,11 @@
       </ul>
 
       <div class="visible-xs">
-        <select class="form-control">
-            <option value="{{cate2.idcontcate}}" ng-repeat="cate2 in categorias_producto"
-                    ng-click="loadProductos(cate2);isActiveCate(cate2)">
-              {{cate2.descripcion}}
-            </option>
-        </select>
+        <select class="form-control"
+                ng-options="cate2 as cate2.descripcion for cate2 in categorias_producto" 
+                ng-model="selectedCate" ng-change="loadProductos(selectedCate);isActiveCate(selectedCate)">
+         </select>
+
         <br/>
       </div>
 
