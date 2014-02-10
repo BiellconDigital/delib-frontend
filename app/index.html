@@ -3,7 +3,7 @@
     <head>
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	    <title>Delibouquet</title>
+	    <title>{{appTitle}}</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
@@ -20,6 +20,16 @@
 
     </head>
     <body ng-controller="InitController">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=102227703153175";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
         <div class="layerOpacity">
             <div class="lista">
                 <ul>
@@ -90,7 +100,7 @@
                     <div class="carrito-header">
                         <div class="carrito-header-cont">
                             <div class="text-login">
-                                Bienvenido! &nbsp;&nbsp;<span class="name-user">Invitado&nbsp;</span>
+                                Bienvenido! &nbsp;&nbsp;<a href="#/usuario"><span class="name-user">Raúl&nbsp;</span></a>
                                 <a href="#/login">iniciar sesión</a>
                             </div>
                             <div class="carrito-logo">

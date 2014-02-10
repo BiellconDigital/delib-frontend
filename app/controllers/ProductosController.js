@@ -16,7 +16,7 @@ define(['app'], function (app) {
             console.log('call load()...');
             $scope.cateID = ($routeParams.cateId) ? parseInt($routeParams.cateId) : null;
             
-            $http.get($rootScope.appUrl + '/producto', {params: { idcontcate: $scope.cateID }})
+            $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'lista', idcontcate: $scope.cateID }})
                     .success(function(data, status, headers, config) {
                         $scope.productos = data.data;
                         angular.copy($scope.productos, $scope.copy);
@@ -24,10 +24,10 @@ define(['app'], function (app) {
 
             $http.get($rootScope.appUrl + '/producto-categoria')
                     .success(function(data, status, headers, config) {
-                        $scope.categorias_producto = data.data;
+                        $rootScope.categorias_producto = data.data;
                         angular.copy($scope.categorias_producto, $scope.copy);
 
-                        $scope.categoriaSelec = $filter('filter')($scope.categorias_producto, {idcontcate: $scope.cateID})[0];
+                        $scope.categoriaSelec = $filter('filter')($rootScope.categorias_producto, {idcontcate: $scope.cateID})[0];
                     });
 
         }

@@ -26,11 +26,13 @@ define(['services/routeResolver'], function () {
                 .when('/main', route.resolve('Main'))
                 .when('/contacto', route.resolve('Contacto'))
                 .when('/arreglos/:cateId?', route.resolve('Productos'))
+                .when('/detalle-producto/:prodId?', route.resolve('ProductoDetalle'))
                 .when('/delibouquet', route.resolve('Delibouquet'))
                 .when('/politicas', route.resolve('Politicas'))
                 .when('/delivery', route.resolve('Delivery'))
                 .when('/formas-de-pago', route.resolve('FormasPago'))
                 .when('/login', route.resolve('Login'))
+                .when('/usuario', route.resolve('Usuario'))
                 .otherwise({redirectTo : '/main'});
                 
 //                {templateUrl: 'partials/proyectos.html', controller: 'proyectosController',resolve: resolveController('/app/controllers/proyectosController.js')}
