@@ -45,6 +45,10 @@ define(['app'], function (app) {
             return $scope.categoriaSelec === cate;
         }
         
+            $('#navProducto a').click(function (e) {
+              e.preventDefault()
+              $(this).tab('show');
+            })
     };
 
     app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$routeParams', '$filter', '$http', '$location', productoDetalleController]);

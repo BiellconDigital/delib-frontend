@@ -1,7 +1,7 @@
 
 <div class="contenido" id="contenido" ng-controller="DeliveryController">
 	<div class="text2">Sé feliz. Come chocolate</div>
-	<div class="row banner" id="banner_deli">
+	<div class="row banner" id="banner_delivery">
 		
 	</div>
 </div>
@@ -97,27 +97,3 @@
 	
 	</div>
 </article>
-
-
-<script>
-      !function ($) {
-        $(function(){
-			$("#banner_deli").backstretch("./img/registro_fondo.jpg");
-			//$("#contenido").css("height", "300");
-		    var $window = $(window).on('resize', function() {
-				//alert($(window).width())
-		    	if ($(window).width() <= 767) {
-					$('#contenido').height(
-						($(window).height() - $('#header').height() - $('#footer').height() - 20) / 3
-					);    
-		    	} else {
-					$('#contenido').height(
-						$(window).height() - $('#header').height() - $('#footer').height() - 150
-					);    
-	    		}
-				$("#banner_deli").backstretch("./img/registro_fondo.jpg");
-			}).trigger('resize'); //on page load      
-        })
-      }(window.jQuery)
-
-</script>

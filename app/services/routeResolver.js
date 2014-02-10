@@ -35,6 +35,7 @@ define([], function () {
         this.route = function (routeConfig) {
 
             var resolve = function (baseName, path) {
+                //$('#modalLoading').modal('show');
                 if (!path) path = '';
 
                 var routeDef = {};

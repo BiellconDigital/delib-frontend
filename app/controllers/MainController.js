@@ -7,8 +7,31 @@ define(['app'], function (app) {
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
-        }
-    	console.log('main controlador');
+        };
+
+           $("#banner").backstretch([
+                "./img/banner-portada.jpg"
+              , "./img/banner-about.jpg"
+            ], {duration: 3000, fade: 750});          
+
+          var $window = $(window).on('resize', function() {
+            $('#contenido').height(
+              $(window).height() - $('#header').height() - $('#footer').height() - 40
+            );    
+            /*
+            $("#banner").backstretch([
+                "./img/banner-portada.jpg"
+              , "http://dl.dropbox.com/u/515046/www/garfield-interior.jpg"
+              , "./img/banner-about.jpg"
+            ], {duration: 4000, fade: 750});          
+            */
+            //$('#banner').data('backstretch').pause();
+            //$('#banner').data('backstretch').next();
+
+
+          }).trigger('resize'); //on page load      
+    	
+          //$('#modalLoading').modal('hide');
 
     }
 

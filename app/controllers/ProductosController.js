@@ -38,7 +38,7 @@ define(['app'], function (app) {
             console.log('call loadProductos()...');
             $scope.categoriaSelec = cate;
             
-            $http.get($rootScope.appUrl + '/producto', {params: { idcontcate: $scope.categoriaSelec.idcontcate }})
+            $http.get($rootScope.appUrl + '/producto', {params: {operacion : 'lista', idcontcate: $scope.categoriaSelec.idcontcate }})
                     .success(function(data, status, headers, config) {
                         $scope.productos = data.data;
                         angular.copy($scope.productos, $scope.copy);
