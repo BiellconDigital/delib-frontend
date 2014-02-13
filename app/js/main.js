@@ -11,7 +11,10 @@ require.config({
 require(
     [
         'app',
+        'js/shoppingCart',
         'services/routeResolver',
+        'services/dataService',
+        'services/userService',
         'controllers/InitController'
     ],
     function () {

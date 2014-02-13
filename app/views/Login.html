@@ -4,31 +4,34 @@
 	<div class="container">
 		<div class="row info">
 
-			<div class="col-sm-6 col-md-7 content-panels-login">
-			<div class="thumbnail padding-thumbs panels-login">
+			<div class="col-sm-6 col-md-7 content-panels-login sin-borde">
+			<div class="thumbnail padding-thumbs panels-login sin-borde">
 
 				<div class="row">
 					<div class="col-sm-6 col-md-3">
 						<img src="img/usuario.png" class="img-responsive center-block foto-login" />
 					</div>
 					<div class="col-sm-6 col-md-9">
-						<form class="form-horizontal" role="form" >
+						<form class="form-horizontal" role="form" name="loginUserForm">
 
 							  <div class="form-group">
 							    <label for="inputEmail" class="col-sm-3 control-label">Correo: </label>
 							    <div class="col-sm-9">
-							      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                                                <input type="email" required class="form-control" id="inputEmail" placeholder="Email"
+                                                                       ng-model="username">
 							    </div>
 							  </div>
 							  <div class="form-group">
 							    <label for="inputPassword" class="col-sm-3 control-label">Clave: &nbsp;</label>
 							    <div class="col-sm-9">
-							      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                                                <input type="password" required class="form-control" id="inputPassword" placeholder="Password"
+                                                                       ng-model="password">
 							    </div>
 							  </div>
 							  <div class="form-group">
 							    <div class="col-sm-offset-6 col-sm-6">
-							      <button type="submit" class="btn btn-block">Ingresar</button>
+							      <button type="submit" ng-disabled="!loginUserForm.$valid"
+                                                                      class="btn btn-block" ng-click="login()">Ingresar</button>
 							    </div>
 							  </div>
 							  <div class="form-group">
@@ -44,8 +47,8 @@
 			</div>
 			</div>
 	  
-			<div class="col-sm-6 col-md-5 text-center content-panels-login">
-				<div class="thumbnail padding-thumbs panels-login">
+			<div class="col-sm-6 col-md-5 text-center content-panels-login sin-borde">
+				<div class="thumbnail padding-thumbs panels-login sin-borde">
 
 					<p>¿Aún no eres usuario de Delibouquet?</p>
 					<br/><br/><br/>

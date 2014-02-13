@@ -76,10 +76,16 @@
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <p>
-                                <a href="#" class="btn btn-xs btn-block" role="button"><small>Comprar</small></a>
+                                <a href="" class="btn btn-xs btn-block" role="button"
+                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, 1); showCart()">
+                                    <small>Comprar</small>
+                                </a>
                             </p>
                             <p>
-                                <a href="#" class="btn btn-xs btn-block" role="button"><small>Seguir comprando</small></a>
+                                <a href="" class="btn btn-xs btn-block" role="button"
+                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, 1)">
+                                    <small>Seguir comprando</small>
+                                </a>
                             </p>
                             <p>
                                 <a href="#" class="btn btn-xs btn-block" role="button"><small>Atrás</small></a>

@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productoDetalleController = function ($scope, $rootScope, $routeParams, $filter, $http, $location) {
+    var productoDetalleController = function ($scope, $rootScope, $routeParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -11,6 +11,7 @@ define(['app'], function (app) {
 
         $scope.categoriaSelec = null;
         $scope.cateID;
+        $scope.cart = dataService.cart;
         
         var load = function() {
             console.log('call load()...');
@@ -41,6 +42,10 @@ define(['app'], function (app) {
             $location.path( "/productos/:" + cateID );
         }
 
+        $scope.showCart = function() {
+            $location.path( "/carro-de-compra");
+        }
+        
         $scope.isActiveCate = function (cate) {
             return $scope.categoriaSelec === cate;
         }
@@ -51,6 +56,6 @@ define(['app'], function (app) {
             })
     };
 
-    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$routeParams', '$filter', '$http', '$location', productoDetalleController]);
+    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$routeParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
     
 });

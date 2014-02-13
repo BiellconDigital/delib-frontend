@@ -1,0 +1,211 @@
+<div class="container productos" ng-controller="CarroController">
+
+  <div class="row">
+
+          <div class="col-sm-12 col-md-12">
+     
+                <div id="rootwizardCart">
+                        <div class="navbar">
+                          <div class="navbar-inner">
+                            <div class="container">
+                        <ul class="nav nav-tabs">
+                                <li><a href="#tab1" data-toggle="tab">1. Carro de compra</a></li>
+                                <li><a href="#tab2" data-toggle="tab">2. Despacho</a></li>
+                                <li><a href="#tab3" data-toggle="tab">3. Pago</a></li>
+                        </ul>
+                         </div>
+                          </div>
+                        </div>
+<!--                        <div id="bar" class="progress progress-striped active">
+                          <div class="bar"></div>
+                        </div>-->
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab1">
+
+                                <table class="table table-bordered table-responsive">
+                                    <thead>
+                                      <tr class="well">
+                                          <th colspan="2" class="tdCenter">Descripción del producto</th>
+                                          <th class="tdCenter">Precio</th>
+                                          <th class="tdCenter">Cantidad</th>
+                                          <th class="tdCenter">Eliminar</th>
+                                          <th class="tdCenter">Sub-total</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- empty cart message -->
+                                        <tr ng-hide="cart.getTotalCount() > 0" >
+                                            <td class="tdCenter" colspan="6">
+                                                Tu carrito está vacío.
+                                            </td>
+                                        </tr>
+
+                                        <tr ng-repeat="item in cart.items | orderBy:'name'">
+                                            <td>
+                                                <img ng-src="/web/m_cart/files/producto/{{item.image}}"
+                                                     class="img-circle img-responsive center-block">
+                                            </td>
+                                            <td>
+                                                {{item.name}}
+                                            </td>
+                                            <td>
+                                                S/ {{item.price}}
+                                            </td>
+                                            <td>
+                                                <input
+                                                    class="span3 text-center" type="tel" 
+                                                    ng-model="item.quantity" 
+                                                    ng-change="cart.saveItems()" />
+                                            </td>
+                                            <td class="tdCenter" title="remover">
+                                                <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000)" >
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </td>
+                                            <td class="text-right">
+                                                {{item.price * item.quantity | currency:'S/.'}}
+                                            </td>
+                                        </tr>
+                                        <tr class="well">
+                                            <td colspan="4"></td>
+                                            <td>Sub-total</td>
+                                            <td class="text-right">{{cart.getTotalPrice() | currency:'S/.'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4"></td>
+                                            <td class="well">Delivery</td>
+                                            <td class="text-right well">S/ 10.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4"></td>
+                                            <td class="well">Total</td>
+                                            <td class="text-right well">S/ 100.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 text-right">
+                                        <a class="btn btn-primary button-next">
+                                            <span class="glyphicon glyphicon-ok"></span> Comprar Ahora
+                                        </a> &nbsp; 
+                                        <a href="#/arreglos">Continuar Comprando</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            
+                            <div class="tab-pane" id="tab2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="thumbnail small">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" role="form" >
+
+                                                          <div class="form-group">
+                                                            <label for="nombre" class="col-sm-5 col-md-5 control-label text-left">
+                                                                Nombre o Razón Social*:
+                                                            </label>
+                                                            <div class="col-sm-7 col-md-7">
+                                                                <input type="text" class="form-control input-sm" id="nombre">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="documento" class="col-sm-5 col-md-5 control-label text-left"
+                                                                   style="text-align: left;">
+                                                                DNI o RUC:
+                                                            </label>
+                                                            <div class="col-sm-7 col-md-7">
+                                                                <input type="text" name="documento" class="form-control input-sm" id="documento">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="direccion" class="col-sm-5 col-md-5 control-label text-left">
+                                                                Dirección*:
+                                                            </label>
+                                                            <div class="col-sm-7 col-md-7">
+                                                                <input type="text" class="form-control input-sm" id="direccion">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="distrito" class="col-sm-5 col-md-5 control-label text-left">
+                                                                Distrito*:
+                                                            </label>
+                                                            <div class="col-sm-7 col-md-7">
+                                                                <input type="text" class="form-control input-sm" id="distrito">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="razon_compra" class="col-sm-5 col-md-5 control-label text-left">
+                                                                Razón de la compra:
+                                                            </label>
+                                                            <div class="col-sm-7 col-md-7">
+                                                                <input type="text" class="form-control input-sm" id="razon_compra">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label for="despacho_estandar" class="col-sm-5 col-md-5 control-label text-left">
+                                                                Despacho estándar*:
+                                                            </label>
+                                                            <div class="col-sm-87 col-md-7">
+                                                                <input type="text" class="form-control input-sm" id="despacho_estandar">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <div class="col-sm-12 col-md-12">
+                                                                He leído y acepto las politicas 
+                                                                <input type="radio" class="" id="terminos">
+                                                            </div>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <div class="col-sm-offset-3 col-sm-9 text-right">
+                                                                <a href="#/arreglos">Continuar Comprando</a> &nbsp;&nbsp;
+                                                                <a href="" class="btn button-next">
+                                                                     Continuar <span class="glyphicon glyphicon-arrow-right"></span>
+                                                                </a>
+                                                            </div>
+                                                          </div>
+                                                </form>
+                                                (*) Estos datos son requeridos
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="thumbnail sin-redondeo small">
+                                            Observaciones de despacho:<br/>
+                                            Puede indicar información sobre la dirección para facilitar la entrega. Ej: Benavides cruce con Camninos del Inca.
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail sin-redondeo small">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            <div class="tab-pane" id="tab3">
+                                            <p class="">
+                                                <button 
+                                                    class="btn btn-block btn-link"
+                                                    ng-click="cart.checkout('PayPal')"
+                                                    ng-disabled="cart.getTotalCount() < 1" >
+                                                    <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
+                                                </button>    
+                                            </p>
+                            </div>
+                        </div>	
+                </div>
+              
+          </div>
+          
+  </div>
+
+
+
+</div>
+

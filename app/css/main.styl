@@ -81,7 +81,6 @@ a
 
 .thumbnail
 	border-radius 8px
-	border none
 
 .padding-thumbs
 	padding 45px 39px 28px 39px
@@ -111,9 +110,20 @@ a
 		border-radius 0
 		background-color marron
 
+.sin-redondeo
+	border-radius 0
+.sin-borde
+	border none
 .sin-borde-top
 	border-top 0
 
+.text-left
+	text-align left !important
+
+
+.form-group
+	label
+		font-weight normal
 footer
 	background marron
 	color white
@@ -388,7 +398,7 @@ header
 				left 0
 				right 0
 				top 5.3em
-				width 82%
+				width 74%
 				#navMenuUsuario
 					color white
 					padding-right 2.3em
@@ -410,8 +420,6 @@ header
 					color white
 					.panel-body
 						color marron
-						font-size 0.8em
-						font-weight normal
 					#como-comprar
 						.panel
 							background-color transparent
@@ -538,6 +546,7 @@ nav
 			.carrito-logo
 				float right
 				background-image url(../img/carro-de-compra1.png)
+				cursor pointer
 				text-indent 2.1em
 				font-size 0.8em
 				line-height 1.8em

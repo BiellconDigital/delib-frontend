@@ -31,6 +31,7 @@ define(['services/routeResolver'], function () {
                 .when('/politicas', route.resolve('Politicas'))
                 .when('/delivery', route.resolve('Delivery'))
                 .when('/formas-de-pago', route.resolve('FormasPago'))
+                .when('/carro-de-compra', route.resolve('Carro'))
                 .when('/login', route.resolve('Login'))
                 .when('/usuario', route.resolve('Usuario'))
                 .otherwise({redirectTo : '/main'});

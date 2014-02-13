@@ -17,6 +17,7 @@
         <script src="lib/jquery.sidr.min.js"></script>
         <script src="lib/bootstrap.min.js"></script>
         <script src="lib/jquery.backstretch.min.js"></script>
+        <script src="lib/jquery.bootstrap.wizard.min.js"></script>
 
     </head>
     <body ng-controller="InitController">
@@ -46,7 +47,7 @@
           <ul>
             <li><a href="#/" onclick="toggleMenu();">Inicio</a></li>
             <li ><a href="#/delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
-            <li ><a href="" onclick="toggleMenu();">Arreglos</a></li>
+            <li ><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
             <li><a href="" onclick="toggleMenu();">Pedidos</a></li>
             <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
             <li><a href="#/politicas" onclick="toggleMenu();">Políticas</a></li>
@@ -84,7 +85,7 @@
                   <ul>
                     <li><a href="#/" onclick="toggleMenu();">Inicio</a></li>
                     <li ><a href="#/delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
-                    <li ><a href="" onclick="toggleMenu();">Arreglos</a></li>
+                    <li ><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
                     <li><a href="" onclick="toggleMenu();">Pedidos</a></li>
                     <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
                   </ul>
@@ -106,7 +107,7 @@
                     <div class="menu">
                         <ul class="menuDerecha">
                             <li><a href="#/delibouquet">Delibouquet</a></li>
-                            <li><a href="">Arreglos</a></li>
+                            <li><a href="#/arreglos">Arreglos</a></li>
                         </ul>
                         <ul class="menuIzquierda">
                             <li><a href="">Pedidos</a></li>
@@ -119,8 +120,8 @@
                                 Bienvenido! &nbsp;&nbsp;<a href="#/usuario"><span class="name-user">Raúl&nbsp;</span></a>
                                 <a href="#/login">iniciar sesión</a>
                             </div>
-                            <div class="carrito-logo">
-                                0
+                            <div class="carrito-logo" ng-click="showCart()">
+                                {{cart.getTotalCount()}}
                             </div>
                             <input/>
                         </div>
