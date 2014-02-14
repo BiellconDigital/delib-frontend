@@ -25,11 +25,11 @@
                                 <table class="table table-bordered table-responsive">
                                     <thead>
                                       <tr class="well">
-                                          <th colspan="2" class="tdCenter">Descripción del producto</th>
-                                          <th class="tdCenter">Precio</th>
-                                          <th class="tdCenter">Cantidad</th>
-                                          <th class="tdCenter">Eliminar</th>
-                                          <th class="tdCenter">Sub-total</th>
+                                          <th colspan="2" class="text-center">Descripción del producto</th>
+                                          <th class="text-center">Precio</th>
+                                          <th class="text-center">Cantidad</th>
+                                          <th class="text-center">Eliminar</th>
+                                          <th class="text-center">Sub-total</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -41,28 +41,30 @@
                                         </tr>
 
                                         <tr ng-repeat="item in cart.items | orderBy:'name'">
-                                            <td>
+                                            <td width="20%">
                                                 <img ng-src="/web/m_cart/files/producto/{{item.image}}"
                                                      class="img-circle img-responsive center-block">
                                             </td>
-                                            <td>
+                                            <td width="30%">
                                                 {{item.name}}
                                             </td>
-                                            <td>
+                                            <td width="12%">
                                                 S/ {{item.price}}
                                             </td>
-                                            <td>
-                                                <input
-                                                    class="span3 text-center" type="tel" 
+                                            <td width="12%">
+                                                <input style="width:70px;"
+                                                    class="input-sm text-center" type="number" 
                                                     ng-model="item.quantity" 
                                                     ng-change="cart.saveItems()" />
                                             </td>
-                                            <td class="tdCenter" title="remover">
+                                            <td width="12%" class="tdCenter" title="remover">
                                                 <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000)" >
-                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="img-eliminar img-responsive center-block">
+
+                                                    </div>
                                                 </a>
                                             </td>
-                                            <td class="text-right">
+                                            <td width="14%" class="text-right">
                                                 {{item.price * item.quantity | currency:'S/.'}}
                                             </td>
                                         </tr>
@@ -86,7 +88,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 text-right">
-                                        <a class="btn btn-primary button-next">
+                                        <a class="btn button-next">
                                             <span class="glyphicon glyphicon-ok"></span> Comprar Ahora
                                         </a> &nbsp; 
                                         <a href="#/arreglos">Continuar Comprando</a>
@@ -179,7 +181,58 @@
                                         
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="thumbnail sin-redondeo small">
+                                        <div class="thumbnail sin-redondeo small" id="resumen-cart-despacho">
+                                            <table class="table table-responsive">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div ng-repeat="item in cart.items | orderBy:'name'">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <img ng-src="/web/m_cart/files/producto/{{item.image}}"
+                                                                         class="img-circle img-responsive center-block">
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <h4>{{item.name}}</h4>
+                                                                    <p>Código: 12345</p>
+                                                                    <p>Precio: {{item.price}}</p>
+                                                                    <br/>
+                                                                    <h5>Cantidad: {{item.quantity}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        Total Productos ({{cart.getTotalCount()}})
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="56%">
+                                                        Sub Total
+                                                    </td>
+                                                    <td  width="44%" class="text-right">
+                                                        {{cart.getTotalPrice() | currency:'S/.'}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Costo del Despacho
+                                                    </td>
+                                                    <td class="text-right">
+                                                        S/. 15.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4><b>Total</b></h4>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4><b>S/. 2000.00</b></h4>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
                                         </div>
                                         
                                     </div>
@@ -187,16 +240,121 @@
                                 
                             </div>
                             
+
+
                             
                             <div class="tab-pane" id="tab3">
-                                            <p class="">
-                                                <button 
-                                                    class="btn btn-block btn-link"
-                                                    ng-click="cart.checkout('PayPal')"
-                                                    ng-disabled="cart.getTotalCount() < 1" >
-                                                    <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
-                                                </button>    
-                                            </p>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="thumbnail small">
+                                            <div class="panel-body">
+                                                <p>Datos de facturación</p>
+                                                <p>Nombre o razón social:</p>
+                                                <p>DNI o RUC: </p>
+                                                <p>Dirección: </p>
+                                                <p>Distrito: </p>
+                                                <p>Teléfono: </p>
+                                                <p>Email: </p>
+
+                                                <div class="radio">
+                                                  <label>
+                                                    <input type="radio" ng-model="tipoPago" name="tipoPago" id="optionsRadios1" value="paypal" checked>
+                                                        PayPal (Tarjeta de crédito)
+                                                  </label>
+                                                </div>
+                                                <div class="radio">
+                                                  <label>
+                                                    <input type="radio" ng-model="tipoPago" name="tipoPago" id="optionsRadios2" value="banco">
+                                                    Depósito a cuenta o transferencia bancaria
+                                                  </label>
+                                                </div>
+
+                                                <div class="panel panel-default">
+                                                  <div class="panel-heading">Mis pedidos y mis datos son correctos, continuar.</div>
+                                                      <div ng-if="tipoPago == 'paypal'" class="panel-body">
+                                                        Ustdes puede comprar de forma segura a traves de PayPal...
+                                                        <br/><br/>
+                                                        <p class="">
+                                                            <a 
+                                                                class=""
+                                                                ng-click="cart.checkout('PayPal')"
+                                                                ng-disabled="cart.getTotalCount() < 1" >
+                                                                <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
+                                                            </a>    
+                                                        </p>
+                                                      </div>
+                                                      <div ng-if="tipoPago == 'banco'" class="panel-body">
+                                                        <p>BANCO CONTINENTAL</p>
+                                                        <p>Cta. cte. No 12232434354354<br/>
+                                                        Código interbancario: 011-58.0245454<br/>
+                                                        A nombre de Delibouquet S.A.C.</p>
+                                                        <br/>
+                                                        <a href="" class="btn" role="button">Comprar</a>
+                                                      </div>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail sin-redondeo small" id="resumen-cart-pago">
+                                            <table class="table table-responsive">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div ng-repeat="item in cart.items | orderBy:'name'">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <img ng-src="/web/m_cart/files/producto/{{item.image}}"
+                                                                         class="img-circle img-responsive center-block">
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <h4>{{item.name}}</h4>
+                                                                    <p>Código: 12345</p>
+                                                                    <p>Precio: {{item.price}}</p>
+                                                                    <br/>
+                                                                    <h5>Cantidad: {{item.quantity}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        Total Productos ({{cart.getTotalCount()}})
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="56%">
+                                                        Sub Total
+                                                    </td>
+                                                    <td  width="44%" class="text-right">
+                                                        {{cart.getTotalPrice() | currency:'S/.'}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Costo del Despacho
+                                                    </td>
+                                                    <td class="text-right">
+                                                        S/. 15.00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h4><b>Total</b></h4>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <h4><b>S/. 2000.00</b></h4>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+
                             </div>
                         </div>	
                 </div>

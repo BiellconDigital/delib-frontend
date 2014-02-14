@@ -39,6 +39,8 @@ header .spacer{background:#7d6350;display:block;height:1.5px;margin:1em auto aut
 .content .productos .sin-fondo{background-color:transparent;box-shadow:none;}
 .content .productos .sin-fondo h4{padding-top:0;margin-top:.1em}
 .content .productos .sin-fondo .precio{background-color:#7d6350;color:#fff;padding:.1em .5em;margin-bottom:.6em}
+.content .productos .img-eliminar{float:none;background-image:url("../img/eliminar.png");width:59px;height:58px;cursor:pointer;background-position:bottom left}
+.content .productos .img-eliminar:hover{background-position:top left}
 .content .about{background-color:#fff;color:rgba(0,0,0,0.4);font-family:"mangal";margin-top:-6.8em;margin-left:14%;margin-right:14%;padding:19px;position:relative;text-align:center;z-index:20;}
 .content .about h3{color:#7d6350;font-size:1.5em;font-family:"Pacifico";padding-bottom:35px;font-weight:normal}
 .content .about p{margin:0;padding:0}
