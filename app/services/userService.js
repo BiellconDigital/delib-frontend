@@ -81,6 +81,17 @@ define(['app'], function (app) {
             });
         };
         
+        cartFactory.listaPedidos = function(success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'lista_pedidos'}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
 
 
         

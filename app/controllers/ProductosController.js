@@ -30,6 +30,7 @@ define(['app'], function (app) {
 
                         $scope.categoriaSelec = $filter('filter')($rootScope.categorias_producto, {idcontcate: $scope.cateID})[0];
                     });
+            //$("#id_content_view").css("background-color", "gray");
 
         }
 
