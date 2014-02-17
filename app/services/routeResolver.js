@@ -34,11 +34,22 @@ define([], function () {
 
         this.route = function (routeConfig) {
 
-            var resolve = function (baseName, path) {
+            var resolve = function (url, baseName, data, isabstract, path) {
                 //$('#modalLoading').modal('show');
+//                console.log("entro a resolve");
                 if (!path) path = '';
 
                 var routeDef = {};
+                routeDef.url = url;
+                if (data !== null && data) {
+                    routeDef.data = data;
+                    console.log("data existe");
+                    console.log(data);
+                }
+                if (isabstract !== null && isabstract) {
+                    routeDef.abstract = isabstract;
+                    console.log("abstract existe");
+                }
                 routeDef.templateUrl = routeConfig.getViewsDirectory() + path + baseName + '.html';
                 routeDef.controller = baseName + 'Controller';
                 routeDef.resolve = {

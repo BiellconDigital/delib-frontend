@@ -9,7 +9,7 @@ define(['app'], function (app) {
             return null;
         };
         
-
+        
         // create shopping cart
         var myCart = new shoppingCart("AngularStore");
 

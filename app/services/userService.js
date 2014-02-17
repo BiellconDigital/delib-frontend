@@ -1,10 +1,24 @@
-﻿'use strict';
+'use strict';
 
 define(['app'], function (app) {
 
-    var userService = function ($http, $rootScope, $q) {
+    var userService = function ($http, $rootScope, $q, $timeout) {
        //var serviceBase = '/api/dataservice/',
         var userFactory = {};
+        var cartFactory = {};
+
+        userFactory.saveUser = function(user, success) {
+            $http.post($rootScope.appUrl + '/cliente', {operacion: 'save_user', user: user}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en el procesamiento de registro de sus datos.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+
 
         userFactory.login = function (usuario, clave) {
 //             return $http({
@@ -28,10 +42,56 @@ define(['app'], function (app) {
                 });
         };
         
-        return userFactory;
+        cartFactory.listUbigeo = function(success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion : 'distritos'}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en la consulta.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+                });
+        };
+        
+        cartFactory.listOrdenTipo = function(success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'razon_compra'}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en la consulta.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+                });
+        };
+        
+        cartFactory.listHoraDespacho = function() {
+            return [
+                {"horaEnvio": "8:00 a 20:00", "descripcion": "8:00 a 20:00"}
+            ];
+        };
+        
+        cartFactory.procesarCompra = function(orden, items, success) {
+            $http.post($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
 
+
+        
+        
+        return {
+            user: userFactory,
+            cartUser: cartFactory
+        };
+        
     };
 
-    app.factory('UserService', ['$http', '$rootScope', '$q', userService]);
+    app.factory('userService', ['$http', '$rootScope', '$q', '$timeout', userService]);
 
 });

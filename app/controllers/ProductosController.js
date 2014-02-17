@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productosController = function ($scope, $rootScope, $routeParams, $filter, $http, $location, dataService) {
+    var productosController = function ($scope, $rootScope, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Productos';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -15,7 +15,7 @@ define(['app'], function (app) {
         
         var load = function() {
             console.log('call load()...');
-            $scope.cateID = ($routeParams.cateId) ? parseInt($routeParams.cateId) : null;
+            $scope.cateID = ($stateParams.cateId) ? parseInt($stateParams.cateId) : null;
             
             $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'lista', idcontcate: $scope.cateID }})
                     .success(function(data, status, headers, config) {
@@ -54,6 +54,6 @@ define(['app'], function (app) {
         
     };
 
-    app.register.controller('ProductosController', ['$scope', '$rootScope', '$routeParams', '$filter', '$http', '$location', 'dataService', productosController]);
+    app.register.controller('ProductosController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'dataService', productosController]);
     
 });

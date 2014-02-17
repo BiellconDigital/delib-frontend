@@ -31,13 +31,13 @@
                                 <div class="tab-pane active" id="datos-personales">
                                     <p>Datos personales</p>
                                     <div class="panel panel-default">
-                                        <div class="panel-body">
-                                                <form class="form-horizontal small" role="form" >
-
+                                        <div class="panel-body small">
+                                                <form class="form-horizontal" role="form" name="editUserForm">
                                                           <div class="form-group">
                                                             <label for="email" class="col-sm-1 col-md-1 control-label text-left">Email:</label>
                                                             <div class="col-sm-4 col-md-4">
-                                                                <input type="email" class="form-control input-sm" id="email" placeholder="email">
+                                                                <input required type="email" class="form-control input-sm" name="email" placeholder="email"
+                                                                       ng-model="user.email">
                                                             </div>
                                                             <label for="emailConfir" class="col-sm-3 col-md-3 control-label text-left">Confirmar email:</label>
                                                             <div class="col-sm-4 col-md-4">
@@ -47,30 +47,41 @@
                                                           <div class="form-group">
                                                             <label for="nombre" class="col-sm-4 col-md-4 control-label text-left">Nombre y apellidos:</label>
                                                             <div class="col-sm-8 col-md-8">
-                                                                <input type="text" class="form-control input-sm" id="nombre">
+                                                                <input required type="text" class="form-control input-sm" id="nombre" 
+                                                                       ng-model="user.username">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <label for="fechaNacimiento" class="col-sm-4 col-md-4 control-label text-left">Fecha de nacimiento:</label>
-                                                            <div class="col-sm-8 col-md-8">
-                                                                <input type="date" class="form-control input-sm" id="fechaNacimiento">
+                                                            <div class="col-sm-8 col-md-4">
+                                                                <input required type="date" class="form-control input-sm" name="fechaNacimiento"
+                                                                       ng-model="user.fechaNacimiento">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <label for="telefono" class="col-sm-4 col-md-4 control-label text-left">Teléfono de casa:</label>
-                                                            <div class="col-sm-8 col-md-8">
-                                                                <input type="text" class="form-control input-sm" id="telefono">  (cod área - número)
+                                                            <div class="col-sm-4 col-md-4">
+                                                                <input type="text" class="form-control input-sm" id="telefono"
+                                                                       ng-model="user.telefonoCasa">
+                                                            </div>
+                                                            <div class="col-sm-4 col-md-4">
+                                                                 (cod área - número)
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <label for="celular" class="col-sm-4 col-md-4 control-label text-left">Celular:</label>
-                                                            <div class="col-sm-8 col-md-8">
-                                                                <input type="text" class="form-control input-sm" id="celular">  (sólo va numero)
+                                                            <div class="col-sm-4 col-md-4">
+                                                                <input type="text" class="form-control input-sm" id="celular"
+                                                                       ng-model="user.movil">  (sólo va numero)
+                                                            </div>
+                                                            <div class="col-sm-4 col-md-4">
+                                                                 (sólo va numero)
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <div class="col-sm-offset-8 col-sm-4">
-                                                              <button type="submit" class="btn btn-block">Guardar</button>
+                                                                <button type="submit" class="btn btn-block" ng-click="guardarUsuario()"
+                                                                      ng-disabled="!editUserForm.$valid">Guardar</button>
                                                             </div>
                                                           </div>
                                                 </form>

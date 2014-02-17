@@ -2,9 +2,25 @@
 
 define(['app'], function (app) {
 
-    var initController = function ($scope, $rootScope, $http, $location, dataService) {
+    var initController = function ($scope, $rootScope, $http, $location, dataService, Auth) {
         var appTitle = 'Inicio';
         $scope.appTitle = appTitle;
+        $scope.user = Auth.user;
+        $scope.userRoles = Auth.userRoles;
+        $scope.accessLevels = Auth.accessLevels;
+
+//        $('#id_content_view').css('height', "100%");
+//        $('#id_content_view').css('background-color', "black");
+        $scope.logout = function() {
+            Auth.logout(function() {
+                dataService.cart.clearItems();
+                $location.path('/login');
+            }, function() {
+                $rootScope.error = "No se pudo salir de su sesión.";
+            });
+        };
+
+        
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
         }
@@ -21,6 +37,6 @@ define(['app'], function (app) {
         $rootScope.appUrl = "/delibouquet-git/delibouquet-backend/web/api";
     };
 
-    app.controller('InitController', ['$scope', '$rootScope', '$http', '$location', 'dataService', initController]);
+    app.controller('InitController', ['$scope', '$rootScope', '$http', '$location', 'dataService', 'Auth', initController]);
     
 });

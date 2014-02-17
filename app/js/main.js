@@ -1,5 +1,5 @@
 var VarsApp = {
-    baseUrl : '/delibouquet/app',
+    baseUrl : '/cart/app',
     autor : "Biellcon Digital"
 };
 
@@ -12,9 +12,12 @@ require(
     [
         'app',
         'js/shoppingCart',
+        'js/routingConfig',
         'services/routeResolver',
+        'services/authService',
         'services/dataService',
         'services/userService',
+        'directives/accessLevel',
         'controllers/InitController'
     ],
     function () {

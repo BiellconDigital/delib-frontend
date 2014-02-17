@@ -2,10 +2,16 @@
 
 define(['services/routeResolver'], function () {
 
-    var app = angular.module('myApp', ['ngRoute', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
+    var app = angular.module('myApp', ['ngCookies', 'ui.router', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
 
-    app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$httpProvider',
-        function ($routeProvider, routeResolverProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $httpProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+        'routeResolverProvider', 
+        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', 
+        '$httpProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider,
+                routeResolverProvider, 
+                $controllerProvider, $compileProvider, $filterProvider, $provide, 
+                $httpProvider) {
 
             //Change default views and controllers directory using the following:
             //routeResolverProvider.routeConfig.setBaseDirectories('/app/views', '/app/controllers');
@@ -22,6 +28,7 @@ define(['services/routeResolver'], function () {
             //Define routes - controllers will be loaded dynamically
             var route = routeResolverProvider.route;
 
+/*
             $routeProvider
                 .when('/main', route.resolve('Main'))
                 .when('/contacto', route.resolve('Contacto'))
@@ -35,34 +42,165 @@ define(['services/routeResolver'], function () {
                 .when('/login', route.resolve('Login'))
                 .when('/usuario', route.resolve('Usuario'))
                 .otherwise({redirectTo : '/main'});
-                
-//                {templateUrl: 'partials/proyectos.html', controller: 'proyectosController',resolve: resolveController('/app/controllers/proyectosController.js')}
-//                )
-//                .when('/proyecto/:id', 
-//                {templateUrl: 'partials/proyecto.html', controller: 'proyectoController',resolve: resolveController('/app/controllers/proyectoController.js')}
-//                );
+*/
+            var access = routingConfig.accessLevels;
 
-//            $routeProvider
-                //route.resolve() now accepts the convention to use (name of controller & view) as well as the 
-                //path where the controller or view lives in the controllers or views folder if it's in a sub folder. 
-                //For example, the controllers for customers live in controllers/customers and the views are in views/customers.
-                //The controllers for orders live in controllers/orders and the views are in views/orders
-                //The second parameter allows for putting related controllers/views into subfolders to better organize large projects
-                //Thanks to Ton Yeung for the idea and contribution
-//                .when('/customers', route.resolve('Customers', 'customers/'))
-//                .when('/customerorders/:customerID', route.resolve('CustomerOrders', 'customers/'))
-//                .when('/customeredit/:customerID', route.resolve('CustomerEdit', 'customers/'))
-//                .when('/orders', route.resolve('Orders', 'orders/'))
-//                .when('/about', route.resolve('About'))
-//                .otherwise({ redirectTo: '/customers' });
+            // Public routes
+            $stateProvider
+                .state('public', {
+                    abstract: true,
+                    template: "<ui-view/>",
+                    data: {
+                        access: access.public
+                    }
+                })
+                .state('public.404', {
+                    url: '/404',
+                    templateUrl: VarsApp.baseUrl + '/views/404.html'
+                })
+                .state('public.home', route.resolve('/', 'Main'))
+                .state('public.carro_compra', route.resolve('/carro-de-compra', 'Carro'))
+                .state('public.contacto', route.resolve('/contacto', 'Contacto'))
+                .state('public.arreglos', route.resolve('/arreglos/{cateId}', 'Productos'))//[/:cateId]
+                .state('public.detalle_producto', route.resolve('/detalle-producto/{prodId}', 'ProductoDetalle'))
+                .state('public.delibouquet', route.resolve('/delibouquet', 'Delibouquet'))
+                .state('public.politicas', route.resolve('/politicas', 'Politicas'))
+                .state('public.delivery', route.resolve('/delivery', 'Delivery'))
+                .state('public.formas_pago', route.resolve('/formas-de-pago', 'FormasPago'));
+
+            // Anonymous routes
+            $stateProvider
+                .state('anon', {
+                    abstract: true,
+                    template: "<ui-view/>",
+                    data: {
+                        access: access.anon
+                    }
+                })
+                .state('anon.login', route.resolve('/login', 'Login'))
+                .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'));
+
+            // Regular user routes
+            $stateProvider
+                .state('user', {
+                    abstract: true,
+                    template: "<ui-view/>",
+                    data: {
+                        access: access.user
+                    }
+                })
+                .state('user.perfil', route.resolve('/usuario', 'Usuario'));
+//                .state('user.perfil', {
+//                    url: '/usuario',
+//                    templateUrl: VarsApp.baseUrl + '/views/Usuario.html'
+//                });
+//                .state('user.private.nested', {
+//                    url: 'nested/',
+//                    templateUrl: 'private/nested'
+//                })
+//                .state('user.private.admin', {
+//                    url: 'admin/',
+//                    templateUrl: 'private/nestedAdmin',
+//                    data: {
+//                        access: access.admin
+//                    }
+//                });
+
+            // // Admin routes
+            // $stateProvider
+                // .state('admin', {
+                    // abstract: true,
+                    // template: "<data-ui-view/>",
+                    // data: {
+                        // access: access.admin
+                    // }
+                // })
+                // .state('admin.admin', {
+                    // url: '/admin/',
+                    // templateUrl: 'admin',
+                    // controller: 'AdminCtrl'
+                // });
+
+
+            $urlRouterProvider.otherwise('/404');
+
+
+
+            $urlRouterProvider.rule(function($injector, $location) {
+                if($location.protocol() === 'file')
+                    return;
+
+                var path = $location.path()
+                // Note: misnomer. This returns a query object, not a search string
+                    , search = $location.search()
+                    , params
+                    ;
+
+                // check to see if the path already ends in '/'
+                if (path[path.length - 1] === '/') {
+                    return;
+                }
+
+                // If there was no search string / query params, return with a `/`
+                if (Object.keys(search).length === 0) {
+                    return path + '/';
+                }
+
+                // Otherwise build the search string and return a `/?` prefix
+                params = [];
+                angular.forEach(search, function(v, k){
+                    params.push(k + '=' + v);
+                });
+                return path + '/?' + params.join('&');
+            });
+
+            //$locationProvider.html5Mode(true);
+
+            $httpProvider.interceptors.push(function($q, $location) {
+                return {
+                    'responseError': function(response) {
+                        if(response.status === 401 || response.status === 403) {
+                            $location.path('/login');
+                            return $q.reject(response);
+                        }
+                        else {
+                            return $q.reject(response);
+                        }
+                    }
+                }
+            });
+
 
     }]);
 
     //Only needed for Breeze. Maps Q (used by default in Breeze) to Angular's $q to avoid having to call scope.$apply() 
-    app.run(['$q', '$rootScope',
-        function ($q, $rootScope) {
-            $rootScope.$apply();
+    app.run(['$q', '$rootScope', '$state', 'Auth',
+        function ($q, $rootScope, $state, Auth) {
+            //$rootScope.$apply();
             //breeze.core.extendQ($rootScope, $q);
+
+            $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+                if (!Auth.authorize(toState.data.access)) {
+                    console.log("no auth...");
+//                    console.log(toState.data.access);
+                    
+                    $rootScope.error = "Seems like you tried accessing a route you don't have access to...";
+                    event.preventDefault();
+                    
+                    if(fromState.url === '^') {
+                        if(Auth.isLoggedIn()) {
+                            console.log("ir a home...");
+                            $state.go('user.perfil');
+                        }
+                        else {
+                            console.log("ir a login...");
+                            $rootScope.error = null;
+                            $state.go('anon.login');
+                        }
+                    }
+                }
+            });
+
     }]);
 
     return app;

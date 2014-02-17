@@ -26,8 +26,16 @@
 							    <div class="col-sm-9">
                                                                 <input type="password" required class="form-control" id="inputPassword" placeholder="Password"
                                                                        ng-model="password">
+                                                                <input type="hidden" ng-model="rememberme" name="rememberme"/>
+                                                                
 							    </div>
 							  </div>
+<!--							  <div class="form-group">
+                                                            <label>
+                                                              <input type="radio" ng-model="rememberme" name="rememberme" id="rememberme">
+                                                                   Recordarme 
+                                                            </label>
+							  </div>-->
 							  <div class="form-group">
 							    <div class="col-sm-offset-6 col-sm-6">
 							      <button type="submit" ng-disabled="!loginUserForm.$valid"

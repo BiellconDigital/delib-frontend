@@ -1,26 +1,26 @@
 <!doctype html>
 <html lang="es">
     <head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	    <title>Delibouquet</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Delibouquet</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
         <link rel="stylesheet" href="css/intro.css">
-	    <link rel="stylesheet" href="css/main.css">
-	    <link rel="stylesheet" href="css/normalize.css">
-	    <link rel="stylesheet" href="css/menu-nav.css">
-	    <link rel="stylesheet" href="css/sticky.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/menu-nav.css">
+        <link rel="stylesheet" href="css/sticky.css">
         <link rel="stylesheet" href="css/carousel.css">
-	    <script src="lib/jquery-2.0.3.min.js"></script>
+        <link rel="stylesheet" href="css/app.css">
+        <script src="lib/jquery-2.0.3.min.js"></script>
         <script src="lib/jquery.sidr.min.js"></script>
         <script src="lib/bootstrap.min.js"></script>
         <script src="lib/jquery.backstretch.min.js"></script>
         <script src="lib/jquery.bootstrap.wizard.min.js"></script>
-
     </head>
-    <body ng-controller="InitController">
+    <body data-ng-controller="InitController" data-ng-cloak>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -45,14 +45,14 @@
         </div>
         <div id="sidr" class="nav-mobile" >   
           <ul>
-            <li><a href="#/" onclick="toggleMenu();">Inicio</a></li>
-            <li ><a href="#/delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
-            <li ><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
+            <li><a ui-sref="public.home" onclick="toggleMenu();">Inicio</a></li>
+            <li ><a ui-sref="public.delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
+            <li ><a ui-sref="public.arreglos" onclick="toggleMenu();">Arreglos</a></li>
             <li><a href="" onclick="toggleMenu();">Pedidos</a></li>
-            <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
-            <li><a href="#/politicas" onclick="toggleMenu();">Políticas</a></li>
-            <li><a href="#/delivery" onclick="toggleMenu();">Delivery</a></li>
-            <li><a href="#/formas-de-pago" onclick="toggleMenu();">Formas de pago</a></li>
+            <li><a ui-sref="public.contacto" onclick="toggleMenu();">Contacto</a></li>
+            <li><a ui-sref="public.politicas" onclick="toggleMenu();">Políticas</a></li>
+            <li><a ui-sref="public.delivery" onclick="toggleMenu();">Delivery</a></li>
+            <li><a ui-sref="public.formas_pago" onclick="toggleMenu();">Formas de pago</a></li>
           </ul>
         </div>
 
@@ -83,11 +83,11 @@
              
                 <div id="sidr" class="nav-mobile" >   
                   <ul>
-                    <li><a href="#/" onclick="toggleMenu();">Inicio</a></li>
-                    <li ><a href="#/delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
-                    <li ><a href="#/arreglos" onclick="toggleMenu();">Arreglos</a></li>
+                    <li><a ui-sref="public.home" onclick="toggleMenu();">Inicio</a></li>
+                    <li ><a ui-sref="public.delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
+                    <li ><a ui-sref="public.arreglos" onclick="toggleMenu();">Arreglos</a></li>
                     <li><a href="" onclick="toggleMenu();">Pedidos</a></li>
-                    <li><a href="#/contacto" onclick="toggleMenu();">Contacto</a></li>
+                    <li><a ui-sref="public.contacto" onclick="toggleMenu();">Contacto</a></li>
                   </ul>
                 </div>
 
@@ -106,19 +106,23 @@
                     </div>
                     <div class="menu">
                         <ul class="menuDerecha">
-                            <li><a href="#/delibouquet">Delibouquet</a></li>
-                            <li><a href="#/arreglos">Arreglos</a></li>
+                            <li><a ui-sref="public.delibouquet">Delibouquet</a></li>
+                            <li><a ui-sref="public.arreglos">Arreglos</a></li>
                         </ul>
                         <ul class="menuIzquierda">
                             <li><a href="">Pedidos</a></li>
-                            <li><a href="#/contacto">Contacto</a></li>          
+                            <li><a ui-sref="public.contacto">Contacto</a></li>          
                         </ul>   
                     </div>          
                     <div class="carrito-header">
                         <div class="carrito-header-cont">
                             <div class="text-login">
-                                Bienvenido! &nbsp;&nbsp;<a href="#/usuario"><span class="name-user">Raúl&nbsp;</span></a>
-                                <a href="#/login">iniciar sesión</a>
+                                Bienvenido! &nbsp;&nbsp;
+                                <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                <a ui-sref="user.perfil "data-access-level='accessLevels.user' ui-sref-active="active"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                
+                                <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active">iniciar sesión</a>
+                                <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">cerrar sesión</a>
                             </div>
                             <div class="carrito-logo" ng-click="showCart()">
                                 {{cart.getTotalCount()}}
@@ -130,7 +134,7 @@
                 <header id="header">        
 
                     <div class="logo">
-                        <a href="#/main">
+                        <a ui-sref="public.home">
                             <img src="img/logotipo.png" />      
                         </a>
                     </div>
@@ -138,7 +142,7 @@
                 </header>
                 
                 <section class="content">
-                            <div ng-view ></div>
+                    <div data-ui-view id="id_content_view"></div>
                 </section>
             </div>
            <footer id="footer">
@@ -147,20 +151,26 @@
                         </h3>
                         <div class="container">
                             <div class="links linea-separacion">
-                                <a href="#/politicas">Políticas</a>
+                                <a ui-sref="public.politicas">Políticas</a>
                             </div>
                             <div class="links linea-separacion" >
-                                <a href="#/delivery">Delivery</a>
+                                <a ui-sref="public.delivery">Delivery</a>
                             </div>
                             <div class="links" >
-                                <a href="#/formas-de-pago">Formas de pago</a>
+                                <a ui-sref="public.formas_pago">Formas de pago</a>
                             </div>
 
                         </div>
             </footer>
         </div>
+        <div id="alertBox" class="alert alert-danger" data-ng-show="error">
+            <button type="button" class="close" data-ng-click="error = null;">&times;</button>
+            <span data-ng-bind="error"></span>
+        </div>
+    
     </body>
-    <script>
+    
+    <script type="text/javascript">
         var menuOpened=false;
         var overlayActive=false;
         $(document).ready(function() {
@@ -201,9 +211,12 @@
       <!-- In production use:
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
       -->
+      <script src="lib/underscore-min.js"></script>
       <script src="lib/angular/angular.js"></script>
-      <script src="lib/angular/angular-route.js"></script>
-      
+      <!-- <script src="lib/angular/angular-route.js"></script> -->
+      <script src="lib/angular/angular-cookies.min.js"></script>
+      <script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+
       <script src="lib/q.min.js"></script>
         
     <!-- Load custom scripts via RequireJS -->

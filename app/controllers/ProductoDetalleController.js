@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productoDetalleController = function ($scope, $rootScope, $routeParams, $filter, $http, $location, dataService) {
+    var productoDetalleController = function ($scope, $rootScope, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -15,7 +15,7 @@ define(['app'], function (app) {
         
         var load = function() {
             console.log('call load()...');
-            $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'getById', idprod: $routeParams.prodId }})
+            $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'getById', idprod: $stateParams.prodId }})
                     .success(function(data, status, headers, config) {
                         $scope.producto = data.data;
                         angular.copy($scope.producto, $scope.copy);
@@ -56,6 +56,6 @@ define(['app'], function (app) {
             })
     };
 
-    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$routeParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
+    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
     
 });

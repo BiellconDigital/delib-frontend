@@ -55,10 +55,10 @@
                                                 <input style="width:70px;"
                                                     class="input-sm text-center" type="number" 
                                                     ng-model="item.quantity" 
-                                                    ng-change="cart.saveItems()" />
+                                                    ng-change="cart.saveItems();updateOrden();" />
                                             </td>
                                             <td width="12%" class="tdCenter" title="remover">
-                                                <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000)" >
+                                                <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000);updateOrden();" >
                                                     <div class="img-eliminar img-responsive center-block">
 
                                                     </div>
@@ -76,21 +76,26 @@
                                         <tr>
                                             <td colspan="4"></td>
                                             <td class="well">Delivery</td>
-                                            <td class="text-right well">S/ 10.00</td>
+                                            <td class="text-right well">{{orden.costoEnvio | currency:'S/.'}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="4"></td>
                                             <td class="well">Total</td>
-                                            <td class="text-right well">S/ 100.00</td>
+                                            <td class="text-right well">{{orden.total | currency:'S/.'}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 text-right">
-                                        <a class="btn button-next">
+                                        
+                                        <a ui-sref="anon.login" class="btn" data-access-level='accessLevels.anon' ui-sref-active="active">
+                                            <span class="glyphicon glyphicon-ok"></span> Comprar Ahora
+                                        </a>
+                                        <a class="btn button-next" data-access-level='accessLevels.user' ng-disabled="cart.getTotalCount() <= 0">
                                             <span class="glyphicon glyphicon-ok"></span> Comprar Ahora
                                         </a> &nbsp; 
+                                        
                                         <a href="#/arreglos">Continuar Comprando</a>
                                     </div>
                                 </div>
@@ -103,14 +108,14 @@
                                     <div class="col-md-6">
                                         <div class="thumbnail small">
                                             <div class="panel-body">
-                                                <form class="form-horizontal" role="form" >
+                                                <form class="form-horizontal" role="form" name="despachoForm">
 
                                                           <div class="form-group">
                                                             <label for="nombre" class="col-sm-5 col-md-5 control-label text-left">
                                                                 Nombre o Razón Social*:
                                                             </label>
                                                             <div class="col-sm-7 col-md-7">
-                                                                <input type="text" class="form-control input-sm" id="nombre">
+                                                                <input type="text" required class="form-control input-sm" ng-model="orden.razonSocial">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
@@ -118,8 +123,9 @@
                                                                    style="text-align: left;">
                                                                 DNI o RUC:
                                                             </label>
-                                                            <div class="col-sm-7 col-md-7">
-                                                                <input type="text" name="documento" class="form-control input-sm" id="documento">
+                                                            <div class="col-sm-7 col-md-4">
+                                                                <input type="text" name="documento" class="form-control input-sm" 
+                                                                       ng-model="orden.rucCliente">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
@@ -127,7 +133,7 @@
                                                                 Dirección*:
                                                             </label>
                                                             <div class="col-sm-7 col-md-7">
-                                                                <input type="text" class="form-control input-sm" id="direccion">
+                                                                <input type="text" required class="form-control input-sm" ng-model="orden.direccionEnvio">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
@@ -135,7 +141,11 @@
                                                                 Distrito*:
                                                             </label>
                                                             <div class="col-sm-7 col-md-7">
-                                                                <input type="text" class="form-control input-sm" id="distrito">
+                                                                <select required class="form-control input-sm"
+                                                                         ng-options="distrito as distrito.dist for distrito in disitritos" 
+                                                                         ng-model="orden.distrito">
+                                                                </select>
+                                                                <!--<input type="text" class="form-control input-sm" ng-model="orden.distrito">-->
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
@@ -143,27 +153,39 @@
                                                                 Razón de la compra:
                                                             </label>
                                                             <div class="col-sm-7 col-md-7">
-                                                                <input type="text" class="form-control input-sm" id="razon_compra">
+                                                                <select class="form-control input-sm"
+                                                                         ng-options="razon as razon.descripcion for razon in razonesCompra" 
+                                                                         ng-model="orden.razon_compra">
+                                                                </select>
+                                                                
+                                                                <!--<input type="text" class="form-control input-sm" ng-model="orden.razon_compra">-->
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <label for="despacho_estandar" class="col-sm-5 col-md-5 control-label text-left">
                                                                 Despacho estándar*:
                                                             </label>
-                                                            <div class="col-sm-87 col-md-7">
-                                                                <input type="text" class="form-control input-sm" id="despacho_estandar">
+                                                            <div class="col-sm-4 col-md-4">
+                                                                <input type="date" required class="form-control input-sm" ng-model="orden.fechaEnvio">
                                                             </div>
+                                                            <div class="col-sm-3 col-md-3">
+                                                                <select required class="form-control input-sm"
+                                                                         ng-options="hora as hora.descripcion for hora in horaDespacho" 
+                                                                         ng-model="orden.hora">
+                                                                </select>
+                                                            </div>
+                                                              
                                                           </div>
                                                           <div class="form-group">
                                                             <div class="col-sm-12 col-md-12">
                                                                 He leído y acepto las politicas 
-                                                                <input type="radio" class="" id="terminos">
+                                                                <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
                                                             </div>
                                                           </div>
                                                           <div class="form-group">
                                                             <div class="col-sm-offset-3 col-sm-9 text-right">
                                                                 <a href="#/arreglos">Continuar Comprando</a> &nbsp;&nbsp;
-                                                                <a href="" class="btn button-next">
+                                                                <a href="" class="btn button-next" ng-disabled="!despachoForm.$valid">
                                                                      Continuar <span class="glyphicon glyphicon-arrow-right"></span>
                                                                 </a>
                                                             </div>
@@ -220,7 +242,7 @@
                                                         Costo del Despacho
                                                     </td>
                                                     <td class="text-right">
-                                                        S/. 15.00
+                                                        {{orden.costoEnvio | currency:'S/.'}}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -228,7 +250,7 @@
                                                         <h4><b>Total</b></h4>
                                                     </td>
                                                     <td class="text-right">
-                                                        <h4><b>S/. 2000.00</b></h4>
+                                                        <h4><b>{{orden.total | currency:'S/.'}}</b></h4>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -248,30 +270,31 @@
                                     <div class="col-md-8">
                                         <div class="thumbnail small">
                                             <div class="panel-body">
+                                                <form role="form" name="carroForm">
                                                 <p>Datos de facturación</p>
-                                                <p>Nombre o razón social:</p>
-                                                <p>DNI o RUC: </p>
-                                                <p>Dirección: </p>
-                                                <p>Distrito: </p>
-                                                <p>Teléfono: </p>
-                                                <p>Email: </p>
+                                                <p>Nombre o razón social:  {{orden.razonSocial}}</p>
+                                                <p>DNI o RUC: {{orden.rucCliente}}</p>
+                                                <p>Dirección: {{orden.direccionEnvio}}</p>
+                                                <p>Distrito: {{orden.distrito.dist}}</p>
+                                                <!--<p>Teléfono: </p>-->
+                                                <p>Email: {{user.email}}</p>
 
                                                 <div class="radio">
                                                   <label>
-                                                    <input type="radio" ng-model="tipoPago" name="tipoPago" id="optionsRadios1" value="paypal" checked>
+                                                    <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios1" value="2" checked>
                                                         PayPal (Tarjeta de crédito)
                                                   </label>
                                                 </div>
                                                 <div class="radio">
                                                   <label>
-                                                    <input type="radio" ng-model="tipoPago" name="tipoPago" id="optionsRadios2" value="banco">
+                                                    <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios2" value="1">
                                                     Depósito a cuenta o transferencia bancaria
                                                   </label>
                                                 </div>
 
                                                 <div class="panel panel-default">
                                                   <div class="panel-heading">Mis pedidos y mis datos son correctos, continuar.</div>
-                                                      <div ng-if="tipoPago == 'paypal'" class="panel-body">
+                                                      <div ng-if="orden.tipoPago == '2'" class="panel-body">
                                                         Ustdes puede comprar de forma segura a traves de PayPal...
                                                         <br/><br/>
                                                         <p class="">
@@ -283,18 +306,19 @@
                                                             </a>    
                                                         </p>
                                                       </div>
-                                                      <div ng-if="tipoPago == 'banco'" class="panel-body">
+                                                      <div ng-if="orden.tipoPago == '1'" class="panel-body">
                                                         <p>BANCO CONTINENTAL</p>
-                                                        <p>Cta. cte. No 12232434354354<br/>
+                                                        <p>{{orden.cuentaBanco}}<br/>
                                                         Código interbancario: 011-58.0245454<br/>
                                                         A nombre de Delibouquet S.A.C.</p>
                                                         <br/>
-                                                        <a href="" class="btn" role="button">Comprar</a>
+                                                        <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
+                                                           ng-click="procesarCompra()">Comprar</a>
                                                       </div>
 
                                                 </div>
 
-
+                                                </form>
                                             </div>
                                         </div>  
                                     </div>
@@ -338,7 +362,7 @@
                                                         Costo del Despacho
                                                     </td>
                                                     <td class="text-right">
-                                                        S/. 15.00
+                                                        {{orden.costoEnvio | currency:'S/.'}}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -346,7 +370,7 @@
                                                         <h4><b>Total</b></h4>
                                                     </td>
                                                     <td class="text-right">
-                                                        <h4><b>S/. 2000.00</b></h4>
+                                                        <h4><b>{{orden.total | currency:'S/.'}}</b></h4>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -364,6 +388,6 @@
   </div>
 
 
-
 </div>
 
+</div>

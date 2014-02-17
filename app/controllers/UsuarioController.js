@@ -2,12 +2,35 @@
 
 define(['app'], function (app) {
 
-    var usuarioController = function ($scope, $rootScope, $http, $location) {
+    var usuarioController = function ($scope, $rootScope, $http, $location, $cookieStore, Auth, userService) {
         var appTitle = 'Usuario';
+        try {
+            $scope.user = angular.copy(Auth.user);
+//            angular.copy(Auth.user, $scope.user);
+        
+        } catch (e) {
+            
+        }
+//        $scope.user = $scope.copy;
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
         }
+        
+        $scope.guardarUsuario = function() {
+            userService.user.saveUser($scope.user,
+                function(resp) {
+                    try {
+                        alert("Su información se registró correctamente.");
+                        $cookieStore.put('user', Auth.user);
+                        angular.copy($scope.user, Auth.user);
+                    } catch (e) {
+
+                    }
+                }
+             );
+        }
+        
         
         $scope.path = function() {
             return $location.url();
@@ -43,6 +66,6 @@ define(['app'], function (app) {
         
     };
 
-    app.register.controller('UsuarioController', ['$scope', '$rootScope', '$http', '$location', usuarioController]);
+    app.register.controller('UsuarioController', ['$scope', '$rootScope', '$http', '$location', '$cookieStore', 'Auth', 'userService', usuarioController]);
     
 });
