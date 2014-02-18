@@ -8,6 +8,7 @@
         <li ng-repeat="cate in categorias_producto"
             ng-class="{'active' : isActiveCate(cate)}">
           <a href="javascript:void(0)" ng-click="loadProductos(cate)">
+              <span class="pull-right">42</span>
             {{cate.descripcion}}
           </a>
         </li>

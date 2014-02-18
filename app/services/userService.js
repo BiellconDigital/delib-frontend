@@ -92,6 +92,17 @@ define(['app'], function (app) {
             });
         };
         
+        cartFactory.getPedido = function(idOrden, success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'get_pedido', idOrden : idOrden}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
 
 
         

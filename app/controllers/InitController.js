@@ -34,7 +34,7 @@ define(['app'], function (app) {
             $location.path( "/carro-de-compra");
         }
         
-        $rootScope.appUrl = "/delibouquet-git/delibouquet-backend/web/api";
+        $rootScope.appUrl = "/delib-backend/web/api";
     };
 
     app.controller('InitController', ['$scope', '$rootScope', '$http', '$location', 'dataService', 'Auth', initController]);

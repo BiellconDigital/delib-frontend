@@ -89,7 +89,9 @@ define(['services/routeResolver'], function () {
                         access: access.user
                     }
                 })
-                .state('user.perfil', route.resolve('/usuario', 'Usuario'));
+                .state('user.perfil', route.resolve('/usuario', 'Usuario'))
+                .state('user.pedido', route.resolve('/pedido/:idpedido', 'PedidoDetalle'))
+                .state('user.pedidos', route.resolve('/pedidos', 'Pedidos'));
 //                .state('user.perfil', {
 //                    url: '/usuario',
 //                    templateUrl: VarsApp.baseUrl + '/views/Usuario.html'

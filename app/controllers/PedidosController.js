@@ -8,10 +8,10 @@ define(['app'], function (app) {
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
         }
-        $scope.pedidos
+        $scope.pedidos = {};
 
         var load = function() {
-            userService.user.listaPedidos(
+            userService.cartUser.listaPedidos(
                 function(resp) {
                     $scope.pedidos = resp.data;
                 }
@@ -24,6 +24,6 @@ define(['app'], function (app) {
         
     };
 
-    app.register.controller('pedidosController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'userService', pedidosController]);
+    app.register.controller('PedidosController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'userService', pedidosController]);
     
 });

@@ -1,5 +1,5 @@
 var VarsApp = {
-    baseUrl : '/cart/app',
+    baseUrl : '/delib-frontend/app',
     autor : "Biellcon Digital"
 };
 
@@ -18,6 +18,7 @@ require(
         'services/dataService',
         'services/userService',
         'directives/accessLevel',
+        'filters/parserDate',
         'controllers/InitController'
     ],
     function () {
