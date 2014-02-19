@@ -5,10 +5,11 @@
     <div class="col-sm-6 col-md-3">
 
       <ul class="nav nav-pills nav-stacked hidden-xs categoria-lista">
-        <li ng-repeat="cate in categorias_producto"
+        <li ng-repeat="cate in categorias_producto" 
             ng-class="{'active' : isActiveCate(cate)}">
-          <a href="javascript:void(0)" ng-click="loadProductos(cate)">
-              <span class="pull-right">42</span>
+          <a href="javascript:void(0)" ng-click="loadProductos(cate)" >
+              <div class="pull-right" 
+                ng-class="{'icono-triangulo' : isActiveCate(cate)}">&nbsp;</div>
             {{cate.descripcion}}
           </a>
         </li>
