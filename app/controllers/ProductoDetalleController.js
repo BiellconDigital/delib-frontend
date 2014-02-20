@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productoDetalleController = function ($scope, $rootScope, $stateParams, $filter, $http, $location, dataService) {
+    var productoDetalleController = function ($scope, $rootScope, $sce, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -49,6 +49,10 @@ define(['app'], function (app) {
         $scope.isActiveCate = function (cate) {
             return $scope.categoriaSelec === cate;
         }
+
+        $scope.deliberatelyTrustDangerousSnippet = function(html) {
+            return $sce.trustAsHtml(html);
+        };        
         
             $('#navProducto a').click(function (e) {
               e.preventDefault()
@@ -56,6 +60,6 @@ define(['app'], function (app) {
             })
     };
 
-    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
+    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$sce', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
     
 });

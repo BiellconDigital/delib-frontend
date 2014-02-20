@@ -2,7 +2,7 @@
 
 define(['services/routeResolver'], function () {
 
-    var app = angular.module('myApp', ['ngCookies', 'ui.router', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
+    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         'routeResolverProvider', 

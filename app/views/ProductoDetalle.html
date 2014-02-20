@@ -106,7 +106,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="descripcion">
                         <div class="panel panel-default sin-borde-top">
-                          <div class="panel-body" ng-bind-html="producto.ficha">
+                          <div class="panel-body" ng-bind-html="deliberatelyTrustDangerousSnippet(producto.ficha)">
                                 
                           </div>
                         </div>
