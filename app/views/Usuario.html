@@ -1,6 +1,6 @@
 <div class="layerFondo contenido" id='contenido' ng-controller="UsuarioController">
     
-        <h3>Bienvenido! &nbsp;&nbsp;&nbsp;&nbsp;<span class="name-user">Raúl</span></h3>
+        <h3>Bienvenido! &nbsp;&nbsp;&nbsp;&nbsp;<span class="name-user">{{user.username}}</span></h3>
 	<hr/>
 	<div class="container">
 		<div class="row infoUsuario">
@@ -72,7 +72,7 @@
                                                             <label for="celular" class="col-sm-4 col-md-4 control-label text-left">Celular:</label>
                                                             <div class="col-sm-4 col-md-4">
                                                                 <input type="text" class="form-control input-sm" id="celular"
-                                                                       ng-model="user.movil">  (sólo va numero)
+                                                                       ng-model="user.movil">
                                                             </div>
                                                             <div class="col-sm-4 col-md-4">
                                                                  (sólo va numero)
@@ -155,10 +155,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6 col-md-6">
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3">
                                                           <img src="img/como-comprar-num.png" class="img-responsive">
                                                         </div>
-                                                        <div class="col-sm-9 col-md-9">
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 subtitulo-paso-compra">
                                                           Paso
                                                         </div>
                                                     </div>
@@ -170,7 +170,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
-                                                    <p>Paso 2</p>
+                                                    <div class="row">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                                          <img src="img/como-comprar-num.png" class="img-responsive">
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 subtitulo-paso-compra">
+                                                          Paso
+                                                        </div>
+                                                    </div>
                                                     <div class="thumbnail">
                                                       <div class="caption">
                                                           <p>PROGRAMA TU ENVÍO</p>
@@ -180,7 +187,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
-                                                    <p>Paso 3</p>
+                                                    <div class="row">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                                          <img src="img/como-comprar-num.png" class="img-responsive">
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 subtitulo-paso-compra">
+                                                          Paso
+                                                        </div>
+                                                    </div>
                                                     <div class="thumbnail">
                                                       <div class="caption">
                                                           <p>REALIZAR EL PAGO</p>
@@ -190,7 +204,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6">
-                                                    <p>Paso 4</p>
+                                                    <div class="row">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                                          <img src="img/como-comprar-num.png" class="img-responsive">
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 subtitulo-paso-compra">
+                                                          Paso
+                                                        </div>
+                                                    </div>
                                                     <div class="thumbnail">
                                                       <div class="caption">
                                                           <p>RESUMEN Y PAGO DE COMPRA</p>

@@ -8,6 +8,7 @@ define(['app'], function (app) {
         $scope.user = Auth.user;
         $scope.userRoles = Auth.userRoles;
         $scope.accessLevels = Auth.accessLevels;
+        $scope.menu = '';
 
 //        $('#id_content_view').css('height', "100%");
 //        $('#id_content_view').css('background-color', "black");
@@ -33,6 +34,19 @@ define(['app'], function (app) {
         $scope.showCart = function() {
             $location.path( "/carro-de-compra");
         }
+        
+        
+        $scope.selectMenu = function (menu) {
+            $scope.menu = menu;
+        }
+        
+        $scope.isActiveMenu = function (menu) {
+            return $scope.menu === menu;
+        }
+
+        $scope.selectMenu($location.path());
+        //$scope.isActiveMenu($location.path());
+        
         
         $rootScope.appUrl = "/delib-backend/web/api";
     };

@@ -4,6 +4,7 @@ define(['app'], function (app) {
 
     var usuarioController = function ($scope, $rootScope, $http, $location, $cookieStore, Auth, userService) {
         var appTitle = 'Usuario';
+        $scope.user = Auth.user;
         try {
             $scope.user = angular.copy(Auth.user);
 //            angular.copy(Auth.user, $scope.user);
@@ -55,7 +56,7 @@ define(['app'], function (app) {
                     );    
                 } else {
                     $('#contenido').height(
-                        $(window).height() - $('#header').height() - $('#footer').height() - 88
+                        $(window).height() - $('#header').height() - $('#footer').height() - 60
                     );    
                 }
                         $('#navMenuUsuario').height(

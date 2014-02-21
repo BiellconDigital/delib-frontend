@@ -57,7 +57,7 @@
                         <p>{{producto.cantidad}} unidades</p>
                     </div>
                     <div class="col-sm-3 col-md-7 text-resumen-prod hidden-xs">
-                        <div class="fb-like" data-href="https://www.facebook.com/BiellconDigitalSac?ref=hl" data-width="200" 
+                        <div class="fb-like" data-href="http://www.delibouquet.pe/cart/#/detalle-producto/{{producto.idproducto}}" data-width="200" 
                              data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>                    
                     </div>
                     
@@ -66,31 +66,31 @@
                 <div class="thumbnail">
                   <div class="caption">
                     <div class="row">
-                        <div class="col-sm-12 col-md-8">
+                        <div class="col-sm-12 col-md-7">
                             <form class="form-horizontal" role="form" >
                                 <div class="form-group">
                                     <label for="inputCantidad" class="col-xs-4 col-sm-4 control-label small">Cantidad </label>
-                                    <div class="col-xs-8 col-sm-8">
+                                    <div class="col-xs-4 col-sm-4 col-md-4">
                                         <input  id="inputCantidad" class="form-control input-sm" />
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-sm-12 col-md-4">
+                        <div class="col-sm-12 col-md-5">
                             <p>
-                                <a href="" class="btn btn-xs btn-block" role="button"
+                                <a href="" class="btn btn-sm btn-block" role="button"
                                    ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, 1); showCart()">
-                                    <small>Comprar</small>
+                                    Comprar
                                 </a>
                             </p>
                             <p>
-                                <a href="" class="btn btn-xs btn-block" role="button"
+                                <a href="" class="btn btn-sm btn-block" role="button"
                                    ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, 1)">
-                                    <small>Seguir comprando</small>
+                                    Seguir comprando
                                 </a>
                             </p>
                             <p>
-                                <a href="#" class="btn btn-xs btn-block" role="button"><small>Atrás</small></a>
+                                <a href="#" class="btn btn-sm btn-block" role="button">Atrás</a>
                             </p>
                         </div>
                     </div>
@@ -100,8 +100,8 @@
 
                 <ul class="nav nav-tabs" id="navProducto">
                     <li class="active">
-                        <a href="#descripcion">Descripción</a>
-                  </li>                
+                        <a href="#descripcion" class="text-marron">Descripción</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="descripcion">
@@ -115,7 +115,7 @@
                 </div>
                 
                 <div class="visible-xs">
-                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="340" 
+                    <div class="fb-like" data-href="http://www.delibouquet.pe/cart/#/detalle-producto/{{producto.idproducto}}" data-width="340" 
                          data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>                    
                     <br/><br/><br/>
                 </div>
