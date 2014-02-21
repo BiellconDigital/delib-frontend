@@ -31,6 +31,8 @@
     }(document, 'script', 'facebook-jssdk'));
     </script>
 
+
+        <!-- MENU DERECHA PARA MOVILES -->
         <div class="layerOpacity">
             <div class="lista">
                 <ul>
@@ -43,11 +45,19 @@
             </div>
             <a onclick="manageOverlay();"><img class="minus" src="img/cabecera-menos-mobil.png" ></a>
         </div>
+
+        <!-- MENU IZQUIERDA PARA MOVILES -->
         <div id="sidr" class="nav-mobile" >   
           <ul>
-            <li><a ui-sref="public.home" onclick="toggleMenu();">Inicio</a></li>
-            <li ><a ui-sref="public.delibouquet" onclick="toggleMenu();">Delibouquet</a></li>
-            <li ><a ui-sref="public.arreglos" onclick="toggleMenu();">Arreglos</a></li>
+            <li ng-class="{'active' : isActiveMenu('/')}">
+                <a ui-sref="public.home" ng-click="selectMenu('/')" onclick="toggleMenu();">Inicio</a>
+            </li>
+            <li ng-class="{'active' : isActiveMenu('/delibouquet/')}">
+                <a ui-sref="public.delibouquet" ng-click="selectMenu('/delibouquet/')" onclick="toggleMenu();">Delibouquet</a>
+            </li>
+            <li ng-class="{'active' : isActiveMenu('/arreglos/')}">
+                <a ui-sref="public.arreglos" ng-click="selectMenu('/arreglos/')" onclick="toggleMenu();">Arreglos</a>
+            </li>
             <li><a ui-sref="user.pedidos" onclick="toggleMenu();">Pedidos</a></li>
             <li><a ui-sref="public.contacto" onclick="toggleMenu();">Contacto</a></li>
             <li><a ui-sref="public.politicas" onclick="toggleMenu();">Políticas</a></li>
