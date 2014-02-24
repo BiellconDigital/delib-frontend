@@ -1,17 +1,29 @@
 <div class="container productos" ng-controller="ProductoDetalleController">
 
-  <div class="row">
+  <div class="row subcontenido">
 
     <div class="col-xs-12 col-sm-12 col-md-3">
 
       <ul class="nav nav-pills nav-stacked hidden-xs categoria-lista">
-        <li ng-repeat="cate in categorias_producto"
-            ng-class="{'active' : isActiveCate(cate)}">
+        <li ng-repeat="cate in categorias_producto" 
+             ng-class="{'active' : isActiveCate(cate)}">
           <a href="#/arreglos/{{cate.idcontcate}}">
               <div class="pull-right" 
                 ng-class="{'icono-triangulo' : isActiveCate(cate)}">&nbsp;</div>
             {{cate.descripcion}}
           </a>
+          <ul class="nav nav-pills nav-stacked subcategoria-lista"
+              ng-if="isActiveCate(cate)">
+            <li ng-repeat="prod in productos" class="fondo-cian"
+                ng-class="{'active' : isActiveProd(prod)}">
+              <a href="#/detalle-producto/{{prod.idproducto}}"  class="fondo-cian">
+                  <div class="pull-right"
+                    ng-class="{'icono-triangulo' : isActiveProd(prod)}">&nbsp;</div>
+                {{prod.nombre_producto}}
+              </a>
+            </li>
+          </ul>
+
         </li>
       </ul>
 

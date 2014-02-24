@@ -12,6 +12,7 @@ define(['app'], function (app) {
         $scope.categoriaSelec = null;
         $scope.cateID;
         $scope.cart = dataService.cart;
+        $scope.productos = {};
         
         var load = function() {
             console.log('call load()...');
@@ -27,9 +28,11 @@ define(['app'], function (app) {
                                         angular.copy($rootScope.categorias_producto, $scope.copy);
 
                                         $scope.categoriaSelec = $filter('filter')($rootScope.categorias_producto, {idcontcate: $scope.producto.idcontcate})[0];
+                                        loadProductos($scope.categoriaSelec);
                                     });
                         } else {
                             $scope.categoriaSelec = $filter('filter')($rootScope.categorias_producto, {idcontcate: $scope.producto.idcontcate})[0];                
+                            loadProductos($scope.categoriaSelec);
                         };
                         
                     });
@@ -50,9 +53,23 @@ define(['app'], function (app) {
             return $scope.categoriaSelec === cate;
         }
 
+        $scope.isActiveProd = function (prod) {
+            return $scope.producto === prod;
+        }
+
         $scope.deliberatelyTrustDangerousSnippet = function(html) {
             return $sce.trustAsHtml(html);
         };        
+
+        var loadProductos = function(cate) {
+            $http.get($rootScope.appUrl + '/producto', {params: {operacion : 'lista', idcontcate: cate.idcontcate }})
+                    .success(function(data, status, headers, config) {
+                        $scope.productos = data.data;
+                        angular.copy($scope.productos, $scope.copy);
+                    });
+        }
+
+
         
             $('#navProducto a').click(function (e) {
               e.preventDefault()
