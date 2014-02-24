@@ -119,6 +119,8 @@ a
 		border-radius 0
 		background-color marron
 
+.sin-padding
+	padding 0 !important
 .sin-redondeo
 	border-radius 0
 .sin-borde
@@ -151,6 +153,8 @@ ul.nav-stacked
 .text-marron
 	color marron !important
 
+.fondo-blanco
+	background-color white
 footer
 	background marron
 	color white
@@ -240,6 +244,9 @@ header
 			background-position bottom left
 		.img-eliminar:hover
 			background-position top left
+		#item-producto
+			h4
+				height 2.4em
 
 
 	.about
@@ -436,6 +443,10 @@ header
 				right 0
 				top 5.3em
 				width 74%
+				h3
+					text-align left
+					padding 0.6em 0.6em
+					margin 0
 				#navMenuUsuario
 					color white
 					padding-right 2.3em
@@ -483,39 +494,50 @@ header
 .layerOpacity
 	background rgba(0,0,0,0.89)
 	background transparent\9
-	color white
+	color white !important
 	display none
-	font-size 'Heldustry'
+	font-family 'Heldustry'
 	height 90%
 	position fixed
 	width 100%
 	z-index 990
-	font-size 1em
+	font-size 1.2em
 	vertical-align center	
 	text-decoration none
 	zoom 1
 	.lista
 		position relative
-		width 80%
-		left 10%
+		width 100%
 		top 0%
-		li
-			padding 0.4em
-			list-style-type none
-			margin-top 1em
-			border-bottom solid 0.1em
-			border-color white
-			
-			input
-				-moz-border-radius 15px
-				border-radius 15px
-				background-image url(../img/lupa-busqueda.png)
-				background-repeat no-repeat
-				background-position right
-				text-indent 10em
-				&:active
-				&:focus 
-					background-image none
+		margin 0
+		ul
+			margin 0
+			padding 0.1em 1em
+			li
+				margin 1em 0 0 0
+				padding 0 0.4em 1em 0
+				list-style-type none
+				border-bottom solid 0.1em
+				border-color white
+				a
+					color white !important
+				.name-user
+					font-size 1.6em
+					font-family "Pacifico"
+				
+				input
+					width 74%
+					padding 0.2em
+					-moz-border-radius 8px
+					border-radius 8px
+					background-image url(../img/lupa-busqueda.png)
+					background-repeat no-repeat
+					background-position right
+					text-indent 0.4em
+					color grey
+					&:active
+					&:focus 
+						background-image none
 	.minus
 		position absolute
 		bottom -30px
@@ -844,14 +866,52 @@ nav
 				.text-resumen-prod
 					text-align left
 			.thumbnail
-				padding 0 16%
+				border 0
+				padding 0.2em 16%
 				a
 					font-size 1.2em
 			#navProducto
 				display none
+			#descripcion
+				border 0
 			#item-producto
 				margin 0.5em 11%
+				.btn-agregar
+					font-size 0.8em
+				h4
+					height auto
 
+			.sin-borde-top
+				border 0
+			#rootwizardCart
+				.nav-tabs
+					font-size 0.9em !important
+					li
+						border-radius 0
+
+		.layerFondo
+			h3
+				font-size 1em
+				margin 0 16%
+				padding 0 2px 2px 2px
+			hr
+				height 2px
+			.container
+				.infoUsuario
+					top 3.0em
+					width 100%
+					.tab-content
+						#como-comprar
+							.panel
+								border 0
+								padding-top 2em
+								.thumbnail
+									border 0
+									border-bottom 1px solid marron
+									margin-bottom 1em
+									text-align center
+								.subtitulo-paso-compra
+									color marron
 
 	.thumbnail
 		border-radius 0

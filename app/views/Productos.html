@@ -41,17 +41,17 @@
 
           <div class="col-sm-12 col-md-4" ng-repeat="p in productos" id="item-producto">
             <div class="thumbnail sin-fondo sin-borde">
-              <img ng-src="/web/m_cart/files/producto/{{p.imagen}}" alt="img1" class="img-circle img-responsive">
+                <img ng-src="/web/m_cart/files/producto/{{p.imagen}}" alt="img1" width="179" height="179" class="img-circle">
               <div class="caption">
                 <h4 class="text-center">{{p.nombre_producto}}</h4>
-                <p class="precio">S/ {{p.precio}}</p>
+                <p class="precio">{{p.precio | currency:'S/.'}}</p>
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
                     <td>
                       <a href="#/detalle-producto/{{p.idproducto}}" role="button"><small>Ver detalle</small></a> 
                     </td>
                     <td class="text-right">
-                      <a class="btn btn-sm btn-block" role="button"
+                      <a class="btn btn-sm btn-block btn-agregar" role="button"
                          ng-click="cart.addItem(p.idproducto, p.nombre_producto, p.imagen, p.precio, 1)">
                           + Agregar a carro
                       </a>
@@ -68,7 +68,7 @@
     </div>
 
   </div>
-
+  <br/><br/>
 
 
 </div>

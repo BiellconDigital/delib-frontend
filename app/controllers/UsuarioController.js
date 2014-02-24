@@ -5,6 +5,7 @@ define(['app'], function (app) {
     var usuarioController = function ($scope, $rootScope, $http, $location, $cookieStore, Auth, userService) {
         var appTitle = 'Usuario';
         $scope.user = Auth.user;
+        $scope.menuSelec = 'Datos personales';
         try {
             $scope.user = angular.copy(Auth.user);
 //            angular.copy(Auth.user, $scope.user);
@@ -37,9 +38,15 @@ define(['app'], function (app) {
             return $location.url();
         };
         
-        $scope.isActiveCate = function (opt) {
-            return $scope.opt === opt;
+        $scope.isActiveMenu = function (opt) {
+            return $scope.menuSelec === opt;
         };
+        
+        $scope.menuActivo = function (menu) {
+            $scope.menuSelec = menu;
+        };
+        
+        
 
 
             $('#navMenuUsuario a').click(function (e) {
@@ -47,23 +54,28 @@ define(['app'], function (app) {
               $(this).tab('show');
             })
             
-                    $("#contenido").backstretch("./img/registro_fondo.jpg");
+//            $('#dropdownMenuUsuario a').click(function (e) {
+//              e.preventDefault()
+//              $(this).tab('show');
+//            })
+            
+            $("#contenido").backstretch("./img/registro_fondo.jpg");
             var $window = $(window).on('resize', function() {
                 //alert($(window).width())
                 if ($(window).width() <= 767) {
                     $('#contenido').height(
-                        ($(window).height() - $('#header').height() - $('#footer').height() - 20) / 2
+                        ($(window).height() - $('#header').height() - $('#footer').height() - 20) / 3 - 25
                     );    
                 } else {
                     $('#contenido').height(
                         $(window).height() - $('#header').height() - $('#footer').height() - 60
                     );    
                 }
-                        $('#navMenuUsuario').height(
-                                $(window).height() - $('#header').height() - $('#footer').height() - 200
-                        );    
-                        $("#contenido").backstretch("./img/registro_fondo.jpg");
-                    }).trigger('resize'); //on page load      
+                $('#navMenuUsuario').height(
+                        $(window).height() - $('#header').height() - $('#footer').height() - 200
+                );    
+                $("#contenido").backstretch("./img/registro_fondo.jpg");
+            }).trigger('resize'); //on page load      
         
     };
 

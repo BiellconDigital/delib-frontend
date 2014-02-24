@@ -24,11 +24,11 @@
 
                                 <table class="table table-bordered table-responsive">
                                     <thead>
-                                      <tr class="well">
+                                        <tr class="well">
                                           <th colspan="2" class="text-center">Descripción del producto</th>
-                                          <th class="text-center">Precio</th>
-                                          <th class="text-center">Cantidad</th>
-                                          <th class="text-center">Eliminar</th>
+                                          <th class="text-center hidden-xs">Precio</th>
+                                          <th class="text-center hidden-xs">Cantidad</th>
+                                          <th class="text-center hidden-xs">Eliminar</th>
                                           <th class="text-center">Sub-total</th>
                                       </tr>
                                     </thead>
@@ -40,24 +40,50 @@
                                             </td>
                                         </tr>
 
-                                        <tr ng-repeat="item in cart.items | orderBy:'name'">
-                                            <td width="20%">
+                                        <tr ng-repeat="item in cart.items | orderBy:'name'" class="fondo-blanco">
+                                            <td width="20%" class="hidden-xs">
                                                 <img ng-src="/web/m_cart/files/producto/{{item.image}}"
                                                      class="img-circle img-responsive center-block">
                                             </td>
-                                            <td width="30%">
-                                                {{item.name}}
+                                            <td width="30%" class="hidden-xs">
+                                                <p>{{item.name}}</p>
                                             </td>
-                                            <td width="12%">
-                                                S/ {{item.price}}
+                                            
+                                            <td width="40%" colspan="2" class="visible-xs">
+                                                <p>{{item.name}}</p>
+                                                <table class="table table-responsive table-bordered">
+                                                    <tr><td>Precio</td><td>Cantidad</td><td>Eliminar</td></tr>
+                                                    <tr>
+                                                        <td>
+                                                            {{item.price | currency:'S/.'}}
+                                                        </td>
+                                                        <td>
+                                                            <input style="width:70px;"
+                                                                class="input-sm text-center" type="number" 
+                                                                ng-model="item.quantity" 
+                                                                ng-change="cart.saveItems();updateOrden();" />
+                                                        </td>
+                                                        <td class="tdCenter" title="remover">
+                                                            <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000);updateOrden();" >
+                                                                <div class="img-eliminar img-responsive center-block">
+
+                                                                </div>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </td>
-                                            <td width="12%">
+                                            
+                                            <td width="12%" class="hidden-xs">
+                                                {{item.price | currency:'S/.'}}
+                                            </td>
+                                            <td width="12%" class="hidden-xs">
                                                 <input style="width:70px;"
                                                     class="input-sm text-center" type="number" 
                                                     ng-model="item.quantity" 
                                                     ng-change="cart.saveItems();updateOrden();" />
                                             </td>
-                                            <td width="12%" class="tdCenter" title="remover">
+                                            <td width="12%" class="tdCenter hidden-xs" title="remover">
                                                 <a href="" ng-click="cart.addItem(item.sku, item.name, item.image, item.price, -10000000);updateOrden();" >
                                                     <div class="img-eliminar img-responsive center-block">
 
@@ -68,23 +94,41 @@
                                                 {{item.price * item.quantity | currency:'S/.'}}
                                             </td>
                                         </tr>
-                                        <tr class="well">
+                                        
+                                        <tr class="well hidden-xs">
                                             <td colspan="4"></td>
                                             <td>Sub-total</td>
                                             <td class="text-right">{{cart.getTotalPrice() | currency:'S/.'}}</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="hidden-xs">
                                             <td colspan="4"></td>
                                             <td class="well">Delivery</td>
                                             <td class="text-right well">{{orden.costoEnvio | currency:'S/.'}}</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="hidden-xs">
                                             <td colspan="4"></td>
                                             <td class="well">Total</td>
                                             <td class="text-right well">{{orden.total | currency:'S/.'}}</td>
                                         </tr>
+                                        
+                                        
+                                        <tr class="well visible-xs">
+                                            <td colspan="2">Sub-total</td>
+                                            <td class="text-right">{{cart.getTotalPrice() | currency:'S/.'}}</td>
+                                        </tr>
+                                        <tr class="visible-xs">
+                                            <td  colspan="2" class="well">Delivery</td>
+                                            <td class="text-right well">{{orden.costoEnvio | currency:'S/.'}}</td>
+                                        </tr>
+                                        <tr  class="visible-xs">
+                                            <td  colspan="2" class="well">Total</td>
+                                            <td class="text-right well">{{orden.total | currency:'S/.'}}</td>
+                                        </tr>
+                                        
                                     </tbody>
                                 </table>
+                                
+                                
 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 text-right">
