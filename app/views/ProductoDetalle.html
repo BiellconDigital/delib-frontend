@@ -94,6 +94,19 @@
                                         <input  id="inputCantidad" class="form-control input-sm" ng-model="cantidadP" />
                                     </div>
                                 </div>
+                                <div ng-if="isNumber(producto.precio1)" class="form-group">
+                                    <label for="inputCantidad" class="col-xs-4 col-sm-4 control-label small">Tipo </label>
+                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                      <select>
+                                        <option value="producto.precio1">
+                                          {{producto.precio1 | currency:'S/.'}}
+                                        </option>
+                                        <option value="producto.precio2">
+                                          {{producto.precio2 | currency:'S/.'}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="col-sm-12 col-md-5">
