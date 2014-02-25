@@ -15,7 +15,7 @@ define(['app'], function (app) {
         $scope.productos = {};
         
         var load = function() {
-            console.log('call load()...');
+//            console.log('call load()...');
             $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'getById', idprod: $stateParams.prodId }})
                     .success(function(data, status, headers, config) {
                         $scope.producto = data.data;
@@ -54,7 +54,7 @@ define(['app'], function (app) {
         }
 
         $scope.isActiveProd = function (prod) {
-            return $scope.producto === prod;
+            return $scope.producto.idproducto === prod;
         }
 
         $scope.deliberatelyTrustDangerousSnippet = function(html) {

@@ -1,6 +1,6 @@
 <div class="container productos" ng-controller="CarroController">
 
-  <div class="row">
+  <div class="row subcontenido">
 
           <div class="col-sm-12 col-md-12">
      
@@ -143,7 +143,7 @@
                                         <a href="#/arreglos">Continuar Comprando</a>
                                     </div>
                                 </div>
-
+                                <br/><br/>
                             </div>
                             
                             
@@ -351,10 +351,10 @@
                                                         </p>
                                                       </div>
                                                       <div ng-if="orden.tipoPago == '1'" class="panel-body">
-                                                        <p>BANCO CONTINENTAL</p>
+                                                        <p>BANCO DE CREDITO</p>
                                                         <p>{{orden.cuentaBanco}}<br/>
-                                                        Código interbancario: 011-58.0245454<br/>
-                                                        A nombre de Delibouquet S.A.C.</p>
+                                                        A nombre de: Retoser SAC Una vez realizado el depósito le agradeceremos nos envíe un correo a ventas@delibouquet.pe indicando su nombre completo, número de orden, fecha del depósito, banco y monto respectivo ó el voucher de pago escaneado. Luego de esto procesaremos su pedido.
+                                                        </p>
                                                         <br/>
                                                         <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
                                                            ng-click="procesarCompra()">Comprar</a>

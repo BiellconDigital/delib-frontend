@@ -15,10 +15,10 @@
           <ul class="nav nav-pills nav-stacked subcategoria-lista"
               ng-if="isActiveCate(cate)">
             <li ng-repeat="prod in productos" class="fondo-cian"
-                ng-class="{'active' : isActiveProd(prod)}">
+                ng-class="{'active' : isActiveProd(prod.idproducto)}">
               <a href="#/detalle-producto/{{prod.idproducto}}"  class="fondo-cian">
                   <div class="pull-right"
-                    ng-class="{'icono-triangulo' : isActiveProd(prod)}">&nbsp;</div>
+                    ng-class="{'icono-triangulo' : isActiveProd(prod.idproducto)}">&nbsp;</div>
                 {{prod.nombre_producto}}
               </a>
             </li>
@@ -60,7 +60,7 @@
                         <p>Precio:</p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-10 text-resumen-prod">
-                        <p>S/. {{producto.precio}}</p>
+                        <p>{{producto.precio | currency:'S/.'}}</p>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-2 label-resumen-prod">
                         <p>Stock:</p>
@@ -110,7 +110,7 @@
                                 </a>
                             </p>
                             <p>
-                                <a href="#" class="btn btn-sm btn-block" role="button">Atrás</a>
+                                <a href="#/arreglos" class="btn btn-sm btn-block" role="button">Atrás</a>
                             </p>
                         </div>
                     </div>

@@ -1,7 +1,9 @@
 <div class="container productos" ng-controller="PedidoDetalleController">
-    <h3>Estado de tu compra</h3>
-    <br/>
-    <div class="row">
+    <div class="row subcontenido">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <h3>Estado de tu compra</h3>
+            <br/>
+        </div>
 
           <div class="col-sm-3 col-md-4">
             <div ng-repeat="p in pedido.detalle | orderBy:'name'">

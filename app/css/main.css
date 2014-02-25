@@ -22,7 +22,7 @@ width 100%{height:100%;max-height:100%;overflow:hidden}
 .categoria-lista{border-top:1px solid #7d6350;padding-bottom:.5em;border-bottom:1px solid #7d6350;}
 .categoria-lista li.active a{border-radius:0;background-color:#7d6350}
 .subcategoria-lista{background-color:#eaf9f9;padding-bottom:.5em;border-bottom:1px solid #7d6350;padding:0 .5em 0 1.2em;}
-.subcategoria-lista li.active a{border-radius:0;font-weight:bold !important}
+.subcategoria-lista li.active a{border-radius:0;color:#7d6350 !important;font-weight:bold !important}
 .sin-padding{padding:0 !important}
 .sin-redondeo{border-radius:0}
 .sin-borde{border:none}
@@ -88,7 +88,8 @@ header .spacer{background:#7d6350;display:block;height:1.5px;margin:1em auto aut
 .content .layerFondo .container .infoUsuario h3{text-align:left;padding:.6em .6em;margin:0}
 .content .layerFondo .container .infoUsuario #navMenuUsuario{color:#fff;padding-right:2.3em;border-right:1px solid #fff;border-bottom:none;height:100%;}
 .content .layerFondo .container .infoUsuario #navMenuUsuario li{font-size:.9em;border-radius:0;border-bottom:1px solid #fff;margin-top:1.8em;}
-.content .layerFondo .container .infoUsuario #navMenuUsuario li a{border-radius:0;height:2.6em;color:#fff;padding-left:.1em}
+.content .layerFondo .container .infoUsuario #navMenuUsuario li a{border-radius:0;height:2.6em;color:#fff;padding-left:.1em;}
+.content .layerFondo .container .infoUsuario #navMenuUsuario li a:hover{color:#7d6350;background-color:#eaf9f9}
 .content .layerFondo .container .infoUsuario #navMenuUsuario li.active{background-color:#eaf9f9;}
 .content .layerFondo .container .infoUsuario #navMenuUsuario li.active a{background-color:#eaf9f9;color:#7d6350}
 .content .layerFondo .container .infoUsuario .tab-content{color:#fff;}

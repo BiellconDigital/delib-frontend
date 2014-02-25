@@ -11,7 +11,7 @@ define(['app'], function (app) {
         $scope.razonesCompra = null;
         $scope.orden.costoEnvio = 15.00;
         $scope.orden.subTotal = dataService.cart.getTotalPrice();
-        $scope.orden.cuentaBanco = "Cta. cte. No 8472847382478374";
+        $scope.orden.cuentaBanco = "Cta. Cte. No. 193 - 2100552 - 0 - 96";
         $scope.horaDespacho = userService.cartUser.listHoraDespacho();
         
         $scope.updateOrden = function() {
