@@ -5,6 +5,8 @@ define(['app'], function (app) {
     var productoDetalleController = function ($scope, $rootScope, $sce, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
+//        $scope.precio = 0;
+        $scope.isNumber = angular.isNumber;
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
         }
@@ -69,7 +71,11 @@ define(['app'], function (app) {
                     });
         }
 
-
+        
+        $scope.changePrecio = function(precio) {
+//            alert(precio);
+            $scope.producto.precio = angular.copy(precio);
+        }
         
             $('#navProducto a').click(function (e) {
               e.preventDefault()
