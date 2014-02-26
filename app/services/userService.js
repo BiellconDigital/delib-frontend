@@ -43,7 +43,7 @@ define(['app'], function (app) {
         };
         
         cartFactory.listUbigeo = function(success) {
-            $http.get($rootScope.appUrl + '/cart', {params: {operacion : 'distritos'}}).success(function(data) {
+            $http.get($rootScope.appUrl + '/distrito').success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en la consulta.";
@@ -54,7 +54,7 @@ define(['app'], function (app) {
         };
         
         cartFactory.listOrdenTipo = function(success) {
-            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'razon_compra'}}).success(function(data) {
+            $http.get($rootScope.appUrl + '/orden-tipo').success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en la consulta.";

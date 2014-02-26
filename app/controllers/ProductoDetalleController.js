@@ -22,6 +22,10 @@ define(['app'], function (app) {
                     .success(function(data, status, headers, config) {
                         $scope.producto = data.data;
                         angular.copy($scope.producto, $scope.copy);
+
+                        if (angular.isNumber($scope.producto.precio1) 
+                                && angular.isNumber($scope.producto.precio2))
+                            $scope.producto.precio = 0.0;
                         
                         if (!$rootScope.categorias_producto) {
                             $http.get($rootScope.appUrl + '/producto-categoria')

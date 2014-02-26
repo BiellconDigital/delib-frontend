@@ -69,11 +69,27 @@
                         <p>{{producto.cantidad}} unidades</p>
                     </div>
                     
-                    <div class="col-xs-6 col-sm-6 col-md-2 label-resumen-prod visible-xs">
+                    <div class="col-xs-6 label-resumen-prod visible-xs">
                         <p>Cantidad</p>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 text-resumen-prod visible-xs">
-                        <p><input  id="inputCantidad" class="form-control input-sm" ng-model="cantidadP" /></p>
+                    <div class="col-xs-6 text-resumen-prod visible-xs">
+                        <p><input type="number" id="inputCantidad" class="form-control input-sm" ng-model="cantidadP" /></p>
+                    </div>
+                    
+                    <div class="col-xs-6 label-resumen-prod visible-xs">
+                        <p>Tipo</p>
+                    </div>
+                    <div class="col-xs-6 text-resumen-prod visible-xs">
+                        <div ng-if="isNumber(producto.precio1) && isNumber(producto.precio2)" class="form-group">
+                            <select class="form-control input-sm" ng-model="precio" ng-change="changePrecio(precio)">
+                              <option ng-value="producto.precio1">
+                                Chocolate Clásico - {{producto.precio1 | currency:'S/.'}}
+                              </option>
+                              <option ng-value="producto.precio2">
+                                Chocolate montblanc - {{producto.precio2 | currency:'S/.'}}
+                              </option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="col-sm-3 col-md-7 text-resumen-prod hidden-xs">
@@ -91,13 +107,13 @@
                                 <div class="form-group">
                                     <label for="inputCantidad" class="col-xs-4 col-sm-4 control-label small">Cantidad </label>
                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <input  id="inputCantidad" class="form-control input-sm" ng-model="cantidadP" />
+                                        <input type="number" id="inputCantidad" class="form-control input-sm" ng-model="cantidadP" />
                                     </div>
                                 </div>
                                 <div ng-if="isNumber(producto.precio1) && isNumber(producto.precio2)" class="form-group">
                                     <label for="inputPrecio" class="col-xs-4 col-sm-4 control-label small">Tipo </label>
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <select ng-model="precio" ng-change="changePrecio(precio)">
+                                    <div class="col-xs-4 col-sm-8 col-md-8">
+                                        <select class="form-control input-sm" ng-model="precio" ng-change="changePrecio(precio)">
                                         <option ng-value="producto.precio1">
                                           Chocolate Clásico - {{producto.precio1 | currency:'S/.'}}
                                         </option>
@@ -112,13 +128,17 @@
                         <div class="col-sm-12 col-md-5">
                             <p>
                                 <a href="" class="btn btn-sm btn-block" role="button"
-                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, 1); showCart()">
+                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP); showCart()"
+                                   ng-disabled="!isNumber(cantidadP) || cantidadP <= 0 || producto.precio <= 0"
+                                   ng-model="btnComprar">
                                     Comprar
                                 </a>
                             </p>
                             <p>
                                 <a href="" class="btn btn-sm btn-block" role="button"
-                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP)">
+                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP)"
+                                   ng-disabled="!isNumber(cantidadP) || cantidadP <= 0 ||  producto.precio <= 0"
+                                   ng-model="btnSeguirComprando">
                                     Seguir comprando
                                 </a>
                             </p>
