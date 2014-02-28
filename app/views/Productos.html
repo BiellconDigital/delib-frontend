@@ -44,7 +44,22 @@
                 <img ng-src="/web/m_cart/files/producto/{{p.imagen}}" alt="img1" width="179" height="179" class="img-circle">
               <div class="caption">
                 <h4 class="text-center">{{p.nombre_producto}}</h4>
-                <p class="precio">{{p.precio | currency:'S/.'}}</p>
+                
+                <p ng-if="!isNumber(p.precio1) || !isNumber(p.precio2)" class="precio">
+                    {{p.precio | currency:'S/.'}}
+                </p>
+
+                <div ng-if="isNumber(p.precio1) && isNumber(p.precio2)" ng-init="p.precio = 0">
+                    <select class="form-control input-sm btn-primary" ng-model="precio" ng-change="changePrecio(p, precio)">
+                      <option ng-value="p.precio1">
+                        Chocolate Clásico - {{p.precio1 | currency:'S/.'}}
+                      </option>
+                      <option ng-value="p.precio2">
+                        Chocolate montblanc - {{p.precio2 | currency:'S/.'}}
+                      </option>
+                    </select>
+                </div>
+                
                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                   <tr>
                     <td>
@@ -52,7 +67,8 @@
                     </td>
                     <td class="text-right">
                       <a class="btn btn-sm btn-block btn-agregar" role="button"
-                         ng-click="cart.addItem(p.idproducto, p.nombre_producto, p.imagen, p.precio, 1)">
+                         ng-click="cart.addItem(p.idproducto, p.nombre_producto, p.imagen, p.precio, 1)"
+                         ng-disabled="p.precio <= 0">
                           + Agregar a carro
                       </a>
                     </td>

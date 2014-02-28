@@ -9,6 +9,7 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         }
 
+        $scope.isNumber = angular.isNumber;
         $scope.categoriaSelec = null;
         $scope.cateID;
         $scope.cart = dataService.cart;
@@ -51,6 +52,9 @@ define(['app'], function (app) {
             return $scope.categoriaSelec === cate;
         }
 
+        $scope.changePrecio = function(p, precio) {
+            p.precio = angular.copy(precio);
+        }
 
         
     };
