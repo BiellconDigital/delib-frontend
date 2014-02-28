@@ -174,10 +174,12 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
         var ctr = i + 1;
+        var pricePaypal = 0;
         data["item_number_" + ctr] = item.sku;
         data["item_name_" + ctr] = item.name;
         data["quantity_" + ctr] = item.quantity;
-        data["amount_" + ctr] = item.price.toFixed(2);
+        pricePaypal = item.price/2.80;
+        data["amount_" + ctr] = pricePaypal.toFixed(2);
     }
 
     // build form
