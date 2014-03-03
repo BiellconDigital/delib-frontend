@@ -22,6 +22,7 @@ define(['app'], function (app) {
                     .success(function(data, status, headers, config) {
                         $scope.productos = data.data;
                         angular.copy($scope.productos, $scope.copy);
+
                     });
 
             $http.get($rootScope.appUrl + '/producto-categoria')

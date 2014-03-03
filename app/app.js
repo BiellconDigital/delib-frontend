@@ -187,20 +187,23 @@ define(['services/routeResolver'], function () {
                     console.log("no auth...");
 //                    console.log(toState.data.access);
                     
-                    $rootScope.error = "Seems like you tried accessing a route you don't have access to...";
+                    $rootScope.error = "No tienes los permisos suficientes para esta opción.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
                     event.preventDefault();
                     
-                    if(fromState.url === '^') {
+                    //if(fromState.url === '^') {
                         if(Auth.isLoggedIn()) {
                             console.log("ir a home...");
                             $state.go('user.perfil');
                         }
                         else {
                             console.log("ir a login...");
-                            $rootScope.error = null;
+                            //$rootScope.error = null;
                             $state.go('anon.login');
                         }
-                    }
+                    //}
                 }
             });
 

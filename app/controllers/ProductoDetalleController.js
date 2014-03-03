@@ -23,8 +23,8 @@ define(['app'], function (app) {
                         $scope.producto = data.data;
                         angular.copy($scope.producto, $scope.copy);
 
-                        if (angular.isNumber($scope.producto.precio1) 
-                                && angular.isNumber($scope.producto.precio2))
+                        if ($scope.producto.precio1 > 0 
+                                && $scope.producto.precio2 > 0)
                             $scope.producto.precio = 0.0;
                         
                         if (!$rootScope.categorias_producto) {

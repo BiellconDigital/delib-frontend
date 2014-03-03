@@ -38,12 +38,12 @@
                 <ul>
                     <li class="first">
                         Bienvenido! &nbsp;
-                        <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
-                        <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                        <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                        <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
                                 
                     </li>
                     <li>
-                        <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">Iniciar sesión</a>
+                        <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">Iniciar sesión</a>
                         <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">Cerrar sesión</a>
                     </li>
                     <li><input placeholder="Delibouquet" /> </li>
@@ -138,26 +138,26 @@
                     </div>
                     <div class="menu">
                         <ul class="menuDerecha">
-                            <li><a ui-sref="public.delibouquet" ng-class="{'text-bold' : isActiveMenu('/delibouquet/')}" ng-click="selectMenu('/delibouquet/')">
+                            <li><a ui-sref="public.delibouquet" ng-class="{'color-active' : isActiveMenu('/delibouquet/')}" ng-click="selectMenu('/delibouquet/')">
                                     Delibouquet
                             </a></li>
-                            <li><a ui-sref="public.arreglos" ng-class="{'text-bold' : isActiveMenu('/arreglos/')}" ng-click="selectMenu('/arreglos/')">
+                            <li><a ui-sref="public.arreglos" ng-class="{'color-active' : isActiveMenu('/arreglos/')}" ng-click="selectMenu('/arreglos/')">
                                     Arreglos
                             </a></li>
                         </ul>
                         <ul class="menuIzquierda">
-                            <li><a ui-sref="user.pedidos" ng-class="{'text-bold' : isActiveMenu('/pedidos/')}" ng-click="selectMenu('/pedidos/')">Pedidos</a></li>
-                            <li><a ui-sref="public.contacto" ng-class="{'text-bold' : isActiveMenu('/contacto/')}" ng-click="selectMenu('/contacto/')">Contacto</a></li>
+                            <li><a ui-sref="user.pedidos" ng-class="{'color-active' : isActiveMenu('/pedidos/')}" ng-click="selectMenu('/pedidos/')">Pedidos</a></li>
+                            <li><a ui-sref="public.contacto" ng-class="{'color-active' : isActiveMenu('/contacto/')}" ng-click="selectMenu('/contacto/')">Contacto</a></li>
                         </ul>   
                     </div>          
                     <div class="carrito-header">
                         <div class="carrito-header-cont">
                             <div class="text-login">
                                 Bienvenido! 
-                                <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
-                                <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
                                 
-                                <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'text-bold' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">iniciar sesión</a>
+                                <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">iniciar sesión</a>
                                 <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">cerrar sesión</a>
                             </div>
                             <div class="carrito-logo" ng-click="showCart()">
@@ -169,7 +169,7 @@
                 </nav>
                 <header id="header">
                     <div class="logo">
-                        <a ui-sref="public.home" ng-class="{'text-bold' : isActiveMenu('/')}" ng-click="selectMenu('/')">
+                        <a ui-sref="public.home" ng-class="{'color-active' : isActiveMenu('/')}" ng-click="selectMenu('/')">
                             <img src="img/logotipo.png" />      
                         </a>
                     </div>
