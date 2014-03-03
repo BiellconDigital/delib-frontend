@@ -71,7 +71,18 @@ define(['app'], function (app) {
         };
         
         cartFactory.procesarCompra = function(orden, items, success) {
-            $http.post($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
+            $http.put($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.confirmarPagoPayPal = function(idOrden, codigoTransaccion, success) {
+            $http.post($rootScope.appUrl + '/cart', {operacion: 'confirmar_paypal', idOrden: idOrden, codigoTransaccion: codigoTransaccion}).success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en el procesamiento de la compra.";

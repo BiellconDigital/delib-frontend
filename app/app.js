@@ -91,7 +91,8 @@ define(['services/routeResolver'], function () {
                 })
                 .state('user.perfil', route.resolve('/usuario', 'Usuario'))
                 .state('user.pedido', route.resolve('/pedido/:idpedido', 'PedidoDetalle'))
-                .state('user.pedidos', route.resolve('/pedidos', 'Pedidos'));
+                .state('user.pedidos', route.resolve('/pedidos', 'Pedidos'))
+                .state('user.confirmacion_compra', route.resolve('/confirmacion-compra', 'CarroConfirmacion'));
 //                .state('user.perfil', {
 //                    url: '/usuario',
 //                    templateUrl: VarsApp.baseUrl + '/views/Usuario.html'

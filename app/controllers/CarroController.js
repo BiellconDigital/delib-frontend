@@ -13,6 +13,7 @@ define(['app'], function (app) {
         $scope.orden.subTotal = dataService.cart.getTotalPrice();
         $scope.orden.cuentaBanco = "Cta. Cte. No. 193 - 2100552 - 0 - 96";
         $scope.horaDespacho = userService.cartUser.listHoraDespacho();
+        $rootScope.idUltimaOrden = 0;
         
         $scope.updateOrden = function() {
             $scope.orden.total = $scope.orden.costoEnvio + $scope.cart.getTotalPrice();
@@ -34,11 +35,17 @@ define(['app'], function (app) {
         }
         load();
         
-        $scope.procesarCompra = function() {
+        $scope.procesarCompra = function(tipoPago) {
             $scope.cartUser.procesarCompra($scope.orden, $scope.cart.items,
                 function(resp) {
-                    $scope.cart.clearItems();
-                    $location.path('/arreglos');
+                    $rootScope.idUltimaOrden = resp.idOrden;
+                    $rootScope.tipoPago = tipoPago;
+                    if (tipoPago === 2) {
+                        cart.checkout('PayPal');
+                    } else if (tipoPago === 1) {
+                        $scope.cart.clearItems();
+                        $location.path('/confirmacion-compra');
+                    }
                 }
              );
         }

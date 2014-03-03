@@ -344,8 +344,8 @@
                                                         <p class="">
                                                             <a 
                                                                 class=""
-                                                                ng-click="cart.checkout('PayPal')"
-                                                                ng-disabled="cart.getTotalCount() < 1" >
+                                                                ng-click="procesarCompra(2)"
+                                                                ng-disabled="cart.getTotalCount() < 1 || !carroForm.$valid" >
                                                                 <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
                                                             </a>    
                                                         </p>
@@ -357,7 +357,7 @@
                                                         </p>
                                                         <br/>
                                                         <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
-                                                           ng-click="procesarCompra()">Comprar</a>
+                                                           ng-click="procesarCompra(1)">Comprar</a>
                                                       </div>
 
                                                 </div>
