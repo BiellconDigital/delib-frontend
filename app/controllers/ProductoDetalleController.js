@@ -15,6 +15,7 @@ define(['app'], function (app) {
         $scope.cateID;
         $scope.cart = dataService.cart;
         $scope.productos = {};
+         $scope.likeURL = $sce.trustAsResourceUrl('http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.delibouquet.pe%2Fcart%2Findex.html%23%2Fdetalle-producto%2F' + $stateParams.prodId + '&width&layout=standard&action=like&show_faces=false&share=false&height=80');
         
         var load = function() {
 //            console.log('call load()...');
