@@ -2,16 +2,16 @@
 
 define(['services/routeResolver'], function () {
 
-    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
+    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'routeResolverServices', 'ezfb']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         'routeResolverProvider', 
         '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', 
-        '$httpProvider',
+        '$httpProvider', '$FBProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider,
                 routeResolverProvider, 
                 $controllerProvider, $compileProvider, $filterProvider, $provide, 
-                $httpProvider) {
+                $httpProvider, $FBProvider) {
 
             //Change default views and controllers directory using the following:
             //routeResolverProvider.routeConfig.setBaseDirectories('/app/views', '/app/controllers');
@@ -24,6 +24,11 @@ define(['services/routeResolver'], function () {
                 factory: $provide.factory,
                 service: $provide.service
             };
+
+    $FBProvider.setLocale('es_LA');
+    $FBProvider.setInitParams({
+        appId: '299461200206662'
+    });  
 
             //Define routes - controllers will be loaded dynamically
             var route = routeResolverProvider.route;

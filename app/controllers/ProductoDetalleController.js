@@ -2,9 +2,10 @@
 
 define(['app'], function (app) {
 
-    var productoDetalleController = function ($scope, $rootScope, $sce, $stateParams, $filter, $http, $location, dataService) {
+    var productoDetalleController = function ($scope, $rootScope, $window, $sce, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
+        $scope.pageUrl = $window.location.href;
 //        $scope.precio = 0;
         $scope.isNumber = angular.isNumber;
         $scope.highlight = function (path) {
@@ -88,6 +89,6 @@ define(['app'], function (app) {
             })
     };
 
-    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$sce', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
+    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$window', '$sce', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
     
 });

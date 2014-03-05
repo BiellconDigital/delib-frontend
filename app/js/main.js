@@ -18,6 +18,7 @@ require(
         'services/dataService',
         'services/userService',
         'directives/accessLevel',
+        'directives/fbLike',
         'filters/parserDate',
         'controllers/InitController'
     ],

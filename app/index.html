@@ -1,12 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta property="og:image" content="http://www.delibouquet.pe/cart/img/logotipo.png" />
         <title>Delibouquet</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-
+        <script>document.write('<base href="' + document.location + '" />');</script>
+      
         <link rel="stylesheet" href="css/intro.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/normalize.css">
@@ -21,15 +23,6 @@
         <script src="lib/jquery.bootstrap.wizard.min.js"></script>
     </head>
     <body data-ng-controller="InitController" data-ng-cloak>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=697528830298390";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
 
 
         <!-- MENU DERECHA PARA MOVILES -->
@@ -254,6 +247,7 @@
       <!-- <script src="lib/angular/angular-route.js"></script> -->
       <script src="lib/angular/angular-cookies.min.js"></script>
       <script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+      <script src="lib/angular-easyfb.min.js"></script>
 
       <script src="lib/q.min.js"></script>
         
