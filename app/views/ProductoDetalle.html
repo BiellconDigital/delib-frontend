@@ -16,8 +16,9 @@
           <ul class="nav nav-pills nav-stacked subcategoria-lista"
               ng-if="isActiveCate(cate)">
             <li ng-repeat="prod in productos" class="fondo-cian"
-                ng-class="{'active' : isActiveProd(prod.idproducto)}">
-              <a href="#/detalle-producto/{{prod.idproducto}}"  class="fondo-cian">
+                ng-class="{'color-active' : isActiveProd(prod.idproducto)}">
+              <a href="#/detalle-producto/{{prod.idproducto}}"  class="fondo-cian"
+                ng-class="{'color-active' : isActiveProd(prod.idproducto)}">
                   <div class="pull-right"
                     ng-class="{'icono-triangulo-rojo' : isActiveProd(prod.idproducto)}">&nbsp;</div>
                 {{prod.nombre_producto}}
@@ -136,7 +137,7 @@
                         <div class="col-sm-12 col-md-5">
                             <p>
                                 <a href="" class="btn btn-sm btn-block" role="button"
-                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP); showCart()"
+                                   ng-click="agregarProducto(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP); showCart()"
                                    ng-disabled="!isNumber(cantidadP) || cantidadP <= 0 || producto.precio <= 0"
                                    ng-model="btnComprar">
                                     Comprar
@@ -144,7 +145,7 @@
                             </p>
                             <p>
                                 <a href="" class="btn btn-sm btn-block" role="button"
-                                   ng-click="cart.addItem(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP)"
+                                   ng-click="agregarProducto(producto.idproducto, producto.nombre_producto, producto.imagen, producto.precio, cantidadP)"
                                    ng-disabled="!isNumber(cantidadP) || cantidadP <= 0 ||  producto.precio <= 0"
                                    ng-model="btnSeguirComprando">
                                     Seguir comprando

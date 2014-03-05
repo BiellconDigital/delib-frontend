@@ -31,12 +31,12 @@
                 <ul>
                     <li class="first">
                         Bienvenido! &nbsp;
-                        <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
-                        <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                        <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse')}" ng-click="selectMenu('/registrarse')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                        <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil')}" ng-click="selectMenu('/perfil')"><span class="name-user">{{user.username}}&nbsp;</span></a>
                                 
                     </li>
                     <li>
-                        <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">Iniciar sesión</a>
+                        <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login')}" ng-click="selectMenu('/login')">Iniciar sesión</a>
                         <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">Cerrar sesión</a>
                     </li>
                     <li><input placeholder="Delibouquet" /> </li>
@@ -45,7 +45,12 @@
                             <img src="img/carro-de-compra-mobil.png">  {{cart.getTotalCount()}} &nbsp; Producto(s)
                         </a>
                     </li>
-                    <li><img src="img/facebook3.png"></li>
+                    <li>
+                        <a target="_blank"
+                            href="https://www.facebook.com/Delibouquet">
+                        <img src="img/facebook3.png">
+                        </a>
+                    </li>
                 </ul>
             </div>
             <a onclick="manageOverlay();"><img class="minus" src="img/cabecera-menos-mobil.png" ></a>
@@ -57,26 +62,26 @@
             <li ng-class="{'active' : isActiveMenu('/')}">
                 <a ui-sref="public.home" ng-click="selectMenu('/')" onclick="toggleMenu();">Inicio</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/delibouquet/')}">
-                <a ui-sref="public.delibouquet" ng-click="selectMenu('/delibouquet/')" onclick="toggleMenu();">Delibouquet</a>
+            <li ng-class="{'active' : isActiveMenu('/delibouquet')}">
+                <a ui-sref="public.delibouquet" ng-click="selectMenu('/delibouquet')" onclick="toggleMenu();">Delibouquet</a>
             </li>
             <li ng-class="{'active' : isActiveMenu('/arreglos/')}">
                 <a ui-sref="public.arreglos" ng-click="selectMenu('/arreglos/')" onclick="toggleMenu();">Arreglos</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/pedidos/')}">
-                <a ui-sref="user.pedidos" ng-click="selectMenu('/pedidos/')" onclick="toggleMenu();">Pedidos</a>
+            <li ng-class="{'active' : isActiveMenu('/pedidos')}">
+                <a ui-sref="user.pedidos" ng-click="selectMenu('/pedidos')" onclick="toggleMenu();">Pedidos</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/contacto/')}">
-                <a ui-sref="public.contacto" ng-click="selectMenu('/contacto/')" onclick="toggleMenu();">Contacto</a>
+            <li ng-class="{'active' : isActiveMenu('/contacto')}">
+                <a ui-sref="public.contacto" ng-click="selectMenu('/contacto')" onclick="toggleMenu();">Contacto</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/politicas/')}">
-                <a ui-sref="public.politicas" ng-click="selectMenu('/politicas/')" onclick="toggleMenu();">Políticas</a>
+            <li ng-class="{'active' : isActiveMenu('/politicas')}">
+                <a ui-sref="public.politicas" ng-click="selectMenu('/politicas')" onclick="toggleMenu();">Políticas</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/delivery/')}">
-                <a ui-sref="public.delivery" ng-click="selectMenu('/delivery/')" onclick="toggleMenu();">Delivery</a>
+            <li ng-class="{'active' : isActiveMenu('/delivery')}">
+                <a ui-sref="public.delivery" ng-click="selectMenu('/delivery')" onclick="toggleMenu();">Delivery</a>
             </li>
-            <li ng-class="{'active' : isActiveMenu('/formas_pago/')}">
-                <a ui-sref="public.formas_pago" ng-click="selectMenu('/formas_pago/')" onclick="toggleMenu();">Formas de pago</a>
+            <li ng-class="{'active' : isActiveMenu('/formas_pago')}">
+                <a ui-sref="public.formas_pago" ng-click="selectMenu('/formas_pago')" onclick="toggleMenu();">Formas de pago</a>
             </li>
           </ul>
         </div>
@@ -119,7 +124,11 @@
                 <nav id="nav-prin">
                     <div class="info-head">
                         <div class="logo-fb">
-                            <div class="logo-fb-img"></div>
+                        <a target="_blank"
+                            href="https://www.facebook.com/Delibouquet">
+
+                            <div class="logo-fb-img" ng-></div>
+                        </a>
                         </div>
                         <div class="text-delivery">
                             Delívery
@@ -131,7 +140,7 @@
                     </div>
                     <div class="menu">
                         <ul class="menuDerecha">
-                            <li><a ui-sref="public.delibouquet" ng-class="{'color-active' : isActiveMenu('/delibouquet/')}" ng-click="selectMenu('/delibouquet/')">
+                            <li><a ui-sref="public.delibouquet" ng-class="{'color-active' : isActiveMenu('/delibouquet')}" ng-click="selectMenu('/delibouquet')">
                                     Delibouquet
                             </a></li>
                             <li><a ui-sref="public.arreglos" ng-class="{'color-active' : isActiveMenu('/arreglos/')}" ng-click="selectMenu('/arreglos/')">
@@ -139,18 +148,18 @@
                             </a></li>
                         </ul>
                         <ul class="menuIzquierda">
-                            <li><a ui-sref="user.pedidos" ng-class="{'color-active' : isActiveMenu('/pedidos/')}" ng-click="selectMenu('/pedidos/')">Pedidos</a></li>
-                            <li><a ui-sref="public.contacto" ng-class="{'color-active' : isActiveMenu('/contacto/')}" ng-click="selectMenu('/contacto/')">Contacto</a></li>
+                            <li><a ui-sref="user.pedidos" ng-class="{'color-active' : isActiveMenu('/pedidos')}" ng-click="selectMenu('/pedidos')">Pedidos</a></li>
+                            <li><a ui-sref="public.contacto" ng-class="{'color-active' : isActiveMenu('/contacto')}" ng-click="selectMenu('/contacto')">Contacto</a></li>
                         </ul>   
                     </div>          
                     <div class="carrito-header">
                         <div class="carrito-header-cont">
                             <div class="text-login">
                                 Bienvenido! 
-                                <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse/')}" ng-click="selectMenu('/registrarse/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
-                                <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil/')}" ng-click="selectMenu('/perfil/')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                <a ui-sref="anon.registrarse" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/registrarse')}" ng-click="selectMenu('/registrarse')"><span class="name-user">{{user.username}}&nbsp;</span></a>
+                                <a ui-sref="user.perfil" data-access-level='accessLevels.user' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/perfil')}" ng-click="selectMenu('/perfil')"><span class="name-user">{{user.username}}&nbsp;</span></a>
                                 
-                                <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login/')}" ng-click="selectMenu('/login/')">iniciar sesión</a>
+                                <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login')}" ng-click="selectMenu('/login')">iniciar sesión</a>
                                 <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">cerrar sesión</a>
                             </div>
                             <div class="carrito-logo" ng-click="showCart()">
@@ -162,7 +171,8 @@
                 </nav>
                 <header id="header">
                     <div class="logo">
-                        <a ui-sref="public.home" ng-class="{'color-active' : isActiveMenu('/')}" ng-click="selectMenu('/')">
+                        <a ui-sref="public.home" ng-class="{'color-active' : isActiveMenu('/')}" ng-click="selectMenu('/')"
+                            >
                             <img src="img/logotipo.png" />      
                         </a>
                     </div>
@@ -179,13 +189,13 @@
                         </h3>
                         <div class="footer-content">
                             <div class="links linea-separacion">
-                                <a ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas/')}" ng-click="selectMenu('/politicas/')">Políticas</a>
+                                <a ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas')}" ng-click="selectMenu('/politicas')">Políticas</a>
                             </div>
                             <div class="links linea-separacion" >
-                                <a ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery/')}" ng-click="selectMenu('/delivery/')">Delivery</a>
+                                <a ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery')}" ng-click="selectMenu('/delivery')">Delivery</a>
                             </div>
                             <div class="links" >
-                                <a ui-sref="public.formas_pago" ng-class="{'text-bold' : isActiveMenu('/formas_pago/')}" ng-click="selectMenu('/formas_pago/')">Formas de pago</a>
+                                <a ui-sref="public.formas_pago" ng-class="{'text-bold' : isActiveMenu('/formas_pago')}" ng-click="selectMenu('/formas_pago')">Formas de pago</a>
                             </div>
 
                         </div>

@@ -45,6 +45,7 @@ define(['app'], function (app) {
         }
 
         $scope.selectMenu($location.path());
+        //console.log($location.path());
         //$scope.isActiveMenu($location.path());
         
         

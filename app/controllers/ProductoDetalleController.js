@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productoDetalleController = function ($scope, $rootScope, $window, $sce, $stateParams, $filter, $http, $location, dataService) {
+    var productoDetalleController = function ($scope, $rootScope, $timeout, $window, $sce, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Detalle Producto';
         $scope.appTitle = appTitle;
         $scope.pageUrl = $window.location.href;
@@ -87,8 +87,26 @@ define(['app'], function (app) {
               e.preventDefault()
               $(this).tab('show');
             })
+
+        $scope.agregarProducto = function(idproducto, nombre_producto, imagen, precio, cantidad) {
+            result = $scope.cart.addItem(idproducto, nombre_producto, imagen, precio, cantidad);
+
+            if (result === "new") {
+                $rootScope.error = "Se agregó nuevo producto al carro de compras.";
+                $timeout(function() {
+                    $rootScope.error = null;
+                }, 4000);
+            } else if (result === "edit") {
+                $rootScope.error = "Se aumentó el producto al carro de compras.";
+                $timeout(function() {
+                    $rootScope.error = null;
+                }, 4000);
+            };
+        }
+
+
     };
 
-    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$window', '$sce', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
+    app.register.controller('ProductoDetalleController', ['$scope', '$rootScope', '$timeout', '$window', '$sce', '$stateParams', '$filter', '$http', '$location', 'dataService', productoDetalleController]);
     
 });

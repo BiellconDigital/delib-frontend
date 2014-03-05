@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var productosController = function ($scope, $rootScope, $stateParams, $filter, $http, $location, dataService) {
+    var productosController = function ($scope, $rootScope, $timeout, $stateParams, $filter, $http, $location, dataService) {
         var appTitle = 'Productos';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -57,9 +57,25 @@ define(['app'], function (app) {
             p.precio = angular.copy(precio);
         }
 
+        $scope.agregarProducto = function(idproducto, nombre_producto, imagen, precio, cantidad) {
+            result = $scope.cart.addItem(idproducto, nombre_producto, imagen, precio, cantidad);
+
+            if (result === "new") {
+                $rootScope.error = "Se agregó nuevo producto al carro de compras.";
+                $timeout(function() {
+                    $rootScope.error = null;
+                }, 4000);
+            } else if (result === "edit") {
+                $rootScope.error = "Se aumentó el producto al carro de compras.";
+                $timeout(function() {
+                    $rootScope.error = null;
+                }, 4000);
+            };
+        }
+
         
     };
 
-    app.register.controller('ProductosController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'dataService', productosController]);
+    app.register.controller('ProductosController', ['$scope', '$rootScope', '$timeout', '$stateParams', '$filter', '$http', '$location', 'dataService', productosController]);
     
 });

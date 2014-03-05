@@ -51,6 +51,7 @@ shoppingCart.prototype.saveItems = function () {
 // adds an item to the cart
 shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
     quantity = this.toNumber(quantity);
+    result = null;
     if (quantity != 0) {
 
         // update quantity for existing item
@@ -63,6 +64,7 @@ shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
                 if (item.quantity <= 0) {
                     this.items.splice(i, 1);
                 }
+                result = "edit";
             }
         }
 
@@ -70,11 +72,13 @@ shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
         if (!found) {
             var item = new cartItem(sku, name, image, price, quantity);
             this.items.push(item);
+            result = "new";
         }
 
         // save changes
         this.saveItems();
     }
+    return result;
 }
 
 // get the total price for all items currently in the cart
