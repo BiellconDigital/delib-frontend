@@ -1,0 +1,68 @@
+<div class="layerFondo contenido" id='contenido' ng-controller="RegistrarseController">
+    
+  <h3>Registro de Usuario</h3>
+  <hr/>
+  <div class="container">
+    <div class="row infoUsuario">
+
+      <div class="panel panel-default">
+          <div class="panel-body small">
+              <form class="form-horizontal" role="form" name="editUserForm">
+                <div class="form-group">
+                  <label for="email" class="col-sm-1 col-md-1 control-label text-left">Email:</label>
+                  <div class="col-sm-4 col-md-4">
+                      <input required type="email" class="form-control input-sm" name="email" placeholder="email" ng-model="user.email">
+                  </div>
+                  <label for="emailConfir" class="col-sm-3 col-md-3 control-label text-left">Confirmar email:</label>
+                  <div class="col-sm-4 col-md-4">
+                      <input type="email" class="form-control input-sm" id="emailConfir" placeholder="confirmar email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="nombre" class="col-sm-4 col-md-4 control-label text-left">Nombre y apellidos:</label>
+                  <div class="col-sm-8 col-md-8">
+                      <input required type="text" class="form-control input-sm" id="nombre" 
+                             ng-model="user.username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="fechaNacimiento" class="col-sm-4 col-md-4 control-label text-left">Fecha de nacimiento:</label>
+                  <div class="col-sm-8 col-md-4">
+                      <input required type="date" class="form-control input-sm" name="fechaNacimiento"
+                             ng-model="user.fechaNacimiento">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="telefono" class="col-sm-4 col-md-4 control-label text-left">Teléfono de casa:</label>
+                  <div class="col-sm-4 col-md-4">
+                      <input type="text" class="form-control input-sm" id="telefono"
+                             ng-model="user.telefonoCasa">
+                  </div>
+                  <div class="col-sm-4 col-md-4">
+                       (cod área - número)
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="celular" class="col-sm-4 col-md-4 control-label text-left">Celular:</label>
+                  <div class="col-sm-4 col-md-4">
+                      <input type="text" class="form-control input-sm" id="celular"
+                             ng-model="user.movil">
+                  </div>
+                  <div class="col-sm-4 col-md-4">
+                       (sólo va numero)
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-8 col-sm-4">
+                      <button type="submit" class="btn btn-block" ng-click="guardarUsuario()"
+                            ng-disabled="!editUserForm.$valid">Guardar</button>
+                  </div>
+                </div>
+              </form>
+          </div>
+      </div>
+
+
+    </div>
+  </div>  
+</div>  

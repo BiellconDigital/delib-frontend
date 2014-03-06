@@ -41,7 +41,8 @@ define(['app'], function (app) {
                     $rootScope.idUltimaOrden = resp.idOrden;
                     $rootScope.tipoPago = tipoPago;
                     if (tipoPago === 2) {
-                        cart.checkout('PayPal');
+                        console.log("invocar paypal...");
+                        $scope.cart.checkout('PayPal');
                     } else if (tipoPago === 1) {
                         $scope.cart.clearItems();
                         $location.path('/confirmacion-compra');

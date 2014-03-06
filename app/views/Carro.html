@@ -209,14 +209,8 @@
                                                             <label for="despacho_estandar" class="col-sm-5 col-md-5 control-label text-left">
                                                                 Despacho estándar*:
                                                             </label>
-                                                            <div class="col-sm-4 col-md-4">
+                                                            <div class="col-sm-7 col-md-6">
                                                                 <input type="date" required class="form-control input-sm" ng-model="orden.fechaEnvio">
-                                                            </div>
-                                                            <div class="col-sm-3 col-md-3">
-                                                                <select required class="form-control input-sm"
-                                                                         ng-options="hora as hora.descripcion for hora in horaDespacho" 
-                                                                         ng-model="orden.hora">
-                                                                </select>
                                                             </div>
                                                               
                                                           </div>
@@ -248,7 +242,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="thumbnail sin-redondeo small" id="resumen-cart-despacho">
-                                            <table class="table table-responsive">
+                                            <table class="table" width="310">
                                                 <tr>
                                                     <td colspan="2">
                                                         <div ng-repeat="item in cart.items | orderBy:'name'">
@@ -368,7 +362,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="thumbnail sin-redondeo small" id="resumen-cart-pago">
-                                            <table class="table table-responsive">
+                                            <table class="table" width="310">
                                                 <tr>
                                                     <td colspan="2">
                                                         <div ng-repeat="item in cart.items | orderBy:'name'">
