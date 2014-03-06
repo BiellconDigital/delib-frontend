@@ -17,6 +17,7 @@ define(['app'], function (app) {
                 userService.cartUser.getPedido($rootScope.idUltimaOrden,
                     function(resp) {
                         $scope.pedido = resp.data;
+                        console.log("lista de pedido por banco");
                     }
                  );
                 $rootScope.tipoPago = 0;
@@ -32,6 +33,7 @@ define(['app'], function (app) {
                             function(resp) {
                                 $scope.pedido = resp.data;
                                 $rootScope.tipoPago = 0;
+                                console.log("lista de pedido por paypal");
                             }
                          );
                     }

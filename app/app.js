@@ -182,8 +182,8 @@ define(['services/routeResolver'], function () {
     }]);
 
     //Only needed for Breeze. Maps Q (used by default in Breeze) to Angular's $q to avoid having to call scope.$apply() 
-    app.run(['$q', '$rootScope', '$state', 'Auth',
-        function ($q, $rootScope, $state, Auth) {
+    app.run(['$q', '$rootScope', '$timeout', '$state', 'Auth',
+        function ($q, $rootScope, $timeout, $state, Auth) {
             //$rootScope.$apply();
             //breeze.core.extendQ($rootScope, $q);
 

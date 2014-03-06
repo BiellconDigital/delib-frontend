@@ -49,7 +49,8 @@
                     {{p.precio | currency:'S/.'}}
                 </p>
 
-                <div ng-if="isNumber(p.precio1) && isNumber(p.precio2) && p.precio1 > 0 && p.precio2 > 0" ng-init="p.precio = 0">
+                <div ng-if="isNumber(p.precio1) && isNumber(p.precio2) && p.precio1 > 0 && p.precio2 > 0" ng-init="p.precio = 0"
+                     class="select-precio">
                     <select class="form-control input-sm btn-primary" 
                     ng-init="precio=p.precio1;changePrecio(p, precio);"
 
