@@ -28,9 +28,15 @@ define(['app'], function (app) {
                 return user.role.title == userRoles.user.title || user.role.title == userRoles.admin.title;
             },
             register: function(user, success, error) {
-                $http.post('/register', user).success(function(res) {
-                    changeUser(res);
-                    success();
+                $http.post($rootScope.appUrl + '/registro', {operacion: 'new_user', user: user}).success(function(res) {
+                    //changeUser(res);
+                    success(res);
+                }).error(error);
+            },
+            activation: function(user, key, success, error) {
+                $http.put($rootScope.appUrl + '/registro', {operacion: 'activation_user', user: user, key: key}).success(function(res) {
+                    //changeUser(res);
+                    success(res);
                 }).error(error);
             },
             login: function(user, success, error) {

@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var registrarseController = function ($scope, $rootScope, $http, $location, $cookieStore, Auth, userService) {
+    var registrarseController = function ($scope, $rootScope, $timeout, $http, $location, Auth) {
         var appTitle = 'registrarse';
         $scope.user = {};
 
@@ -12,16 +12,27 @@ define(['app'], function (app) {
         }
         
         $scope.guardarUsuario = function() {
-            userService.user.saveUser($scope.user,
+            $scope.user.role = routingConfig.userRoles.user;
+            Auth.register($scope.user,
                 function(resp) {
                     try {
-                        alert("Su información se registró correctamente.");
+                        alert("Su información se registró correctamente. Se envío un email para la activación de su cuenta.");
+                        $location.path("/");
 //                        $cookieStore.put('user', Auth.user);
 //                        angular.copy($scope.user, Auth.user);
                     } catch (e) {
 
                     }
                 }
+                , function(err) {
+                    $rootScope.error = "Error en el registro.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+//                        console.log("time out");
+                    }, 4000);
+                    //$timeout.cancel(timeError);
+                }
+                        
              );
         }
         
@@ -30,47 +41,23 @@ define(['app'], function (app) {
             return $location.url();
         };
         
-        $scope.isActiveMenu = function (opt) {
-            return $scope.menuSelec === opt;
-        };
-        
-        $scope.menuActivo = function (menu) {
-            $scope.menuSelec = menu;
-        };
-        
-        
-
-
-            $('#navMenuregistrarse a').click(function (e) {
-              e.preventDefault()
-              $(this).tab('show');
-            })
-            
-//            $('#dropdownMenuregistrarse a').click(function (e) {
-//              e.preventDefault()
-//              $(this).tab('show');
-//            })
-            
-            $("#contenido").backstretch("./img/registro_fondo.jpg");
-            var $window = $(window).on('resize', function() {
-                //alert($(window).width())
-                if ($(window).width() <= 767) {
-                    $('#contenido').height(
-                        ($(window).height() - $('#header').height() - $('#footer').height() - 20) / 3 - 25
-                    );    
-                } else {
-                    $('#contenido').height(
-                        $(window).height() - $('#header').height() - $('#footer').height() - 60
-                    );    
-                }
-                $('#navMenuregistrarse').height(
-                        $(window).height() - $('#header').height() - $('#footer').height() - 200
+        $("#contenido").backstretch("./img/registro_fondo.jpg");
+        var $window = $(window).on('resize', function() {
+            //alert($(window).width())
+            if ($(window).width() <= 767) {
+                $('#contenido').height(
+                    ($(window).height() - $('#header').height() - $('#footer').height() - 20) / 3 - 25
                 );    
-                $("#contenido").backstretch("./img/registro_fondo.jpg");
-            }).trigger('resize'); //on page load      
+            } else {
+                $('#contenido').height(
+                    $(window).height() - $('#header').height() - $('#footer').height() - 80
+                );    
+            }
+            $("#contenido").backstretch("./img/registro_fondo.jpg");
+        }).trigger('resize'); //on page load      
         
     };
 
-    app.register.controller('RegistrarseController', ['$scope', '$rootScope', '$http', '$location', '$cookieStore', 'Auth', 'userService', registrarseController]);
+    app.register.controller('RegistrarseController', ['$scope', '$rootScope', '$timeout', '$http', '$location', 'Auth', registrarseController]);
     
 });

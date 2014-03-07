@@ -20,7 +20,7 @@ define(['app'], function (app) {
 function initialize() {
 	var myLatlng = new google.maps.LatLng(-12.1443000,-77.0180000);
 	var mapOptions = {
-		zoom: 16,
+		zoom: 17,
 		center: myLatlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}

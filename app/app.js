@@ -83,7 +83,8 @@ define(['services/routeResolver'], function () {
                     }
                 })
                 .state('anon.login', route.resolve('/login', 'Login'))
-                .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'));
+                .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'))
+                .state('anon.activacion_cuenta', route.resolve('/activacion/:user/:key', 'ActivacionCuenta'));
 
             // Regular user routes
             $stateProvider

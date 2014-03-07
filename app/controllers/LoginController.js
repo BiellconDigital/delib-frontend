@@ -48,7 +48,7 @@ define(['app'], function (app) {
                             );    
             } else {
                             $('#contenido').height(
-                                    $(window).height() - $('#header').height() - $('#footer').height() - 72
+                                    $(window).height() - $('#header').height() - $('#footer').height() - 69
                             );    
             }
             $("#contenido").backstretch("./img/registro_fondo.jpg");
