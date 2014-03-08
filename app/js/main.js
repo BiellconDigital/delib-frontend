@@ -19,6 +19,7 @@ require(
         'services/userService',
         'directives/accessLevel',
         'directives/fbLike',
+        'directives/fallbackSrc',
         'filters/parserDate',
         'controllers/InitController'
     ],

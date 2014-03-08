@@ -14,40 +14,41 @@
 					<div class="col-sm-6 col-md-9">
 						<form class="form-horizontal" role="form" name="loginUserForm">
 
-							  <div class="form-group">
-							    <label for="inputEmail" class="col-sm-3 control-label">Correo: </label>
-							    <div class="col-sm-9">
-                                                                <input type="email" required class="form-control" id="inputEmail" placeholder="Email"
-                                                                       ng-model="username">
-							    </div>
-							  </div>
-							  <div class="form-group">
-							    <label for="inputPassword" class="col-sm-3 control-label">Clave: &nbsp;</label>
-							    <div class="col-sm-9">
-                                                                <input type="password" required class="form-control" id="inputPassword" placeholder="Password"
-                                                                       ng-model="password">
-                                                                <input type="hidden" ng-model="rememberme" name="rememberme"/>
-                                                                
-							    </div>
-							  </div>
+						  <div class="form-group">
+						    <label for="inputEmail" class="col-sm-3 control-label">Correo: </label>
+						    <div class="col-sm-9">
+                                <input type="email" required class="form-control" id="inputEmail" placeholder="Email"
+                                       ng-model="username">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword" class="col-sm-3 control-label">Clave: &nbsp;</label>
+						    <div class="col-sm-9">
+                                <input type="password" required class="form-control" id="inputPassword" placeholder="Password"
+                                       ng-model="password">
+                                <input type="hidden" ng-model="rememberme" name="rememberme"/>
+						    </div>
+						  </div>
 <!--							  <div class="form-group">
-                                                            <label>
-                                                              <input type="radio" ng-model="rememberme" name="rememberme" id="rememberme">
-                                                                   Recordarme 
-                                                            </label>
-							  </div>-->
-							  <div class="form-group">
-							    <div class="col-sm-offset-6 col-sm-6">
-							      <button type="submit" ng-disabled="!loginUserForm.$valid"
-                                                                      class="btn btn-block" ng-click="login()">Ingresar</button>
-							    </div>
-							  </div>
-							  <div class="form-group">
-							    <div class="col-sm-offset-3 col-sm-9">
-						    		<br/>
-                                                                <a href="#" id="buttonRecuClave" class="btn-block">¿Olvidaste tu clave?</a>
-							    </div>
-							  </div>
+                                                        <label>
+                                                          <input type="radio" ng-model="rememberme" name="rememberme" id="rememberme">
+                                                               Recordarme 
+                                                        </label>
+						  </div>-->
+						  <div class="form-group">
+						    <div class="col-sm-offset-6 col-sm-6">
+						      <button type="submit" ng-disabled="!loginUserForm.$valid"
+                                                                  class="btn btn-block" ng-click="login()">Ingresar</button>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <div class="col-sm-offset-3 col-sm-9">
+				    		<br/>
+                            <a href="#" id="buttonRecuClave" class="btn-block"
+                            	data-toggle="modal" data-target="#modalRecuperarClave">¿Olvidaste tu clave?</a>
+
+						    </div>
+						  </div>
 						</form>
 					</div>
 				</div>
@@ -68,4 +69,40 @@
 		</div>
 	</div>
 
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalRecuperarClave" tabindex="-111" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Recuperar Clave</h4>
+      </div>
+      <div class="modal-body">
+      	<p>Ingresa tu email con la cual te registraste y te enviaremos tu nueva clave a tu buzón.</p>
+		<form class="form-horizontal" role="form" name="recuperarClaveForm">
+		  <div class="form-group">
+		    <label for="inputEmailRec" class="col-sm-3 control-label">Correo: </label>
+		    <div class="col-sm-9">
+                <input type="email" required class="form-control" id="inputEmailRec" placeholder="Email"
+                       ng-model="emailRecu">
+		    </div>
+		  </div>
+		</form>
+        
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">
+			Cerrar
+		</button>
+		<button type="submit" ng-disabled="!recuperarClaveForm.$valid"
+		  class="btn btn-primary" ng-click="recuperarClave()">
+		  Enviar
+		</button>
+      </div>
+    </div>
+  </div>
 </div>

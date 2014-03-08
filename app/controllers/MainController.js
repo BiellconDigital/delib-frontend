@@ -11,7 +11,10 @@ define(['app'], function (app) {
 
            $("#banner").backstretch([
                 "./img/banner-portada.jpg"
-              , "./img/banner-about.jpg"
+              , "./img/banner-portada.jpg"
+              , "./img/banner-portada.jpg"
+              , "./img/banner-portada.jpg"
+              , "./img/banner-portada.jpg"
             ], {duration: 3000, fade: 750});          
 
           var $window = $(window).on('resize', function() {

@@ -32,7 +32,7 @@ function initialize() {
 	   // '<h2 id="firstHeading" class="firstHeading">Maido Mitsuharu</h2>'+
 	    '<div id="bodyContent">'+
 		'<div class="foto_mapa"></div>' +
-	    '<p class="text_map">Amor Amar Jr. Garcia y Garcia 175<br/>' +
+	    '<p class="text-marron">Amor Amar Jr. Garcia y Garcia 175<br/>' +
 		'	Barranco - Lima, Perú <br/>' +
 		'	Teléfonos: (511)241-8724 / 241 8142 <br/>' +
 		'	Email: <a href="mailto:informes@delibouquet.pe">informes@delibouquet.pe</a> </p>'

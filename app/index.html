@@ -184,21 +184,15 @@
                 </section>
             </div>
            <footer id="footer">
-                        <div class="footer-content">
-                            <div class="links linea-separacion">
-                                <a ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas')}" ng-click="selectMenu('/politicas')">Políticas</a>
-                            </div>
-                            <div class="links linea-separacion" >
-                                <a ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery')}" ng-click="selectMenu('/delivery')">Delivery</a>
-                            </div>
-                            <div class="links" >
-                                <a ui-sref="public.formas_pago" ng-class="{'text-bold' : isActiveMenu('/formas_pago')}" ng-click="selectMenu('/formas_pago')">Formas de pago</a>
-                            </div>
-
-                        </div>
                         <h3>
                             Powered by 3.0 Consulting Group
                         </h3>
+                        <div class="footer-content">
+                                <a class="links linea-separacion" ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas')}" ng-click="selectMenu('/politicas')">Políticas</a>
+                                <a class="links linea-separacion" ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery')}" ng-click="selectMenu('/delivery')">Delivery</a>
+                                <a class="links" ui-sref="public.formas_pago" ng-class="{'text-bold' : isActiveMenu('/formas_pago')}" ng-click="selectMenu('/formas_pago')">Formas de pago</a>
+
+                        </div>
             </footer>
         </div>
         <div id="alertBox" class="alert alert-danger" data-ng-show="error">

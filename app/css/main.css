@@ -37,11 +37,10 @@ ul.nav-stacked li a{padding-right:.3em}
 .fondo-blanco{background-color:#fff}
 .fondo-cian{background-color:#eaf9f9 !important}
 .color-active{color:#452d14 !important}
-footer{background:#7d6350;color:#fff;padding:.2em 0;text-align:center;width:100%;position:absolute;margin:0;bottom:-1px;display:block;z-index:4;height:35px;right:0;line-height:35px;}
-footer h3{position:absolute;font-size:.4em;font-weight:normal;line-height:20px;margin:auto;width:40%;margin-right:14%;right:0;text-align:right;z-index:5}
-footer .footer-content{position:absolute;margin:auto 1%;z-index:6;margin-left:12%;width:60%;}
-footer .footer-content .links{float:left;margin:4px 0;width:12%;height:17px;line-height:17px;z-index:6;font-size:.4em;}
-footer .footer-content .links a{color:#fff;font-weight:normal}
+footer{background:#7d6350;color:#fff;padding:0;text-align:center;width:100%;position:absolute;margin:0;bottom:-1px;display:block;z-index:4;height:35px;right:0;line-height:35px;}
+footer h3{position:absolute;font-size:.4em;font-weight:normal;line-height:20px;margin:auto;width:70%;margin-right:15%;padding-top:.6em;right:0;text-align:right;z-index:10}
+footer .footer-content{position:relative;margin:0 auto;text-align:center;padding:0;width:99%;z-index:6;}
+footer .footer-content a.links{padding:.4em .8em;margin:0 2px;height:30px;line-height:30px;font-size:.4em;color:#fff;font-weight:normal}
 footer .footer-content .linea-separacion{border-right:1px solid #fff}
 header .logo{text-align:center;margin:3em auto auto auto;width:190px;}
 header .logo a{border:none;}
@@ -113,11 +112,11 @@ nav{margin-top:0;position:relative;display:none;}
 nav .menu{position:absolute;margin-top:4.9em;width:85%}
 nav .info-head{position:absolute;margin-left:14%;margin-top:.1em;width:210px;float:none;}
 nav .info-head .logo-fb{margin:0 23px 1px 0;float:left;width:31px;height:30px;}
-nav .info-head .logo-fb .logo-fb-img{float:none;background-image:url("../img/facebook.png");width:31px;height:31px;cursor:pointer}
+nav .info-head .logo-fb .logo-fb-img{float:none;background-image:url("../img/facebook.png");width:25px;height:25px;cursor:pointer}
 nav .info-head .logo-fb .logo-fb-img:hover{background-position:bottom left}
 nav .info-head .nro-delivery{background-image:url("../img/fondo-num-telf-deli.png");width:121px;height:23px;margin:0 14px 1px 0;text-indent:.7em;color:#fff;font-size:1.1em;line-height:1.6em;float:left}
 nav .info-head .text-delivery{margin:0 14px 1px 0;width:100px;float:left;line-height:2.2em;color:#7d6350}
-nav .info-head .logo-delivery{margin:0 4px 1px 0;float:left}
+nav .info-head .logo-delivery{margin:2px 9px 0 0;float:left}
 nav .carrito-header{margin-right:14%;float:right;margin-top:.4em;}
 nav .carrito-header .carrito-header-cont{float:none;color:#7d6350;width:360px;font-size:.9em;}
 nav .carrito-header .carrito-header-cont div{float:right}
