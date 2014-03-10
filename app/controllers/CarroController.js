@@ -13,7 +13,7 @@ define(['app'], function (app) {
         $scope.orden.subTotal = dataService.cart.getTotalPrice();
         $scope.orden.cuentaBanco = "Cta. Cte. No. 193 - 2100552 - 0 - 96";
         $scope.horaDespacho = userService.cartUser.listHoraDespacho();
-        $rootScope.idUltimaOrden = 0;
+//        $rootScope.idUltimaOrden = 0;
         
         $scope.updateOrden = function() {
             $scope.orden.total = $scope.orden.costoEnvio + $scope.cart.getTotalPrice();
@@ -38,10 +38,13 @@ define(['app'], function (app) {
         $scope.procesarCompra = function(tipoPago) {
             $scope.cartUser.procesarCompra($scope.orden, $scope.cart.items,
                 function(resp) {
-                    $rootScope.idUltimaOrden = resp.idOrden;
+                    localStorage['ultCompraId'] =  resp.idOrden;
+                    localStorage['ultCompraTipo'] = tipoPago;
+/*                    $rootScope.idUltimaOrden = resp.idOrden;
                     $rootScope.tipoPago = tipoPago;
-                    if (tipoPago === 2) {
+*/                    if (tipoPago === 2) {
                         console.log("invocar paypal...");
+                        $scope.cart.setCostoEnvio($scope.orden.costoEnvio);
                         $scope.cart.checkout('PayPal');
                     } else if (tipoPago === 1) {
                         $scope.cart.clearItems();

@@ -6,6 +6,7 @@ function shoppingCart(cartName) {
     this.clearCart = false;
     this.checkoutParameters = {};
     this.items = [];
+    this.costoEnvio = 0;
 
     // load items from local storage when initializing
     this.loadItems();
@@ -186,6 +187,16 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         data["amount_" + ctr] = pricePaypal.toFixed(2);
     }
 
+    if (this.costoEnvio > 0) {
+        var ctr = i + 1;
+        var pricePaypal = 0;
+        data["item_number_" + ctr] = 0;
+        data["item_name_" + ctr] = "Costo de envío";
+        data["quantity_" + ctr] = 1;
+        pricePaypal = this.costoEnvio/2.80;
+        data["amount_" + ctr] = pricePaypal.toFixed(2);
+    }
+
     // build form
     var form = $('<form/></form>');
     //form.attr("action", "https://www.paypal.com/cgi-bin/webscr");
@@ -346,3 +357,10 @@ function cartItem(sku, name, image, price, quantity) {
     this.quantity = quantity * 1;
 }
 
+shoppingCart.prototype.setCostoEnvio = function(monto) {
+    this.costoEnvio = monto;
+}
+
+shoppingCart.prototype.getCostoEnvio = function () {
+    return this.costoEnvio;
+}
