@@ -33,16 +33,19 @@ define(['app'], function (app) {
         
         $scope.showCart = function() {
             $location.path( "/carro-de-compra");
-        }
+        };
         
+        $scope.buscarProductos = function() {
+            $location.path( "/arreglos_busqueda/" + $scope.textSearch);
+        };
         
         $scope.selectMenu = function (menu) {
             $scope.menu = menu;
-        }
+        };
         
         $scope.isActiveMenu = function (menu) {
             return $scope.menu === menu;
-        }
+        };
 
         $scope.selectMenu($location.path());
         //console.log($location.path());

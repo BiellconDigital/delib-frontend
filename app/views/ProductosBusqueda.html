@@ -1,45 +1,16 @@
-<div class="container productos" ng-controller="ProductosController">
+<div class="container productos" ng-controller="ProductosBusquedaController">
 
   <div class="row subcontenido">
 
-    <div class="col-sm-6 col-md-3">
-
-      <ul class="nav nav-pills nav-stacked hidden-xs categoria-lista">
-        <li ng-repeat="cate in categorias_producto" 
-            ng-class="{'active' : isActiveCate(cate)}">
-          <a href="javascript:void(0)" ng-click="loadProductos(cate)" >
-              <div class="pull-right" 
-                ng-class="{'icono-triangulo' : isActiveCate(cate)}">&nbsp;</div>
-            {{cate.descripcion}}
-          </a>
-        </li>
-      </ul>
-
-      <div class="visible-xs" id="select-categoria">
-        <select class="form-control"
-                ng-options="cate2 as cate2.descripcion for cate2 in categorias_producto" 
-                ng-model="selectedCate" ng-change="loadProductos(selectedCate);isActiveCate(selectedCate)">
-         </select>
-
-        <br/>
-      </div>
-
-    </div>
-
-    <div class="col-sm-6 col-md-9">
+    <div class="col-sm-12 col-md-12">
       <div class="row">
 
-          <div ng-if="categoriaSelec == null"
-              class="col-sm-12 col-md-12 text-center titulo-bar">
-            Todos
-          </div>
-          <div ng-if="categoriaSelec != null"
-              class="col-sm-12 col-md-12 text-center titulo-bar">
-            {{categoriaSelec.descripcion}}
+          <div class="col-sm-12 col-md-12 text-center titulo-bar">
+            Resultado de búsqueda de {{querySearch}} : {{total}} coincidencias
           </div>
 
 
-          <div class="col-sm-12 col-md-4" ng-repeat="p in productos" id="item-producto">
+          <div class=" col-xs-12 col-sm-6 col-md-4" ng-repeat="p in productos" id="item-producto">
             <div class="thumbnail sin-fondo sin-borde">
                 <img fallback-src="img/sin-imagen.png"
                   ng-src="/web/m_cart/files/producto/{{p.imagen}}" 

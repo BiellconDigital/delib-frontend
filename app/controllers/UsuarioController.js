@@ -31,7 +31,28 @@ define(['app'], function (app) {
                     }
                 }
              );
-        }
+        };
+        
+        $scope.cambiarClave = function() {
+            console.log(Auth.user);
+            if ($scope.userChange.claveNueva === $scope.userChange.claveNuevaConf) {
+                userService.user.changePassword(Auth.user.idCliente, $scope.userChange.clave, $scope.userChange.claveNueva,
+                    function(resp) {
+                        try {
+                            alert(resp.msg);
+                        } catch (e) {
+
+                        }
+                    }
+                 );
+            } else {
+                $rootScope.error = "La clave Nueva y su confirmación no coinciden.";
+                $timeout(function() {
+                    $rootScope.error = null;
+                }, 4000);
+            }
+     
+        };
         
         
         $scope.path = function() {

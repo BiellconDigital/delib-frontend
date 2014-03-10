@@ -10,7 +10,6 @@ define(['app'], function (app) {
         };
         
         var resp = null;
-        
         $scope.login = function() {
             Auth.login({
                     username: $scope.username,

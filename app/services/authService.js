@@ -65,7 +65,12 @@ define(['app'], function (app) {
                     success();
                 }).error(error);
             },
-            accessLevels: accessLevels,
+            retrieveKey : function (email, success, error) {
+                $http.put($rootScope.appUrl + '/login', {operacion: 'retrieve_key', email: email}).success(function(res) {
+                    success(res);
+                }).error(error);
+            }
+            ,accessLevels: accessLevels,
             userRoles: userRoles,
             user: currentUser
         };

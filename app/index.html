@@ -39,7 +39,11 @@
                         <a ui-sref="anon.login" data-access-level='accessLevels.anon' ui-sref-active="active" ng-class="{'color-active' : isActiveMenu('/login')}" ng-click="selectMenu('/login')">Iniciar sesión</a>
                         <a href="" data-ng-click="logout()" data-access-level='accessLevels.user' ui-sref-active="active">Cerrar sesión</a>
                     </li>
-                    <li><input placeholder="Delibouquet" /> </li>
+                    <li>
+                        <form ng-submit="buscarProductos()">
+                            <input ng-model="textSearch" placeholder="Delibouquet"/>
+                        </form>
+                    </li>
                     <li>
                         <a class="carrito-logo" ng-click="showCart()">
                             <img src="img/carro-de-compra-mobil.png">  {{cart.getTotalCount()}} &nbsp; Producto(s)
@@ -89,14 +93,14 @@
 
         <div class="container">
             <div class="wrapper">
-                <div id="modalLoading" class="modal fade" role="dialog">
+                <div id="myModal" class="modal fade" role="dialog">
                   <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h4 class="modal-title">Cargando</h4>
                       </div>
                       <div class="modal-body">
-                        <p>Cargando, espere por favor...</p>
+                        <p>Cargando, espere un momento por favor...</p>
                       </div>
 
                     </div>
@@ -165,7 +169,10 @@
                             <div class="carrito-logo" ng-click="showCart()">
                                 {{cart.getTotalCount()}}
                             </div>
-                            <input/>
+                            
+                            <form ng-submit="buscarProductos()">
+                                <input ng-model="textSearch"/>
+                            </form>
                         </div>
                     </div>
                 </nav>
@@ -188,10 +195,9 @@
                             Powered by 3.0 Consulting Group
                         </h3>
                         <div class="footer-content">
-                                <a class="links linea-separacion" ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas')}" ng-click="selectMenu('/politicas')">Políticas</a>
-                                <a class="links linea-separacion" ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery')}" ng-click="selectMenu('/delivery')">Delivery</a>
+                                <a class="links linea-separacion" ui-sref="public.politicas" ng-class="{'text-bold' : isActiveMenu('/politicas')}" ng-click="selectMenu('/politicas')">Políticas</a> &nbsp; | &nbsp;
+                                <a class="links linea-separacion" ui-sref="public.delivery" ng-class="{'text-bold' : isActiveMenu('/delivery')}" ng-click="selectMenu('/delivery')">Delivery</a> &nbsp; | &nbsp;
                                 <a class="links" ui-sref="public.formas_pago" ng-class="{'text-bold' : isActiveMenu('/formas_pago')}" ng-click="selectMenu('/formas_pago')">Formas de pago</a>
-
                         </div>
             </footer>
         </div>
@@ -260,4 +266,5 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
+    
 </html>

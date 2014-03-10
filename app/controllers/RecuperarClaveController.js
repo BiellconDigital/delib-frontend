@@ -2,8 +2,8 @@
 
 define(['app'], function (app) {
 
-    var registrarseController = function ($scope, $rootScope, $timeout, $http, $location, Auth) {
-        var appTitle = 'registrarse';
+    var recuperarClaveController = function ($scope, $rootScope, $timeout, $http, $location, Auth) {
+        var appTitle = 'recuperarClave';
         $scope.user = {};
 
         $scope.appTitle = appTitle;
@@ -11,35 +11,24 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         }
         
-        $scope.guardarUsuario = function() {
-            $scope.user.role = routingConfig.userRoles.user;
-            Auth.register($scope.user,
+        $scope.recuperarClave = function() {
+            Auth.retrieveKey($scope.user.email,
                 function(resp) {
                     try {
-                        alert("Su información se registró correctamente. Se envío un email para la activación de su cuenta.");
+                        alert(resp.msg);
                         $location.path("/");
-//                        $cookieStore.put('user', Auth.user);
-//                        angular.copy($scope.user, Auth.user);
                     } catch (e) {
-
                     }
                 }
                 , function(err) {
-                    $rootScope.error = "Error en el registro.";
+                    $rootScope.error = err.msg;
                     $timeout(function() {
                         $rootScope.error = null;
-//                        console.log("time out");
                     }, 4000);
-                    //$timeout.cancel(timeError);
                 }
-                        
              );
         }
         
-        
-        $scope.path = function() {
-            return $location.url();
-        };
         
         $("#contenido").backstretch("./img/registro_fondo.jpg");
         var $window = $(window).on('resize', function() {
@@ -50,7 +39,7 @@ define(['app'], function (app) {
                 );    
             } else {
                 $('#contenido').height(
-                    $(window).height() - $('#header').height() - $('#footer').height() - 62
+                    $(window).height() - $('#header').height() - $('#footer').height() - 60
                 );    
             }
             $("#contenido").backstretch("./img/registro_fondo.jpg");
@@ -58,6 +47,6 @@ define(['app'], function (app) {
         
     };
 
-    app.register.controller('RegistrarseController', ['$scope', '$rootScope', '$timeout', '$http', '$location', 'Auth', registrarseController]);
+    app.register.controller('RecuperarClaveController', ['$scope', '$rootScope', '$timeout', '$http', '$location', 'Auth', recuperarClaveController]);
     
 });

@@ -18,6 +18,18 @@ define(['app'], function (app) {
             });
         };
         
+        userFactory.changePassword = function (idCliente, clave, claveNueva, success) {
+            return $http.put($rootScope.appUrl + '/cliente', { operacion : 'change_password', idCliente: idCliente 
+                    , clave: clave, claveNueva: claveNueva})
+                    .success(function(data, status, headers, config) {
+                        success(data);
+                }).error(function(err) {
+                    $rootScope.error = err.msg;
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
 
 
         userFactory.login = function (usuario, clave) {

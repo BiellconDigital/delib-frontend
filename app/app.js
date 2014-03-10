@@ -67,6 +67,7 @@ define(['services/routeResolver'], function () {
                 .state('public.carro_compra', route.resolve('/carro-de-compra', 'Carro'))
                 .state('public.contacto', route.resolve('/contacto', 'Contacto'))
                 .state('public.arreglos', route.resolve('/arreglos/{cateId}', 'Productos'))//[/:cateId]
+                .state('public.arreglos_busqueda', route.resolve('/arreglos_busqueda/{query}', 'ProductosBusqueda'))//[/:cateId]
                 .state('public.detalle_producto', route.resolve('/detalle-producto/{prodId}', 'ProductoDetalle'))
                 .state('public.delibouquet', route.resolve('/delibouquet', 'Delibouquet'))
                 .state('public.politicas', route.resolve('/politicas', 'Politicas'))
@@ -84,6 +85,7 @@ define(['services/routeResolver'], function () {
                 })
                 .state('anon.login', route.resolve('/login', 'Login'))
                 .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'))
+                .state('anon.recuperar_clave', route.resolve('/recuperar-clave', 'RecuperarClave'))
                 .state('anon.activacion_cuenta', route.resolve('/activacion/:user/:key', 'ActivacionCuenta'));
 
             // Regular user routes

@@ -9,13 +9,12 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         };
 
-           $("#banner").backstretch([
-                "./img/banner-portada.jpg"
-              , "./img/banner-portada.jpg"
-              , "./img/banner-portada.jpg"
-              , "./img/banner-portada.jpg"
-              , "./img/banner-portada.jpg"
-            ], {duration: 3000, fade: 750});          
+//           $("#banner").backstretch([
+//                "./img/banner-portada.jpg"
+////              , "./img/banner-portada.jpg"
+//            ], {duration: 3000, fade: 100});          
+
+           $("#banner").backstretch("./img/banner-portada.jpg");
 
           var $window = $(window).on('resize', function() {
             $('#contenido').height(
