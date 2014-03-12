@@ -29,6 +29,13 @@ define(['app'], function (app) {
                                 && $scope.producto.precio2 > 0)
                             $scope.producto.precio = 0.0;
                         
+                        $http.get($rootScope.appUrl + '/producto', {params: { operacion : 'get_galeria', idprod: $stateParams.prodId }})
+                                .success(function(data, status, headers, config) {
+                                    $scope.productoGaleria = data.data;
+                                    angular.copy($scope.productoGaleria, $scope.copy);
+                                });
+                        
+                        
                         if (!$rootScope.categorias_producto) {
                             $http.get($rootScope.appUrl + '/producto-categoria')
                                     .success(function(data, status, headers, config) {
