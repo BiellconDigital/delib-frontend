@@ -6,7 +6,7 @@
       <div class="row">
 
           <div class="col-sm-12 col-md-12 text-center titulo-bar">
-            Resultado de búsqueda de {{querySearch}} : {{total}} coincidencias
+            Resultado de búsqueda de "{{querySearch}}" : {{total}} coincidencias
           </div>
 
 
@@ -30,7 +30,7 @@
                     ng-model="precio" ng-change="changePrecio(p, precio)">
                       <option ng-value="p.precio1"
                         ng-selected="true">
-                        Chocolate Clásico - {{p.precio1 | currency:'S/.'}}
+                        Chocolate Lindt - {{p.precio1 | currency:'S/.'}}
                       </option>
                       <option ng-value="p.precio2">
                         Chocolate Montblanc - {{p.precio2 | currency:'S/.'}}

@@ -37,7 +37,11 @@ ul.nav-stacked li a{padding-right:.3em}
 .fondo-blanco{background-color:#fff}
 .fondo-cian{background-color:#eaf9f9 !important}
 .color-active{color:#452d14 !important}
-.flechas-carrusel{font-size:2em;vertical-align:center;line-height:165px;height:165px;text-decoration:normal}
+.flechas-carrusel{font-size:2em;vertical-align:center;line-height:165px;height:165px;text-decoration:normal;padding-top:25%}
+.flecha-izquierda{float:none;background-image:url("../img/flecha-izquierda.png");width:25px;height:43px;cursor:pointer}
+.flecha-izquierda:hover{background-position:bottom left}
+.flecha-derecha{float:none;background-image:url("../img/flecha-derecha.png");background-position:bottom right;width:25px;height:43px;cursor:pointer}
+.flecha-derecha:hover{background-position:top right}
 footer{background:#7d6350;color:#fff;padding:0;text-align:center;width:100%;position:absolute;margin:0;bottom:-1px;display:block;z-index:4;height:35px;right:0;line-height:35px;}
 footer h3{position:absolute;font-size:.4em;font-weight:normal;line-height:20px;margin:auto;margin-right:15%;padding-top:.6em;right:0;text-align:right;z-index:10}
 footer .footer-content{font-size:.42em;position:relative;margin:0;text-align:center;padding:0 !important;width:100%;z-index:6;height:33px;}
