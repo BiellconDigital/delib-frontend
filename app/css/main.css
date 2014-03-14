@@ -59,6 +59,7 @@ header .spacer{background:#7d6350;display:block;height:1.5px;margin:1em auto aut
 .content .productos .sin-fondo .select-precio{margin-bottom:.1em}
 .content .productos .img-eliminar{float:none;background-image:url("../img/eliminar.png");width:59px;height:58px;cursor:pointer;background-position:bottom left}
 .content .productos .img-eliminar:hover{background-position:top left}
+.content .productos #item-producto{height:22.4em;}
 .content .productos #item-producto h4{height:2.4em}
 .content .about{background-color:#fff;color:#7d6350;font-family:"mangal";margin-top:-6.8em;margin-left:14%;margin-right:14%;padding:19px;position:relative;text-align:center;z-index:20;}
 .content .about h3{color:#7d6350;font-size:1.5em;font-family:"Pacifico";padding-bottom:35px;font-weight:normal}
@@ -238,6 +239,7 @@ nav .menu .menuDerecha li:nth-child(odd){margin-right:5.6em}
 .content .contenido .text{top:25%;font-size:5.3em}
 .content .about{margin-top:-4.6em}
 .content .informacion{margin-top:-19em}
+.content .productos #item-producto{height:24.5em}
 footer{margin-top:2em;}
 footer .container{margin:auto 5%;width:90%;}
 footer .container .links{margin:2px 2px;line-height:18px;width:10%;font-size:.5em}
