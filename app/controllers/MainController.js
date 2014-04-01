@@ -14,12 +14,18 @@ define(['app'], function (app) {
 ////              , "./img/banner-portada.jpg"
 //            ], {duration: 3000, fade: 100});          
 
-           $("#banner").backstretch("./img/banner-portada.jpg");
+           
 
           var $window = $(window).on('resize', function() {
             $('#contenido').height(
               $(window).height() - $('#header').height() - $('#footer').height() - 40
-            );    
+            );
+            if ($(window).width() <= 380) {
+                $("#banner").backstretch("./img/banner-portada-op2.jpg");
+            } else {
+                $("#banner").backstretch("./img/banner-portada.jpg");
+            }
+    
             /*
             $("#banner").backstretch([
                 "./img/banner-portada.jpg"
