@@ -20,7 +20,7 @@ define(['app'], function (app) {
             $('#contenido').height(
               $(window).height() - $('#header').height() - $('#footer').height() - 40
             );
-            if ($(window).width() <= 380) {
+            if ($(window).width() <= 390) {
                 $("#banner").backstretch("./img/banner-portada-op2.jpg");
             } else {
                 $("#banner").backstretch("./img/banner-portada.jpg");
