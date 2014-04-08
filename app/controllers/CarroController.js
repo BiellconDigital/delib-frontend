@@ -42,7 +42,12 @@ define(['app'], function (app) {
                     localStorage['ultCompraTipo'] = tipoPago;
 /*                    $rootScope.idUltimaOrden = resp.idOrden;
                     $rootScope.tipoPago = tipoPago;
-*/                    if (tipoPago === 2) {
+*/                    
+                    if (tipoPago === 3) {
+                        console.log("invocar visa...");
+                        $scope.orden.idOrden = resp.idOrden;
+                        
+                    } else if (tipoPago === 2) {
                         console.log("invocar paypal...");
                         $scope.cart.setCostoEnvio($scope.orden.costoEnvio);
                         $scope.cart.checkout('PayPal');

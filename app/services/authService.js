@@ -5,17 +5,31 @@ define(['app'], function (app) {
     var authService = function ($http, $rootScope, $q, $cookieStore) {
         var accessLevels = routingConfig.accessLevels
             , userRoles = routingConfig.userRoles
-            , currentUser = $cookieStore.get('user') || { username: 'Invitado', role: userRoles.public };
-
+            , currentUser = null;
+            
+        if (localStorage['user'] === undefined) {
+            currentUser = { username: 'Invitado', role: userRoles.public };
+            localStorage['user'] = JSON.stringify({ username: 'Invitado', role: userRoles.public });
+        } else {
+            currentUser = JSON.parse(localStorage['user']);
+        }
 
         function changeUser(user) {
-            $cookieStore.put('user', user);
-            _.extend(currentUser, user);
+//            angular.copy(user, localStorage['user']);
+            
+            localStorage.setItem('user', JSON.stringify(user));
+//            $cookieStore.put('user', user);
+//            _.extend(currentUser, user);
+            angular.copy(user, currentUser);
 //            console.log(currentUser);
+//            console.log(localStorage['user'].username);
         };
 
         return {
             authorize: function(accessLevel, role) {
+//                console.log(localStorage['user'].username);
+                console.log(currentUser.username);
+                console.log(currentUser.role);
                 if(role === undefined)
                     role = currentUser.role;
 //                console.log("rol de usuario: ");
@@ -61,7 +75,7 @@ define(['app'], function (app) {
                         username: 'Invitado',
                         role: userRoles.public
                     });
-                    $cookieStore.remove('user');
+                    localStorage.removeItem('user');
                     success();
                 }).error(error);
             },

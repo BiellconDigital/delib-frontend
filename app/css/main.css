@@ -44,6 +44,7 @@ ul.nav-stacked li a{padding-right:.3em}
 .flecha-derecha:hover{background-position:top right}
 footer{background:#7d6350;color:#fff;padding:0;text-align:center;width:100%;position:absolute;margin:0;bottom:-1px;display:block;z-index:4;height:35px;right:0;line-height:35px;}
 footer h3{position:absolute;font-size:.4em;font-weight:normal;line-height:20px;margin:auto;margin-right:15%;padding-top:.6em;right:0;text-align:right;z-index:10}
+footer p{position:absolute;margin:0 auto;margin-left:15%;padding:0;left:0;text-align:right;z-index:10}
 footer .footer-content{font-size:.42em;position:relative;margin:0;text-align:center;padding:0 !important;width:100%;z-index:6;height:33px;}
 footer .footer-content a.links{height:29px;line-height:29px;padding:0;margin:0;color:#fff;font-weight:normal}
 header .logo{text-align:center;margin:3em auto auto auto;width:190px;}
@@ -182,6 +183,7 @@ footer .links{display:none !important}
 nav{display:none !important}
 header .spacer{width:82%}
 footer h3{margin:auto;width:100%;text-align:center}
+footer p{margin-left:1%}
 footer .links{display:none !important}
 .content .contenido .text{left:-4%}
 .content .contenido .text2{font-size:3.5em}

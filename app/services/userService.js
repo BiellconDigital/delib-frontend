@@ -54,6 +54,17 @@ define(['app'], function (app) {
                 });
         };
         
+        userFactory.listTipoDocumento = function(success) {
+            $http.get($rootScope.appUrl + '/tipo-documento').success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en la consulta.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+                });
+        };
+        
         cartFactory.listUbigeo = function(success) {
             $http.get($rootScope.appUrl + '/distrito').success(function(data) {
                 success(data);
@@ -84,6 +95,17 @@ define(['app'], function (app) {
         
         cartFactory.procesarCompra = function(orden, items, success) {
             $http.post($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.obtenerEticketVisa = function(orden, user, success) {
+            $http.put($rootScope.appUrl + '/visa', {operacion: 'obtener_eticket', orden: orden, cliente: user}).success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en el procesamiento de la compra.";

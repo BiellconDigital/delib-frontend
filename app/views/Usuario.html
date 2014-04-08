@@ -76,6 +76,22 @@
                                                                        ng-model="user.username">
                                                             </div>
                                                           </div>
+                                                            <div class="form-group">
+                                                              <label for="tipoDocumento" class="col-sm-4 col-md-4 control-label text-left">
+                                                                  Documento Identidad*:
+                                                              </label>
+                                                              <div class="col-sm-4 col-md-4">
+                                                                  <select required class="form-control input-sm"
+                                                                           ng-options="tipoDocumento.idtipoDocumento as tipoDocumento.descripcionTdoc for tipoDocumento in tipoDocumentos" 
+                                                                           ng-model="user.tipoDocumento.idtipoDocumento">
+                                                                  </select>
+                                                              </div>
+                                                              <div class="col-sm-4 col-md-4">
+                                                                  <input required type="text" class="form-control input-sm" id="nroDocumento" 
+                                                                         ng-model="user.nroDocumento" placeholder="número">
+                                                              </div>
+                                                            </div>
+                                                    
                                                           <div class="form-group">
                                                             <label for="fechaNacimiento" class="col-sm-4 col-md-4 control-label text-left">Fecha de nacimiento:</label>
                                                             <div class="col-sm-8 col-md-4">

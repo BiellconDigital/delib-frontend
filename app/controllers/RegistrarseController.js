@@ -2,15 +2,25 @@
 
 define(['app'], function (app) {
 
-    var registrarseController = function ($scope, $rootScope, $timeout, $http, $location, Auth) {
+    var registrarseController = function ($scope, $rootScope, $timeout, $http, $location, Auth, userService) {
         var appTitle = 'registrarse';
         $scope.user = {};
+        $scope.userService = userService;
 
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
             return $location.path().substr(0, path.length) == path;
         }
         
+        var load = function() {
+            $scope.userService.user.listTipoDocumento(
+                function(resp) {
+                    $scope.tipoDocumentos = resp.data;
+                }
+            );
+        }
+        load();
+
         $scope.guardarUsuario = function() {
             $scope.user.role = routingConfig.userRoles.user;
             Auth.register($scope.user,
@@ -58,6 +68,6 @@ define(['app'], function (app) {
         
     };
 
-    app.register.controller('RegistrarseController', ['$scope', '$rootScope', '$timeout', '$http', '$location', 'Auth', registrarseController]);
+    app.register.controller('RegistrarseController', ['$scope', '$rootScope', '$timeout', '$http', '$location', 'Auth', 'userService', registrarseController]);
     
 });

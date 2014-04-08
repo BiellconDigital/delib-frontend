@@ -216,12 +216,6 @@
                                   
                               </div>
                               <div class="form-group">
-                                <div class="col-sm-12 col-md-12">
-                                    He leído y acepto las politicas 
-                                    <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
-                                </div>
-                              </div>
-                              <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9 text-right">
                                     <a href="#/arreglos">Continuar Comprando</a> &nbsp;&nbsp;
                                     <a href="" class="btn button-next" ng-disabled="!despachoForm.$valid">
@@ -321,22 +315,36 @@
 
                             <div class="radio">
                               <label>
-                                <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios1" value="2" checked>
-                                    PayPal (Tarjeta de crédito)
+                                <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios1" value="1">
+                                Depósito a cuenta o transferencia bancaria
                               </label>
                             </div>
+                            
                             <div class="radio">
                               <label>
-                                <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios2" value="1">
-                                Depósito a cuenta o transferencia bancaria
+                                <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios2" value="2" checked>
+                                    Pago con PayPal (Tarjeta de crédito)
+                              </label>
+                            </div>
+
+                            <div class="radio">
+                              <label>
+                                <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios3" value="3">
+                                Pago con VISA
                               </label>
                             </div>
 
                             <div class="panel panel-default">
                               <div class="panel-heading">Mis pedidos y mis datos son correctos, continuar.</div>
                                   <div ng-if="orden.tipoPago == '2'" class="panel-body">
-                                    Ustdes puede comprar de forma segura a traves de PayPal...
-                                    <br/><br/>
+                                    <div>
+                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                          <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
+                                    </div>
+                                    <p>
+                                        Ustdes puede comprar de forma segura a traves de PayPal...
+                                    </p>
+                                    <br/>
                                     <p class="">
                                         <a 
                                             class=""
@@ -347,13 +355,29 @@
                                     </p>
                                   </div>
                                   <div ng-if="orden.tipoPago == '1'" class="panel-body">
-                                    <p>BANCO DE CREDITO</p>
+                                    <div>
+                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                          <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
+                                    </div>
                                     <p>{{orden.cuentaBanco}}<br/>
                                     A nombre de: Retoser SAC Una vez realizado el depósito le agradeceremos nos envíe un correo a ventas@delibouquet.pe indicando su nombre completo, número de orden, fecha del depósito, banco y monto respectivo ó el voucher de pago escaneado. Luego de esto procesaremos su pedido.
                                     </p>
                                     <br/>
                                     <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
                                        ng-click="procesarCompra(1)">Comprar</a>
+                                  </div>
+
+                                  <div ng-if="orden.tipoPago == '3'" class="panel-body">
+                                    <div>
+                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                          <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
+                                    </div>
+                                        <img ng-src="img/visa-azul.jpg" /> &nbsp;
+                                        <img ng-src="img/verified by visa-azul.jpg" />
+                                    <br/>
+                                        <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
+                                           ng-click="procesarCompra(3)">Comprar</a>
+                                    
                                   </div>
 
                             </div>
