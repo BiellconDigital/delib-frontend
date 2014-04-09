@@ -19,10 +19,18 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="nombre" class="col-sm-4 col-md-4 control-label text-left">Nombre y apellidos:</label>
-                  <div class="col-sm-8 col-md-8">
+                  <label for="nombre" class="col-sm-4 col-md-4 control-label text-left">Nombre:</label>
+                  <div class="col-sm-4 col-md-4">
                       <input required type="text" class="form-control input-sm" id="nombre" 
-                             ng-model="user.username">
+                             ng-model="user.nombres" placeholder="nombres">
+                  </div>
+                  <div class="col-sm-2 col-md-2">
+                      <input required type="text" class="form-control input-sm" id="nombre" 
+                             ng-model="user.apellidoPaterno" placeholder="ap. paterno">
+                  </div>
+                  <div class="col-sm-2 col-md-2">
+                      <input required type="text" class="form-control input-sm" id="nombre" 
+                             ng-model="user.apellidoMaterno" placeholder="ap. materno">
                   </div>
                 </div>
                 <div class="form-group">

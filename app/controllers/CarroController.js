@@ -46,6 +46,18 @@ define(['app'], function (app) {
                     if (tipoPago === 3) {
                         console.log("invocar visa...");
                         $scope.orden.idOrden = resp.idOrden;
+                        $scope.cartUser.obtenerEticketVisa($scope.orden, $scope.user,
+                            function(resp) {
+                                if (resp.success) {
+                                    
+                                } else {
+                                    $rootScope.error = resp.msg;
+                                    $timeout(function() {
+                                        $rootScope.error = null;
+                                    }, 4000);
+                                }
+                            }
+                        );
                         
                     } else if (tipoPago === 2) {
                         console.log("invocar paypal...");
