@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var carroController = function ($scope, $rootScope, $stateParams, $filter, $http, $location, Auth, userService, dataService) {
+    var carroController = function ($scope, $rootScope, $timeout, $stateParams, $filter, $http, $location, Auth, userService, dataService) {
         $scope.cart = dataService.cart;
         $scope.cartUser = userService.cartUser;
         $scope.user = Auth.user;
@@ -99,6 +99,6 @@ define(['app'], function (app) {
         });
     };
     
-    app.register.controller('CarroController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', 'Auth', 'userService', 'dataService', carroController]);
+    app.register.controller('CarroController', ['$scope', '$rootScope', '$timeout', '$stateParams', '$filter', '$http', '$location', 'Auth', 'userService', 'dataService', carroController]);
     
 });
