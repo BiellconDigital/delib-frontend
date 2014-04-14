@@ -13,8 +13,15 @@ define(['app'], function (app) {
         $scope.orden.subTotal = dataService.cart.getTotalPrice();
         $scope.orden.cuentaBanco = "Cta. Cte. No. 193 - 2100552 - 0 - 96";
         $scope.horaDespacho = userService.cartUser.listHoraDespacho();
+        $rootScope.retornoPago = null;
+        var dataVisa = {url_visa : '', eticket: 0, result: ''};
 //        $rootScope.idUltimaOrden = 0;
-        
+        $scope.$watch('retornoPago', $scope.TerminarPagoVisa);
+        $scope.TerminarPagoVisa = function() {
+//            alert("bien");
+        }
+
+
         $scope.updateOrden = function() {
             $scope.orden.total = $scope.orden.costoEnvio + $scope.cart.getTotalPrice();
         };
@@ -31,7 +38,6 @@ define(['app'], function (app) {
                     $scope.razonesCompra = resp.data;
                 }
              );
-     
         }
         load();
         
@@ -49,8 +55,16 @@ define(['app'], function (app) {
                         $scope.cartUser.obtenerEticketVisa($scope.orden, $scope.user,
                             function(resp) {
                                 if (resp.success) {
+                                    dataVisa.eticket = resp.Eticket;
+                                    dataVisa.url_visa = resp.urlVisa;
                                     
-                                } else {
+                                    $scope.cart.addCheckoutParameters("Visa", "", dataVisa);
+                                    $scope.cart.checkout('Visa');
+  //                                    var targetitem = 1;// $scope.retornoPago;
+//                                    var dataitem = window.open("PagoVisa.html", "dataitem", "toolbar=no,menubar=no,scrollbars=yes"); 
+//                                    dataitem.dataVisa = dataVisa;
+//                                    dataitem.onbeforeunload = function(){  console.log(dataVisa.result);}
+                              } else {
                                     $rootScope.error = resp.msg;
                                     $timeout(function() {
                                         $rootScope.error = null;
@@ -70,6 +84,7 @@ define(['app'], function (app) {
                 }
              );
         }
+        
         
         
         $('#rootwizardCart').bootstrapWizard({
@@ -92,6 +107,7 @@ define(['app'], function (app) {
                     return false;
                 }
                 ,onNext: function(tab, navigation, index) {
+//                    alert(targetitem.result);
 //			// Set the name for the next tab
 //			$('#tab3').html('Hello, ' + $('#name').val());
 			

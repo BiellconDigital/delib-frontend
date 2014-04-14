@@ -2,7 +2,7 @@
 
 define(['services/routeResolver'], function () {
 
-    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'routeResolverServices', 'ezfb']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
+    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'routeResolverServices', 'ezfb']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         'routeResolverProvider', 
@@ -100,7 +100,7 @@ define(['services/routeResolver'], function () {
                 .state('user.perfil', route.resolve('/usuario', 'Usuario'))
                 .state('user.pedido', route.resolve('/pedido/:idpedido', 'PedidoDetalle'))
                 .state('user.pedidos', route.resolve('/pedidos', 'Pedidos'))
-                .state('user.confirmacion_compra', route.resolve('/confirmacion-compra', 'CarroConfirmacion'));
+                .state('public.confirmacion_compra', route.resolve('/confirmacion-compra', 'CarroConfirmacion'));
 //                .state('user.perfil', {
 //                    url: '/usuario',
 //                    templateUrl: VarsApp.baseUrl + '/views/Usuario.html'
@@ -169,6 +169,16 @@ define(['services/routeResolver'], function () {
 
             $httpProvider.interceptors.push(function($q, $location) {
                 return {
+//                    'request': function (config) {
+//                        console.log("HACIENDO REQUEST");
+//                        console.log(config);
+//                         return config || $q.when(config);
+//                     },
+//                    'response': function(response) {
+//                        console.log("HACIENDO RESPONSE");
+//                        console.log(response);
+//                        return response || $q.when(response);
+//                    },
                     'responseError': function(response) {
                         if(response.status === 401 || response.status === 403) {
                             $location.path('/login');

@@ -4,7 +4,7 @@ define(['app'], function (app) {
 
     var carroConfirmacionController = function ($scope, $stateParams, $filter, $http, $location, Auth, userService, dataService) {
         $scope.pedido = {};
-
+        //dataVisa.result = "ok";
         var load = function() {
             console.log("load... tipo: " + localStorage['ultCompraTipo']);
 //                userService.cartUser.getPedido(7,
@@ -40,6 +40,16 @@ define(['app'], function (app) {
                          );
                     }
                  );
+                
+            }  else if (parseInt(localStorage['ultCompraTipo']) === 3) {//VISA
+                userService.cartUser.getPedido(localStorage['ultCompraId'],
+                    function(resp) {
+                        $scope.pedido = resp.data;
+                        $scope.idUltimaOrden = localStorage['ultCompraId'];
+                        console.log("lista de pedido por VISA");
+                    }
+                 );
+                localStorage['ultCompraTipo'] = 0;
                 
             } else {
                 return;
