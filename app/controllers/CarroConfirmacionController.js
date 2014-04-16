@@ -23,7 +23,7 @@ define(['app'], function (app) {
                  );
                 localStorage['ultCompraTipo'] = 0;
             } else if (parseInt(localStorage['ultCompraTipo']) === 2) {//paypal
-                console.log("inciar pedido por paypal...");
+                console.log("FIN pedido por paypal...");
                 var codigoTransaccion =  $location.search()['tx'],
                     estadoTransaccion =  $location.search()['st'],
                     montoTransaccion =  $location.search()['amt'];
@@ -42,6 +42,8 @@ define(['app'], function (app) {
                  );
                 
             }  else if (parseInt(localStorage['ultCompraTipo']) === 3) {//VISA
+                console.log("FIN pedido por visa...");
+                var codigoTransaccion =  $location.search()['eticket'];
                 userService.cartUser.getPedido(localStorage['ultCompraId'],
                     function(resp) {
                         $scope.pedido = resp.data;
