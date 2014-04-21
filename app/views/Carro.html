@@ -337,7 +337,7 @@
                               <div class="panel-heading">Mis pedidos y mis datos son correctos, continuar.</div>
                                   <div ng-if="orden.tipoPago == '2'" class="panel-body">
                                     <div>
-                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                          He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
                                           <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
                                     </div>
                                     <p>
@@ -346,36 +346,43 @@
                                     <br/>
                                     <p class="">
                                         <a 
-                                            class=""
                                             ng-click="procesarCompra(2)"
-                                            ng-disabled="cart.getTotalCount() < 1 || !carroForm.$valid" >
+                                            ng-disabled="cart.getTotalCount() < 1 || !carroForm.$valid  || procesando" >
                                             <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="checkout PayPal"/>
                                         </a>    
+                                        <span ng-show="procesando">Procesando...</span>
+                                         &nbsp;
                                     </p>
                                   </div>
                                   <div ng-if="orden.tipoPago == '1'" class="panel-body">
-                                    <div>
-                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
-                                          <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
-                                    </div>
-                                    <p>{{orden.cuentaBanco}}<br/>
-                                    A nombre de: Retoser SAC Una vez realizado el depósito le agradeceremos nos envíe un correo a ventas@delibouquet.pe indicando su nombre completo, número de orden, fecha del depósito, banco y monto respectivo ó el voucher de pago escaneado. Luego de esto procesaremos su pedido.
-                                    </p>
-                                    <br/>
-                                    <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
-                                       ng-click="procesarCompra(1)">Comprar</a>
+                                        <div>
+                                              He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                              <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
+                                        </div>
+                                        <p>{{orden.cuentaBanco}}<br/>
+                                        A nombre de: Retoser SAC Una vez realizado el depósito le agradeceremos nos envíe un correo a ventas@delibouquet.pe indicando su nombre completo, número de orden, fecha del depósito, banco y monto respectivo ó el voucher de pago escaneado. Luego de esto procesaremos su pedido.
+                                        </p>
+                                        <br/>
+                                        <a href="" class="btn" role="button" 
+                                           ng-disabled="!carroForm.$valid || procesando" 
+                                           ng-click="procesarCompra(1)">Comprar</a>
+                                           <span ng-show="procesando">Procesando...</span>
+                                            &nbsp;
                                   </div>
 
                                   <div ng-if="orden.tipoPago == '3'" class="panel-body">
-                                    <div>
-                                          He leído y acepto las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
+                                    <p>
+                                          He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
                                           <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
-                                    </div>
-                                        <img ng-src="img/visa-marron.jpg" /> &nbsp;
+                                    </p>
+                                        <img ng-src="img/visa-marron.jpg" style="margin-right: 5px;"/>
                                         <img ng-src="img/verified by visa-marron.jpg" />
                                     <br/>
-                                        <a href="" class="btn" role="button" ng-disabled="!carroForm.$valid" 
+                                        <a href="" class="btn" role="button" style="width: 94px; margin-top: 7px;"
+                                           ng-disabled='!carroForm.$valid || procesando'
                                            ng-click="procesarCompra(3)">Comprar</a>
+                                           <span ng-show="procesando">Procesando...</span>
+                                            &nbsp;
                                     
                                   </div>
 

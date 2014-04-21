@@ -4,6 +4,7 @@ define(['app'], function (app) {
 
     var carroConfirmacionController = function ($scope, $stateParams, $filter, $http, $location, Auth, userService, dataService) {
         $scope.pedido = {};
+        $scope.pedidoVisa = {};
         //dataVisa.result = "ok";
         var load = function() {
             console.log("load... tipo: " + localStorage['ultCompraTipo']);
@@ -48,6 +49,13 @@ define(['app'], function (app) {
                     function(resp) {
                         $scope.pedido = resp.data;
                         $scope.idUltimaOrden = localStorage['ultCompraId'];
+                        
+                        userService.cartUser.actualizarPedidoVisa($scope.pedido,
+                            function(resp2) {
+                                $scope.pedidoVisa = resp2.data;
+                            }
+                        );
+                        
                         console.log("lista de pedido por VISA");
                     }
                  );

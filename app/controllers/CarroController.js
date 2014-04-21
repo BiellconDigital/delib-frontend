@@ -13,14 +13,8 @@ define(['app'], function (app) {
         $scope.orden.subTotal = dataService.cart.getTotalPrice();
         $scope.orden.cuentaBanco = "Cta. Cte. No. 193 - 2100552 - 0 - 96";
         $scope.horaDespacho = userService.cartUser.listHoraDespacho();
-        $rootScope.retornoPago = null;
+        $scope.procesando = false;
         var dataVisa = {url_visa : '', eticket: 0, result: ''};
-//        $rootScope.idUltimaOrden = 0;
-        $scope.$watch('retornoPago', $scope.TerminarPagoVisa);
-        $scope.TerminarPagoVisa = function() {
-//            alert("bien");
-        }
-
 
         $scope.updateOrden = function() {
             $scope.orden.total = $scope.orden.costoEnvio + $scope.cart.getTotalPrice();
@@ -42,6 +36,7 @@ define(['app'], function (app) {
         load();
         
         $scope.procesarCompra = function(tipoPago) {
+            $scope.procesando = true;
             $scope.cartUser.procesarCompra($scope.orden, $scope.cart.items,
                 function(resp) {
                     localStorage['ultCompraId'] =  resp.idOrden;
@@ -64,11 +59,13 @@ define(['app'], function (app) {
 //                                    var dataitem = window.open("PagoVisa.html", "dataitem", "toolbar=no,menubar=no,scrollbars=yes"); 
 //                                    dataitem.dataVisa = dataVisa;
 //                                    dataitem.onbeforeunload = function(){  console.log(dataVisa.result);}
+                                    $scope.procesando= false;
                               } else {
                                     $rootScope.error = resp.msg;
                                     $timeout(function() {
                                         $rootScope.error = null;
                                     }, 4000);
+                                    $scope.procesando= false;
                                 }
                             }
                         );
@@ -77,7 +74,9 @@ define(['app'], function (app) {
                         console.log("invocar paypal...");
                         $scope.cart.setCostoEnvio($scope.orden.costoEnvio);
                         $scope.cart.checkout('PayPal');
+                        $scope.procesando = false;
                     } else if (tipoPago === 1) {
+                        $scope.procesando = false;
                         $scope.cart.clearItems();
                         $location.path('/confirmacion-compra');
                     }

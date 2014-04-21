@@ -148,6 +148,17 @@ define(['app'], function (app) {
             });
         };
         
+        cartFactory.actualizarPedidoVisa = function(orden, success) {
+            $http.put($rootScope.appUrl + '/visa', {params: {operacion: 'actualizar_orden_visa', orden : orden}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
 
 
         
