@@ -3,8 +3,8 @@
 define(['app'], function (app) {
 
     var carroConfirmacionController = function ($scope, $stateParams, $filter, $http, $location, Auth, userService, dataService) {
-        $scope.pedido = {};
-        $scope.pedidoVisa = {};
+        //$scope.pedido = {};
+        //$scope.pedidoVisa = {};
         //dataVisa.result = "ok";
         var load = function() {
             console.log("load... tipo: " + localStorage['ultCompraTipo']);
@@ -47,10 +47,11 @@ define(['app'], function (app) {
                 var codigoTransaccion =  $location.search()['eticket'];
                 userService.cartUser.getPedido(localStorage['ultCompraId'],
                     function(resp) {
+                        console.log(resp.data);
                         $scope.pedido = resp.data;
                         $scope.idUltimaOrden = localStorage['ultCompraId'];
                         
-                        userService.cartUser.actualizarPedidoVisa($scope.pedido,
+                        userService.cartUser.actualizarPedidoVisa($scope.pedido.head[0],
                             function(resp2) {
                                 $scope.pedidoVisa = resp2.data;
                             }
@@ -59,7 +60,7 @@ define(['app'], function (app) {
                         console.log("lista de pedido por VISA");
                     }
                  );
-                localStorage['ultCompraTipo'] = 0;
+                //localStorage['ultCompraTipo'] = 0;
                 
             } else {
                 return;

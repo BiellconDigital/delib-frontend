@@ -37,6 +37,7 @@ define(['app'], function (app) {
         
         $scope.procesarCompra = function(tipoPago) {
             $scope.procesando = true;
+	    $scope.orden.subTotal = dataService.cart.getTotalPrice();
             $scope.cartUser.procesarCompra($scope.orden, $scope.cart.items,
                 function(resp) {
                     localStorage['ultCompraId'] =  resp.idOrden;
