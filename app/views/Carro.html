@@ -239,21 +239,21 @@
                       <table class="table" width="310">
                         <tr>
                             <td colspan="2">
-                              <div ng-repeat="item in cart.items | orderBy:'name'">
-                                <div class="row">
-                                  <div class="col-sm-5">
+                              <div class="row" 
+                                  ng-repeat="item in cart.items | orderBy:'name'">
+                                  <div class="col-sm-5 col-md-5">
                                     <img fallback-src="img/sin-imagen.png"
                                       ng-src="/web/m_cart/files/producto/{{item.image}}"
-                                         class="img-circle img-responsive center-block">
+                                         class="img-circle img-responsive"
+                                         style="max-width:110px">
                                   </div>
-                                  <div class="col-sm-7">
+                                  <div class="col-sm-7 col-md-7">
                                       <h4>{{item.name}}</h4>
                                       <p>Código: {{item.codigoProducto}}</p>
                                       <p>Precio: {{item.price}}</p>
                                       <br/>
                                       <h5>Cantidad: {{item.quantity}}</h5>
                                   </div>
-                                </div>
                               </div>
                             </td>
                         </tr>
@@ -263,10 +263,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td width="56%">
+                            <td >
                                 Sub Total
                             </td>
-                            <td  width="44%" class="text-right">
+                            <td class="text-right">
                                 {{cart.getTotalPrice() | currency:'S/.'}}
                             </td>
                         </tr>
