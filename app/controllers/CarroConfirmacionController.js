@@ -45,21 +45,26 @@ define(['app'], function (app) {
             }  else if (parseInt(localStorage['ultCompraTipo']) === 3) {//VISA
                 console.log("FIN pedido por visa...");
                 var codigoTransaccion =  $location.search()['eticket'];
-                userService.cartUser.getPedido(localStorage['ultCompraId'],
+                userService.cartUser.actualizarPedidoVisa(localStorage['ultCompraId'],
                     function(resp) {
-                        console.log(resp.data);
-                        $scope.pedido = resp.data;
+                        $scope.pedidoVisa = resp.data;
+                        $scope.pedido = resp.pedido;
                         $scope.idUltimaOrden = localStorage['ultCompraId'];
-                        
-                        userService.cartUser.actualizarPedidoVisa($scope.pedido.head[0],
-                            function(resp2) {
-                                $scope.pedidoVisa = resp2.data;
-                            }
-                        );
                         
                         console.log("lista de pedido por VISA");
                     }
-                 );
+                );
+                
+//                userService.cartUser.getPedido(localStorage['ultCompraId'],
+//                    function(resp) {
+//                        console.log(resp.data);
+//                        $scope.pedido = resp.data;
+//                        $scope.idUltimaOrden = localStorage['ultCompraId'];
+//                        
+//                        
+//                        console.log("lista de pedido por VISA");
+//                    }
+//                 );
                 //localStorage['ultCompraTipo'] = 0;
                 
             } else {
