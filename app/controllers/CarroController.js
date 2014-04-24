@@ -42,17 +42,17 @@ define(['app'], function (app) {
                 function(resp) {
                     localStorage['ultCompraId'] =  resp.idOrden;
                     localStorage['ultCompraTipo'] = tipoPago;
+                    $scope.orden.idOrden = resp.idOrden;
 /*                    $rootScope.idUltimaOrden = resp.idOrden;
                     $rootScope.tipoPago = tipoPago;
 */                    
                     if (tipoPago === 3) {
                         console.log("invocar visa...");
-                        $scope.orden.idOrden = resp.idOrden;
                         $scope.cartUser.obtenerEticketVisa($scope.orden, $scope.user,
-                            function(resp) {
-                                if (resp.success) {
-                                    dataVisa.eticket = resp.Eticket;
-                                    dataVisa.url_visa = resp.urlVisa;
+                            function(resp2) {
+                                if (resp2.success) {
+                                    dataVisa.eticket = resp2.Eticket;
+                                    dataVisa.url_visa = resp2.urlVisa;
                                     
                                     $scope.cart.addCheckoutParameters("Visa", "", dataVisa);
                                     $scope.cart.checkout('Visa');
@@ -62,7 +62,7 @@ define(['app'], function (app) {
 //                                    dataitem.onbeforeunload = function(){  console.log(dataVisa.result);}
                                     $scope.procesando= false;
                               } else {
-                                    $rootScope.error = resp.msg;
+                                    $rootScope.error = resp2.msg;
                                     $timeout(function() {
                                         $rootScope.error = null;
                                     }, 4000);
