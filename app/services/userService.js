@@ -97,7 +97,9 @@ define(['app'], function (app) {
             $http.post($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
                 success(data);
             }).error(function(err) {
-                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    console.log(err)
+//                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $rootScope.error = err.msg;
                     $timeout(function() {
                         $rootScope.error = null;
                     }, 4000);
