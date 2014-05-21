@@ -138,7 +138,7 @@
                   </ul>
                 </div>
 
-                <nav id="nav-prin">
+                <nav id="nav-prin" class="hidden-print">
                     <div class="info-head">
                         <div class="logo-fb">
                         <a target="_blank"
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                 </nav>
-                <header id="header">
+                <header id="header" class="hidden-print">
                     <div class="logo">
                         <a ui-sref="public.home" ng-class="{'color-active' : isActiveMenu('/')}" ng-click="selectMenu('/')"
                             >
@@ -212,9 +212,11 @@
                     <div data-ui-view id="id_content_view"></div>
                 </section>
             </div>
-           <footer id="footer">
+           <footer id="footer" class="hidden-print">
                         <p>
-                            <img ng-src="img/visaMedianoBlanco.png" height="20" alt="Esta tienda está autorizada por Visa para realizar transacciones electrónicas.">
+                            <a href="">
+                                <img ng-src="img/visaMedianoBlanco.png" height="20" alt="Esta tienda está autorizada por Visa para realizar transacciones electrónicas.">
+                            </a>
                         </p>
                
                         <h3>

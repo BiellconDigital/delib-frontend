@@ -375,8 +375,12 @@
                                           He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
                                           <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
                                     </p>
-                                        <img ng-src="img/visa-marron.jpg" style="margin-right: 5px;"/>
-                                        <img ng-src="img/verified by visa-marron.jpg" />
+                                        <a href="">
+                                          <img ng-src="img/visa-marron.jpg" style="margin-right: 5px;"/>
+                                        </a>
+                                        <a href="">
+                                          <img ng-src="img/verified by visa-marron.jpg" />
+                                        </a>
                                     <br/>
                                         <a href="" class="btn" role="button" style="width: 94px; margin-top: 7px;"
                                            ng-disabled='!carroForm.$valid || procesando'
