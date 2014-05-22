@@ -17,7 +17,10 @@
             <div class="thumbnail">
               <div class="caption">
                   <h3>Orden de Compra</h3>
-                  <div class="row">
+
+
+
+                  <div class="row hidden-print">
                     <div class="col-sm-5 col-md-4">
                         <p>Número de Compra:</p>
                     </div>
@@ -64,7 +67,7 @@
                     </div>
                 </div>
 
-                <div ng-show="pedido.head[0].tipoPago == 3" class="row">
+                <div ng-show="pedido.head[0].tipoPago == 3" class="row hidden-print">
                     <div class="col-md-12">
                         <h4>Datos desde VISA</h4>
                     </div>
@@ -105,6 +108,76 @@
                         <p>{{pedidoVisa.fechayhora_tx}}&nbsp;</p>
                     </div>
                 </div>
+
+
+
+
+
+
+                <table class="visible-print">
+                    <tr >
+                        <td>Número de Compra:</td>
+                        <td><b>{{pedido.head[0].idOrden}}&nbsp;</b></td>
+                    </tr>
+                    <tr >
+                        <td>Tipo de Pago:</td>
+                        <td><b>{{pedido.head.tipoPagoDescripcion}}&nbsp;</b></td>
+                    </tr>
+
+                    <tr >
+                        <td>RUC/Doc Cliente:</td>
+                        <td>{{pedido.head[0].rucCliente}}&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre o R. Social:</td>
+                        <td>{{pedido.head[0].razonSocial}}&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fecha de entrega:</td>
+                        <td>{{pedido.head[0].fechaEnvio.date | date : "d-m-Y"}}&nbsp;</td>
+                    </tr>
+                    <tr >
+                        <td>Dirección envio:</td>
+                        <td>{{pedido.head[0].direccionEnvio}}&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Estado de compra:</td>
+                        <td><b>{{pedido.head[0].ordenEstado.languages[0].nombre}}&nbsp;</b></td>
+                    </tr>
+                </table>
+
+                <table ng-show="pedido.head[0].tipoPago == 3" class="visible-print">
+                    <tr>
+                        <td colspan="2"><h4>Datos desde VISA</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta:</td>
+                        <td>{{pedidoVisa.estado}}&nbsp;</td>
+                    </tr>
+                    <tr >
+                        <td>Acción:</td>
+                        <td>{{pedidoVisa.msj_accion_cliente}}&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Emisor:</td>
+                        <td>{{pedidoVisa.nom_emisor}}&nbsp;</td>
+                    </tr>
+                    <tr >
+                        <td>Titular:</td>
+                        <td>{{pedidoVisa.nombre_th}}&nbsp;</td>
+                    </tr>
+                    <tr >
+                        <td>Nro. Cuenta:</td>
+                        <td>{{pedidoVisa.pan}}&nbsp;</td>
+                    </tr>
+                    <tr >
+                        <td>Fecha y Hora:</td>
+                        <td>{{pedidoVisa.fechayhora_tx}}&nbsp;</td>
+                    </tr>
+                </table>
+
+
 
 
                     <table class="table table-bordered table-responsive">
