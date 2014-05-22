@@ -1,15 +1,19 @@
 <div class="container productos" ng-controller="CarroConfirmacionController">
-    <div class="row subcontenido">
-        <div class="col-xs-12 col-sm-12 col-md-12 hidden-print">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10 hidden-print">
             <p class="bg-info">Su Orden de Compra ha sido procesada.</p>
             <a href="" onclick="window.print();return false;"
-                class="btn btn-primary" style="margin-bottom: 5px;">
+                class="btn btn-primary" style="margin-bottom: 6px;">
                 <span class="glyphicon glyphicon-print"></span>
                 imprimir
             </a>
         </div>
 
-          <div class="col-sm-12 col-md-12">
+        <div class="col-md-offset-1 col-md-10 visible-print text-right">
+            <img src="img/logotipo.png" height="60"/>
+        </div>
+
+          <div class="col-md-offset-1 col-md-10">
             <div class="thumbnail">
               <div class="caption">
                   <h3>Orden de Compra</h3>
@@ -18,45 +22,45 @@
                         <p>Número de Compra:</p>
                     </div>
                     <div class="col-sm-7 col-md-8">
-                        <p><b>{{pedido.head[0].idOrden}}</b></p>
+                        <p><b>{{pedido.head[0].idOrden}}&nbsp;</b></p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Tipo de Pago:</p>
                     </div>
                     <div class="col-sm-7 col-md-8">
-                        <p><b>{{pedido.head.tipoPagoDescripcion}}</b></p>
+                        <p><b>{{pedido.head.tipoPagoDescripcion}}&nbsp;</b></p>
                     </div>
 
                     <div class="col-sm-5 col-md-4">
                         <p>RUC/Doc Cliente:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedido.head[0].rucCliente}}</p>
+                        <p>{{pedido.head[0].rucCliente}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Nombre o R. Social:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedido.head[0].razonSocial}}</p>
+                        <p>{{pedido.head[0].razonSocial}}&nbsp;</p>
                     </div>
 
                     <div class="col-sm-5 col-md-4">
                         <p>Fecha de entrega:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedido.head[0].fechaEnvio.date | date : "d-m-Y"}}</p>
+                        <p>{{pedido.head[0].fechaEnvio.date | date : "d-m-Y"}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Dirección envio:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedido.head[0].direccionEnvio}}</p>
+                        <p>{{pedido.head[0].direccionEnvio}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Estado de compra:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p><b>{{pedido.head[0].ordenEstado.languages[0].nombre}}</b></p>
+                        <p><b>{{pedido.head[0].ordenEstado.languages[0].nombre}}&nbsp;</b></p>
                     </div>
                 </div>
 
@@ -68,37 +72,37 @@
                         <p>Respuesta:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.estado}}</p>
+                        <p>{{pedidoVisa.estado}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Acción:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.msj_accion_cliente}}</p>
+                        <p>{{pedidoVisa.msj_accion_cliente}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Emisor:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.nom_emisor}}</p>
+                        <p>{{pedidoVisa.nom_emisor}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Titular:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.nombre_th}}</p>
+                        <p>{{pedidoVisa.nombre_th}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Nro. Cuenta:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.pan}}</p>
+                        <p>{{pedidoVisa.pan}}&nbsp;</p>
                     </div>
                     <div class="col-sm-5 col-md-4">
                         <p>Fecha y Hora:</p>
                     </div> 
                     <div class="col-sm-7 col-md-8">
-                        <p>{{pedidoVisa.fechayhora_tx}}</p>
+                        <p>{{pedidoVisa.fechayhora_tx}}&nbsp;</p>
                     </div>
                 </div>
 

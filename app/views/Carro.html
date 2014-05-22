@@ -375,13 +375,15 @@
                                           He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
                                           <input type="checkbox" required class="" ng-model="orden.aceptaPolitica">
                                     </p>
-                                        <a href="">
+                                    <div style="float: none;overflow: auto;">
+                                        <a href="http://www.visanet.com.pe" target="_blank" style="float: left;">
                                           <img ng-src="img/visa-marron.jpg" style="margin-right: 5px;"/>
                                         </a>
-                                        <a href="">
+                                        <a href="http://www.visanet.com.pe/visa.htm" target="_blank" style="float: left;">
                                           <img ng-src="img/verified by visa-marron.jpg" />
                                         </a>
-                                    <br/>
+                                    </div>
+                                    <br class="clearfix"/>
                                         <a href="" class="btn" role="button" style="width: 94px; margin-top: 7px;"
                                            ng-disabled='!carroForm.$valid || procesando'
                                            ng-click="procesarCompra(3)">Comprar</a>
