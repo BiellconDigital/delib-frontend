@@ -9,12 +9,20 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         }
 
-		    var $window = $(window).on('resize', function() {
-				$('#map_canvas').height(
-					$(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() - 35
-				);    
-			}).trigger('resize'); //on page load      
-	  		initialize();
+        var $window = $(window).on('resize', function() {
+            if ($(window).height() <= 540) {
+                $('#map_canvas').height(
+                        $(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() + 130
+                );    
+            } else {
+                $('#map_canvas').height(
+                        $(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() - 35
+                );    
+            }
+                        
+                                        
+        }).trigger('resize'); //on page load      
+        initialize();
 
 
 function initialize() {

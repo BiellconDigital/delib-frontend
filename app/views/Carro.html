@@ -319,13 +319,13 @@
                               </label>
                             </div>
                             
-                            <div class="radio">
+<!--                            <div class="radio">
                               <label>
                                 <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios2" value="2" checked>
                                     Pago con PayPal (Tarjeta de crédito)
                               </label>
                             </div>
-
+-->
                             <div class="radio">
                               <label>
                                 <input required type="radio" ng-model="orden.tipoPago" name="tipoPago" id="optionsRadios3" value="3">
@@ -335,6 +335,7 @@
 
                             <div class="panel panel-default">
                               <div class="panel-heading">Mis pedidos y mis datos son correctos, continuar.</div>
+<!--                              
                                   <div ng-if="orden.tipoPago == '2'" class="panel-body">
                                     <div>
                                           He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
@@ -354,6 +355,7 @@
                                          &nbsp;
                                     </p>
                                   </div>
+                              -->
                                   <div ng-if="orden.tipoPago == '1'" class="panel-body">
                                         <div>
                                               He leído y aceptado las <a ui-sref="public.politicas" target="_blank"><b>politicas, terminos y condiciones</b></a>
