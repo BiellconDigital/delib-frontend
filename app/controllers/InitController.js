@@ -8,6 +8,7 @@ define(['app'], function (app) {
         $scope.user = Auth.user;
         $scope.userRoles = Auth.userRoles;
         $scope.accessLevels = Auth.accessLevels;
+        $scope.menu = '';
 
 //        $('#id_content_view').css('height', "100%");
 //        $('#id_content_view').css('background-color', "black");
@@ -32,9 +33,26 @@ define(['app'], function (app) {
         
         $scope.showCart = function() {
             $location.path( "/carro-de-compra");
-        }
+        };
         
-        $rootScope.appUrl = "/delibouquet-git/delibouquet-backend/web/api";
+        $scope.buscarProductos = function() {
+            $location.path( "/arreglos_busqueda/" + $scope.textSearch);
+        };
+        
+        $scope.selectMenu = function (menu) {
+            $scope.menu = menu;
+        };
+        
+        $scope.isActiveMenu = function (menu) {
+            return $scope.menu === menu;
+        };
+
+        $scope.selectMenu($location.path());
+        //console.log($location.path());
+        //$scope.isActiveMenu($location.path());
+        
+        
+        $rootScope.appUrl = "/delib-backend/web/api";
     };
 
     app.controller('InitController', ['$scope', '$rootScope', '$http', '$location', 'dataService', 'Auth', initController]);

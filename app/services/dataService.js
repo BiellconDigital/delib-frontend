@@ -18,7 +18,10 @@ define(['app'], function (app) {
         // shopping cart with PayPal, you have to create a merchant account with 
         // PayPal. You can do that here:
         // https://www.paypal.com/webapps/mpp/merchant
-        myCart.addCheckoutParameters("PayPal", "tonyprr@gmail.com");
+        myCart.addCheckoutParameters("PayPal", "tonyprr-facilitator@gmail.com");
+
+        // enable VISA checkout
+        myCart.addCheckoutParameters("Visa", "");
 
         // enable Google Wallet checkout
         // note: the second parameter identifies the merchant; in order to use the 

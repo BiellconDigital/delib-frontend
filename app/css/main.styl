@@ -48,8 +48,17 @@ body
 a
 	color marron
 
+.text-bold
+	font-weight bold !important
+
 .container
 	height 100%
+	width 100%
+	padding 0
+	margin 0
+
+#id_content_view
+	height 101%
 	width 100%
 	padding 0
 	margin 0
@@ -110,6 +119,18 @@ a
 		border-radius 0
 		background-color marron
 
+.subcategoria-lista
+	background-color cian
+	padding-bottom 0.5em
+	border-bottom 1px solid marron
+	padding 0 0.5em 0 1.2em
+	li.active a
+		border-radius 0
+		color marron !important
+		font-weight bold !important
+
+.sin-padding
+	padding 0 !important
 .sin-redondeo
 	border-radius 0
 .sin-borde
@@ -120,14 +141,75 @@ a
 .text-left
 	text-align left !important
 
+.text-white
+	color white
 
 .form-group
 	label
 		font-weight normal
+
+.icono-triangulo
+	float none
+	background-image url(../img/icono-listado-arreglos.png)
+	padding-left 8px
+	width 15px
+	height 14px
+
+.icono-triangulo-rojo
+	float none
+	background-image url(../img/icono-listado-arreglos-rojo.png)
+	padding-left 8px
+	width 15px
+	height 14px
+
+ul.nav-stacked
+	li
+		a
+			padding-right 0.3em
+
+.text-marron
+	color marron !important
+
+.fondo-blanco
+	background-color white
+.fondo-cian
+	background-color cian !important
+
+.color-active
+	color #452D14 !important
+
+.flechas-carrusel
+	font-size 2em
+	vertical-align center
+	line-height 165px
+	height 165px
+	text-decoration normal
+	padding-top 25%
+
+.flecha-izquierda
+	float none
+	background-image url(../img/flecha-izquierda.png)
+	width 25px
+	height 43px
+	cursor pointer
+.flecha-izquierda:hover
+	background-position bottom left
+
+.flecha-derecha
+	float none
+	background-image url(../img/flecha-derecha.png)
+	background-position bottom right
+	width 25px
+	height 43px
+	cursor pointer
+.flecha-derecha:hover
+	background-position top right
+
+
 footer
 	background marron
 	color white
-	padding 0.2em 0
+	padding 0
 	text-align center
 	width 100%
 	position absolute
@@ -144,27 +226,35 @@ footer
 		font-weight normal
 		line-height 20px
 		margin auto
-		width 100%
-		text-align center
-		z-index 5
-	.container
+		margin-right 15%
+		padding-top 0.6em
+		right 0
+		text-align right
+		z-index 10
+	p
 		position absolute
-		margin auto 1%
+		margin 0 auto
+		margin-left 15%
+		padding 0
+		left 0
+		text-align right
+		z-index 10
+	.footer-content
+		font-size 0.42em
+		position relative
+		margin 0
+		text-align center
+		padding 0 !important
+		width 100%
 		z-index 6
-		width 98%
-		.links
-			float left
-			margin 4px 0
-			width 12%
-			height 17px
-			line-height 17px
-			z-index 6
-			font-size 0.4em
-			a
-				color white
-				font-weight normal
-		.linea-separacion
-			border-right 1px solid white
+		height 33px
+		a.links
+			height 29px
+			line-height 29px
+			padding 0
+			margin 0
+			color white
+			font-weight normal
 
 header
 	
@@ -189,10 +279,15 @@ header
 	border 1px solid white
 
 	.productos
-		padding 1.5em 16%
 		margin-top 1.1em
+		margin-bottom 0
 		text-size 1em
-		background-color #EAF9F9
+		background-color cian
+		height 101%
+		.subcontenido
+			padding 1.5em 16% 0 16%
+			background-color cian
+			height auto
 		.sin-fondo
 			background-color transparent
 			box-shadow none
@@ -204,6 +299,9 @@ header
 				color white
 				padding 0.1em 0.5em
 				margin-bottom 0.6em
+			.select-precio
+				margin-bottom 0.1em
+				
 		.img-eliminar
 			float none
 			background-image url(../img/eliminar.png)
@@ -213,11 +311,15 @@ header
 			background-position bottom left
 		.img-eliminar:hover
 			background-position top left
+		#item-producto
+			height 22.4em
+			h4
+				height 2.4em
 
 
 	.about
 		background-color white
-		color rgba(black,0.4)
+		color marron
 		font-family "mangal"
 		margin-top -6.8em
 		margin-left 14%
@@ -308,9 +410,8 @@ header
 		margin-top 1.1em
 		overflow hidden
 		text-align center
-		text-size 1em
 		color marron
-		font-size 0.8em
+		font-size 0.9em !important
 		background-color cian
 		.izq 
 		.der
@@ -409,6 +510,10 @@ header
 				right 0
 				top 5.3em
 				width 74%
+				h3
+					text-align left
+					padding 0.6em 0.6em
+					margin 0
 				#navMenuUsuario
 					color white
 					padding-right 2.3em
@@ -417,9 +522,18 @@ header
 					height 100%
 					li
 						font-size 0.9em
+						border-radius 0
 						border-bottom 1px solid white
+						margin-top 1.8em
 						a
+							border-radius 0
+							height 2.6em
 							color white
+							padding-left 0.1em
+							&:hover
+								color marron
+								background-color cian
+
 					li.active
 						background-color cian
 						a
@@ -438,45 +552,63 @@ header
 							font-weight normal
 							padding 0
 							border 0
+							.thumbnail
+								height 9em
+								padding 0.8em 1.8em 1em 1.2em
+							.subtitulo-paso-compra
+								color white
+								line-height 2em
+								font-size 1.2em
 
 
 
 .layerOpacity
 	background rgba(0,0,0,0.89)
 	background transparent\9
-	color white
+	color white !important
 	display none
-	font-size 'Heldustry'
+	font-family 'Heldustry'
 	height 90%
 	position fixed
 	width 100%
 	z-index 990
-	font-size 1em
+	font-size 1.2em
 	vertical-align center	
 	text-decoration none
 	zoom 1
 	.lista
 		position relative
-		width 80%
-		left 10%
+		width 100%
 		top 0%
-		li
-			padding 0.4em
-			list-style-type none
-			margin-top 1em
-			border-bottom solid 0.1em
-			border-color white
-			
-			input
-				-moz-border-radius 15px
-				border-radius 15px
-				background-image url(../img/lupa-busqueda.png)
-				background-repeat no-repeat
-				background-position right
-				text-indent 10em
-				&:active
-				&:focus 
-					background-image none
+		margin 0
+		ul
+			margin 0
+			padding 0.1em 1em
+			li
+				margin 1em 0 0 0
+				padding 0 0.4em 1em 0
+				list-style-type none
+				border-bottom solid 0.1em
+				border-color white
+				a
+					color white !important
+				.name-user
+					font-size 1.6em
+					font-family "Pacifico"
+				
+				input
+					width 74%
+					padding 0.2em
+					-moz-border-radius 8px
+					border-radius 8px
+					background-image url(../img/lupa-busqueda.png)
+					background-repeat no-repeat
+					background-position right
+					text-indent 0.4em
+					color grey
+					&:active
+					&:focus 
+						background-image none
 	.minus
 		position absolute
 		bottom -30px
@@ -498,18 +630,32 @@ nav
 		width 210px
 		float none
 		.logo-fb
-			margin 0 23px 1px 0
+			margin 0 2px 1px 0
 			float left
 			width 31px
 			height 30px
 			.logo-fb-img
 				float none
 				background-image url(../img/facebook.png)
-				width 31px
-				height 31px
+				width 25px
+				height 25px
 				cursor pointer
 			.logo-fb-img:hover
 				background-position bottom left
+		.logo-pint
+			margin 0 1px 1px 0
+			float left
+			width 31px
+			height 30px
+			.logo-pint-img
+				float none
+				background-image url(../img/pinterest.png)
+				width 25px
+				height 24px
+				cursor pointer
+			.logo-pint-img:hover
+				background-position bottom left
+				height 25px
 
 
 		.nro-delivery
@@ -529,7 +675,7 @@ nav
 			line-height 2.2em
 			color marron
 		.logo-delivery
-			margin 0 4px 1px 0
+			margin 2px 9px 0 0
 			float left
 
 	.carrito-header
@@ -752,6 +898,12 @@ nav
 			width 82%
 
 	footer
+		h3
+			margin auto
+			width 100%
+			text-align center
+		p
+			margin-left 1%
 		.links
 			display none !important
 
@@ -805,14 +957,54 @@ nav
 				.text-resumen-prod
 					text-align left
 			.thumbnail
-				padding 0 16%
+				border 0
+				padding 0.2em 16%
 				a
 					font-size 1.2em
 			#navProducto
 				display none
+			#descripcion
+				border 0
 			#item-producto
 				margin 0.5em 11%
+				.btn-agregar
+					font-size 0.8em
+				h4
+					height auto
 
+			.sin-borde-top
+				border 0
+			#rootwizardCart
+				.nav-tabs
+					font-size 0.9em !important
+					li
+						border-radius 0
+			.subcontenido
+				padding 0.1em 3% 0 3%
+
+		.layerFondo
+			h3
+				font-size 1em
+				margin 0 16%
+				padding 0 2px 2px 2px
+			hr
+				height 2px
+			.container
+				.infoUsuario
+					top 3.0em
+					width 100%
+					.tab-content
+						#como-comprar
+							.panel
+								border 0
+								padding-top 2em
+								.thumbnail
+									border 0
+									border-bottom 1px solid marron
+									margin-bottom 1em
+									text-align center
+								.subtitulo-paso-compra
+									color marron
 
 	.thumbnail
 		border-radius 0
@@ -862,8 +1054,8 @@ nav
 
 	.content
 		.about
-			word-spacing 0.3em
-			line-height 2em
+			word-spacing 0.2em
+			line-height 1.9em
 		.layerFondo
 			.container
 				.info
@@ -940,6 +1132,10 @@ nav
 			margin-top -4.6em
 		.informacion
 			margin-top -19em
+		.productos
+			#item-producto
+				height 24.5em
+
 	footer
 		margin-top 2em
 		.container
@@ -1010,3 +1206,5 @@ nav
 				li					
 					&:nth-child(odd)
 						margin-right 10em
+
+

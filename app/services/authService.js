@@ -5,17 +5,31 @@ define(['app'], function (app) {
     var authService = function ($http, $rootScope, $q, $cookieStore) {
         var accessLevels = routingConfig.accessLevels
             , userRoles = routingConfig.userRoles
-            , currentUser = $cookieStore.get('user') || { username: 'Invitado', role: userRoles.public };
-
+            , currentUser = null;
+            
+        if (localStorage['user'] === undefined) {
+            currentUser = { username: 'Invitado', role: userRoles.public };
+            localStorage['user'] = JSON.stringify({ username: 'Invitado', role: userRoles.public });
+        } else {
+            currentUser = JSON.parse(localStorage['user']);
+        }
 
         function changeUser(user) {
-            $cookieStore.put('user', user);
-            _.extend(currentUser, user);
+//            angular.copy(user, localStorage['user']);
+            
+            localStorage.setItem('user', JSON.stringify(user));
+//            $cookieStore.put('user', user);
+//            _.extend(currentUser, user);
+            angular.copy(user, currentUser);
 //            console.log(currentUser);
+//            console.log(localStorage['user'].username);
         };
 
         return {
             authorize: function(accessLevel, role) {
+//                console.log(localStorage['user'].username);
+                console.log(currentUser.username);
+                console.log(currentUser.role);
                 if(role === undefined)
                     role = currentUser.role;
 //                console.log("rol de usuario: ");
@@ -28,9 +42,15 @@ define(['app'], function (app) {
                 return user.role.title == userRoles.user.title || user.role.title == userRoles.admin.title;
             },
             register: function(user, success, error) {
-                $http.post('/register', user).success(function(res) {
-                    changeUser(res);
-                    success();
+                $http.post($rootScope.appUrl + '/registro', {operacion: 'new_user', user: user}).success(function(res) {
+                    //changeUser(res);
+                    success(res);
+                }).error(error);
+            },
+            activation: function(user, key, success, error) {
+                $http.put($rootScope.appUrl + '/registro', {operacion: 'activation_user', user: user, key: key}).success(function(res) {
+                    //changeUser(res);
+                    success(res);
                 }).error(error);
             },
             login: function(user, success, error) {
@@ -55,11 +75,16 @@ define(['app'], function (app) {
                         username: 'Invitado',
                         role: userRoles.public
                     });
-                    $cookieStore.remove('user');
+                    localStorage.removeItem('user');
                     success();
                 }).error(error);
             },
-            accessLevels: accessLevels,
+            retrieveKey : function (email, success, error) {
+                $http.put($rootScope.appUrl + '/login', {operacion: 'retrieve_key', email: email}).success(function(res) {
+                    success(res);
+                }).error(error);
+            }
+            ,accessLevels: accessLevels,
             userRoles: userRoles,
             user: currentUser
         };

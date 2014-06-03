@@ -2,7 +2,7 @@
 
 define(['app'], function (app) {
 
-    var delibouquetController = function ($scope, $location) {
+    var delibouquetController = function ($scope, $rootScope, $stateParams, $filter, $http, $location) {
         var appTitle = 'Delibouquet';
         $scope.appTitle = appTitle;
         $scope.highlight = function (path) {
@@ -28,6 +28,6 @@ define(['app'], function (app) {
 
     };
 
-    app.register.controller('DelibouquetController', ['$scope', '$location', delibouquetController]);
+    app.register.controller('DelibouquetController', ['$scope', '$rootScope', '$stateParams', '$filter', '$http', '$location', delibouquetController]);
     
 });

@@ -9,15 +9,25 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         };
 
-           $("#banner").backstretch([
-                "./img/banner-portada.jpg"
-              , "./img/banner-about.jpg"
-            ], {duration: 3000, fade: 750});          
+//           $("#banner").backstretch([
+//                "./img/banner-portada.jpg"
+////              , "./img/banner-portada.jpg"
+//            ], {duration: 3000, fade: 100});          
+
+           
 
           var $window = $(window).on('resize', function() {
             $('#contenido').height(
               $(window).height() - $('#header').height() - $('#footer').height() - 40
-            );    
+            );
+            if ($(window).width() <= 320) {
+                $("#banner").backstretch("./img/banner-portada-320.jpg");
+            } else if ($(window).width() <= 390) {
+                $("#banner").backstretch("./img/banner-portada-op2.jpg");
+            } else {
+                $("#banner").backstretch("./img/banner-portada.jpg");
+            }
+    
             /*
             $("#banner").backstretch([
                 "./img/banner-portada.jpg"

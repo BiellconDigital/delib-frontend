@@ -18,6 +18,18 @@ define(['app'], function (app) {
             });
         };
         
+        userFactory.changePassword = function (idCliente, clave, claveNueva, success) {
+            return $http.put($rootScope.appUrl + '/cliente', { operacion : 'change_password', idCliente: idCliente 
+                    , clave: clave, claveNueva: claveNueva})
+                    .success(function(data, status, headers, config) {
+                        success(data);
+                }).error(function(err) {
+                    $rootScope.error = err.msg;
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
 
 
         userFactory.login = function (usuario, clave) {
@@ -42,8 +54,19 @@ define(['app'], function (app) {
                 });
         };
         
+        userFactory.listTipoDocumento = function(success) {
+            $http.get($rootScope.appUrl + '/tipo-documento').success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en la consulta.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+                });
+        };
+        
         cartFactory.listUbigeo = function(success) {
-            $http.get($rootScope.appUrl + '/cart', {params: {operacion : 'distritos'}}).success(function(data) {
+            $http.get($rootScope.appUrl + '/distrito').success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en la consulta.";
@@ -54,7 +77,7 @@ define(['app'], function (app) {
         };
         
         cartFactory.listOrdenTipo = function(success) {
-            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'razon_compra'}}).success(function(data) {
+            $http.get($rootScope.appUrl + '/orden-tipo').success(function(data) {
                 success(data);
             }).error(function(err) {
                     $rootScope.error = "Error en la consulta.";
@@ -74,7 +97,64 @@ define(['app'], function (app) {
             $http.post($rootScope.appUrl + '/cart', {operacion: 'procesar_compra', orden: orden, items: items}).success(function(data) {
                 success(data);
             }).error(function(err) {
+                    console.log(err)
+//                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $rootScope.error = err.msg;
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.obtenerEticketVisa = function(orden, user, success) {
+            $http.put($rootScope.appUrl + '/visa', {operacion: 'obtener_eticket', orden: orden, cliente: user}).success(function(data) {
+                success(data);
+            }).error(function(err) {
                     $rootScope.error = "Error en el procesamiento de la compra.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.confirmarPagoPayPal = function(idOrden, codigoTransaccion, success) {
+            $http.put($rootScope.appUrl + '/cart', {operacion: 'confirmar_paypal', idOrden: idOrden, codigoTransaccion: codigoTransaccion}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en el procesamiento de la compra.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.listaPedidos = function(success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'lista_pedidos'}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.getPedido = function(idOrden, success) {
+            $http.get($rootScope.appUrl + '/cart', {params: {operacion: 'get_pedido', idOrden : idOrden}}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
+            });
+        };
+        
+        cartFactory.actualizarPedidoVisa = function(idOrden, success) {
+            $http.put($rootScope.appUrl + '/visa', {operacion: 'actualizar_orden_visa', idOrden : idOrden}).success(function(data) {
+                success(data);
+            }).error(function(err) {
+                    $rootScope.error = "Error en obtener la información.";
                     $timeout(function() {
                         $rootScope.error = null;
                     }, 4000);

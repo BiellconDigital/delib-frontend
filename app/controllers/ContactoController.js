@@ -9,18 +9,26 @@ define(['app'], function (app) {
             return $location.path().substr(0, path.length) == path;
         }
 
-		    var $window = $(window).on('resize', function() {
-				$('#map_canvas').height(
-					$(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() - 35
-				);    
-			}).trigger('resize'); //on page load      
-	  		initialize();
+        var $window = $(window).on('resize', function() {
+            if ($(window).height() <= 540) {
+                $('#map_canvas').height(
+                        $(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() + 130
+                );    
+            } else {
+                $('#map_canvas').height(
+                        $(window).height() - $('#header').height() - $('#footer').height() - $('#contact').height() - 35
+                );    
+            }
+                        
+                                        
+        }).trigger('resize'); //on page load      
+        initialize();
 
 
 function initialize() {
 	var myLatlng = new google.maps.LatLng(-12.1443000,-77.0180000);
 	var mapOptions = {
-		zoom: 16,
+		zoom: 17,
 		center: myLatlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	}
@@ -32,7 +40,7 @@ function initialize() {
 	   // '<h2 id="firstHeading" class="firstHeading">Maido Mitsuharu</h2>'+
 	    '<div id="bodyContent">'+
 		'<div class="foto_mapa"></div>' +
-	    '<p class="text_map">Amor Amar Jr. Garcia y Garcia 175<br/>' +
+	    '<p class="text-marron">Amoramar Jr. Garcia y Garcia 175<br/>' +
 		'	Barranco - Lima, Perú <br/>' +
 		'	Teléfonos: (511)241-8724 / 241 8142 <br/>' +
 		'	Email: <a href="mailto:informes@delibouquet.pe">informes@delibouquet.pe</a> </p>'

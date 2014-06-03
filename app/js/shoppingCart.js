@@ -6,6 +6,7 @@ function shoppingCart(cartName) {
     this.clearCart = false;
     this.checkoutParameters = {};
     this.items = [];
+    this.costoEnvio = 0;
 
     // load items from local storage when initializing
     this.loadItems();
@@ -51,6 +52,7 @@ shoppingCart.prototype.saveItems = function () {
 // adds an item to the cart
 shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
     quantity = this.toNumber(quantity);
+    result = null;
     if (quantity != 0) {
 
         // update quantity for existing item
@@ -63,6 +65,7 @@ shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
                 if (item.quantity <= 0) {
                     this.items.splice(i, 1);
                 }
+                result = "edit";
             }
         }
 
@@ -70,11 +73,13 @@ shoppingCart.prototype.addItem = function (sku, name, image, price, quantity) {
         if (!found) {
             var item = new cartItem(sku, name, image, price, quantity);
             this.items.push(item);
+            result = "new";
         }
 
         // save changes
         this.saveItems();
     }
+    return result;
 }
 
 // get the total price for all items currently in the cart
@@ -111,8 +116,8 @@ shoppingCart.prototype.clearItems = function () {
 shoppingCart.prototype.addCheckoutParameters = function (serviceName, merchantID, options) {
 
     // check parameters
-    if (serviceName != "PayPal" && serviceName != "Google" && serviceName != "Stripe") {
-        throw "serviceName must be 'PayPal' or 'Google' or 'Stripe'.";
+    if (serviceName != "PayPal" && serviceName != "Google" && serviceName != "Stripe" && serviceName != "Visa") {
+        throw "serviceName must be 'PayPal' or 'Google' or 'Stripe' or 'Visa'.";
     }
     if (merchantID == null) {
         throw "A merchantID is required in order to checkout.";
@@ -151,6 +156,9 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart) {
         case "Stripe":
             this.checkoutStripe(parms, clearCart);
             break;
+        case "Visa":
+            this.checkoutVisa(parms, clearCart);
+            break;
         default:
             throw "Unknown checkout service: " + parms.serviceName;
     }
@@ -174,10 +182,22 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
     for (var i = 0; i < this.items.length; i++) {
         var item = this.items[i];
         var ctr = i + 1;
+        var pricePaypal = 0;
         data["item_number_" + ctr] = item.sku;
         data["item_name_" + ctr] = item.name;
         data["quantity_" + ctr] = item.quantity;
-        data["amount_" + ctr] = item.price.toFixed(2);
+        pricePaypal = item.price/2.80;
+        data["amount_" + ctr] = pricePaypal.toFixed(2);
+    }
+
+    if (this.costoEnvio > 0) {
+        var ctr = i + 1;
+        var pricePaypal = 0;
+        data["item_number_" + ctr] = 0;
+        data["item_name_" + ctr] = "Costo de envío";
+        data["quantity_" + ctr] = 1;
+        pricePaypal = this.costoEnvio/2.80;
+        data["amount_" + ctr] = pricePaypal.toFixed(2);
     }
 
     // build form
@@ -304,6 +324,28 @@ shoppingCart.prototype.checkoutStripe = function (parms, clearCart) {
     });
 }
 
+shoppingCart.prototype.checkoutVisa = function (parms, clearCart) {
+    // global data
+    var data = {
+    };
+    data["ETICKET"] = parms.options.eticket;
+
+    // build form
+    var form = $('<form/></form>');
+    //form.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+//    form.attr("action", "https://www.sandbox.paypal.com/cgi-bin/webscr");
+    form.attr("action", parms.options.url_visa);
+    form.attr("method", "POST");
+    form.attr("style", "display:none;");
+    this.addFormFields(form, data);
+//    this.addFormFields(form, parms.options);
+    $("body").append(form);
+
+    // submit form
+    this.clearCart = clearCart == null || clearCart;
+    form.submit();
+    form.remove();
+}
 // utility methods
 shoppingCart.prototype.addFormFields = function (form, data) {
     if (data != null) {
@@ -340,3 +382,10 @@ function cartItem(sku, name, image, price, quantity) {
     this.quantity = quantity * 1;
 }
 
+shoppingCart.prototype.setCostoEnvio = function(monto) {
+    this.costoEnvio = monto;
+}
+
+shoppingCart.prototype.getCostoEnvio = function () {
+    return this.costoEnvio;
+}

@@ -2,16 +2,16 @@
 
 define(['services/routeResolver'], function () {
 
-    var app = angular.module('myApp', ['ngCookies', 'ui.router', 'routeResolverServices']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
+    var app = angular.module('myApp', ['ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'routeResolverServices', 'ezfb']);// 'ngAnimate',  , 'wc.Directives', 'wc.Animations', 'ui.bootstrap'
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         'routeResolverProvider', 
         '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', 
-        '$httpProvider',
+        '$httpProvider', '$FBProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider,
                 routeResolverProvider, 
                 $controllerProvider, $compileProvider, $filterProvider, $provide, 
-                $httpProvider) {
+                $httpProvider, $FBProvider) {
 
             //Change default views and controllers directory using the following:
             //routeResolverProvider.routeConfig.setBaseDirectories('/app/views', '/app/controllers');
@@ -24,6 +24,11 @@ define(['services/routeResolver'], function () {
                 factory: $provide.factory,
                 service: $provide.service
             };
+
+    $FBProvider.setLocale('es_LA');
+    $FBProvider.setInitParams({
+        appId: '299461200206662'
+    });  
 
             //Define routes - controllers will be loaded dynamically
             var route = routeResolverProvider.route;
@@ -62,6 +67,7 @@ define(['services/routeResolver'], function () {
                 .state('public.carro_compra', route.resolve('/carro-de-compra', 'Carro'))
                 .state('public.contacto', route.resolve('/contacto', 'Contacto'))
                 .state('public.arreglos', route.resolve('/arreglos/{cateId}', 'Productos'))//[/:cateId]
+                .state('public.arreglos_busqueda', route.resolve('/arreglos_busqueda/{query}', 'ProductosBusqueda'))//[/:cateId]
                 .state('public.detalle_producto', route.resolve('/detalle-producto/{prodId}', 'ProductoDetalle'))
                 .state('public.delibouquet', route.resolve('/delibouquet', 'Delibouquet'))
                 .state('public.politicas', route.resolve('/politicas', 'Politicas'))
@@ -78,7 +84,9 @@ define(['services/routeResolver'], function () {
                     }
                 })
                 .state('anon.login', route.resolve('/login', 'Login'))
-                .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'));
+                .state('anon.registrarse', route.resolve('/registrarse', 'Registrarse'))
+                .state('anon.recuperar_clave', route.resolve('/recuperar-clave', 'RecuperarClave'))
+                .state('anon.activacion_cuenta', route.resolve('/activacion/:user/:key', 'ActivacionCuenta'));
 
             // Regular user routes
             $stateProvider
@@ -89,7 +97,10 @@ define(['services/routeResolver'], function () {
                         access: access.user
                     }
                 })
-                .state('user.perfil', route.resolve('/usuario', 'Usuario'));
+                .state('user.perfil', route.resolve('/usuario', 'Usuario'))
+                .state('user.pedido', route.resolve('/pedido/:idpedido', 'PedidoDetalle'))
+                .state('user.pedidos', route.resolve('/pedidos', 'Pedidos'))
+                .state('public.confirmacion_compra', route.resolve('/confirmacion-compra', 'CarroConfirmacion'));
 //                .state('user.perfil', {
 //                    url: '/usuario',
 //                    templateUrl: VarsApp.baseUrl + '/views/Usuario.html'
@@ -158,6 +169,16 @@ define(['services/routeResolver'], function () {
 
             $httpProvider.interceptors.push(function($q, $location) {
                 return {
+//                    'request': function (config) {
+//                        console.log("HACIENDO REQUEST");
+//                        console.log(config);
+//                         return config || $q.when(config);
+//                     },
+//                    'response': function(response) {
+//                        console.log("HACIENDO RESPONSE");
+//                        console.log(response);
+//                        return response || $q.when(response);
+//                    },
                     'responseError': function(response) {
                         if(response.status === 401 || response.status === 403) {
                             $location.path('/login');
@@ -174,8 +195,8 @@ define(['services/routeResolver'], function () {
     }]);
 
     //Only needed for Breeze. Maps Q (used by default in Breeze) to Angular's $q to avoid having to call scope.$apply() 
-    app.run(['$q', '$rootScope', '$state', 'Auth',
-        function ($q, $rootScope, $state, Auth) {
+    app.run(['$q', '$rootScope', '$timeout', '$state', 'Auth',
+        function ($q, $rootScope, $timeout, $state, Auth) {
             //$rootScope.$apply();
             //breeze.core.extendQ($rootScope, $q);
 
@@ -184,20 +205,23 @@ define(['services/routeResolver'], function () {
                     console.log("no auth...");
 //                    console.log(toState.data.access);
                     
-                    $rootScope.error = "Seems like you tried accessing a route you don't have access to...";
+                    $rootScope.error = "No tienes los permisos suficientes para esta opción.";
+                    $timeout(function() {
+                        $rootScope.error = null;
+                    }, 4000);
                     event.preventDefault();
                     
-                    if(fromState.url === '^') {
+                    //if(fromState.url === '^') {
                         if(Auth.isLoggedIn()) {
                             console.log("ir a home...");
                             $state.go('user.perfil');
                         }
                         else {
                             console.log("ir a login...");
-                            $rootScope.error = null;
+                            //$rootScope.error = null;
                             $state.go('anon.login');
                         }
-                    }
+                    //}
                 }
             });
 
